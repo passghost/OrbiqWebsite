@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbiq - 3D Desktop Shortcut Manager | Windows Productivity Tool</title>
+    <meta name="description" content="Orbiq is the ultimate 3D desktop launcher for Windows. Transform your desktop with an elegant, vanishing sphere of shortcuts. Free for personal use, $10 for business. Download now!">
+    <meta name="keywords" content="Orbiq, 3D desktop launcher, Windows productivity tool, desktop shortcut manager, 3D sphere launcher, desktop organizer, Windows utility, productivity software, desktop enhancement, file launcher, application launcher, desktop sphere, shortcut organizer, Windows desktop tool, productivity app">
+    <meta name="author" content="Orbiq">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://orbiq.app/">
+    <meta property="og:title" content="Orbiq - The launcher your desktop's been dreaming of">
+    <meta property="og:description" content="A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey.">
+    <meta property="og:image" content="Images/SphereIcon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Orbiq">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://orbiq.app/">
+    <meta property="twitter:title" content="Orbiq - 3D Desktop Launcher for Windows">
+    <meta property="twitter:description" content="Transform your desktop with Orbiq's elegant 3D sphere launcher. Free for personal use, perfect for productivity.">
+    <meta property="twitter:image" content="Images/SphereIcon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
+    <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://orbiq.app/">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#32CD32">
+    <meta name="msapplication-TileColor" content="#8A2BE2">
+    <meta name="msapplication-TileImage" content="Images/SphereIcon.png">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Orbiq",
+      "alternateName": "Orbiq 3D Desktop Launcher",
+      "description": "Orbiq is a revolutionary 3D desktop launcher for Windows that transforms your shortcuts into an elegant, interactive sphere. Free for personal use.",
+      "url": "https://orbiq.app",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free for personal use, $10 for business license"
+      },
+      "screenshot": "Images/example.gif",
+      "downloadUrl": "https://drive.google.com/file/d/1uj_2634TuWt3p173SbGA3FGPu0wX9JWO/view?usp=sharing",
+      "softwareVersion": "1.6",
+      "releaseNotes": "Latest version with enhanced 3D sphere functionality",
+      "author": {
+        "@type": "Organization",
+        "name": "Orbiq"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Orbiq"
+      }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(90deg, purple, green);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .header .logo {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .navigation ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: green;
+        }
+
+        .navigation ul li {
+            margin: 0 15px;
+        }
+
+        .navigation ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navigation ul li a:hover,
+        .navigation ul li a.active {
+            background-color: purple;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, black, purple);
+            color: white;
+        }
+
+        .hero .demo-gif {
+            max-width: 100%;
+            border: 5px solid green;
+            border-radius: 10px;
+        }
+
+        .features {
+            background-color: black;
+            padding: 40px 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: green;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .features-grid .feature-item {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .features-grid .feature-item:hover {
+            transform: scale(1.05);
+        }
+
+        .features-grid .feature-icon {
+            max-width: 50px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, green, purple);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <img src="Images/SphereIcon.png" alt="Orbiq Logo" class="logo">
+                <div class="title-section">
+                    <h1>Orbiq</h1>
+                    <p class="subtitle">3D Desktop Shortcut Manager</p>
+                </div>
+            </div>
+            <div class="version-info">
+                <span class="version">Version 1.6</span>
+                <span class="platform">Windows PC Only</span>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>The launcher your desktop's been dreaming of.</h2>
+                        <p>A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
+                        <div class="download-buttons">
+                            <a href="https://drive.google.com/file/d/1uj_2634TuWt3p173SbGA3FGPu0wX9JWO/view?usp=sharing" class="btn btn-primary">
+                                <img src="Images/SphereIcon.png" alt="Download">
+                                Download Orbiq
+                                <span class="file-info">61 MB - Windows Installer</span>
+                            </a>
+                            <a href="../publish/" class="btn btn-secondary btn-disabled">
+                                <img src="Images/SphereIcon.png" alt="Portable">
+                                Portable Version
+                                <span class="file-info">Coming Soon</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="Images/example.gif" alt="3D Sphere Demo" class="demo-gif">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features" id="features">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="3D Sphere" class="feature-icon">
+                        <h3>3D Rotating Sphere</h3>
+                        <p>Icons arranged on a beautiful 3D sphere that you can rotate with mouse drag</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="System Tray" class="feature-icon">
+                        <h3>System Tray Integration</h3>
+                        <p>Runs quietly in the background, accessible via system tray</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Hotkey" class="feature-icon">
+                        <h3>Global Hotkey</h3>
+                        <p>Press Ctrl+Alt+Space to instantly show/hide the sphere</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Move Mode" class="feature-icon">
+                        <h3>Move Mode</h3>
+                        <p>Double-click center handle to reposition sphere anywhere on screen</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Configurable" class="feature-icon">
+                        <h3>Fully Configurable</h3>
+                        <p>Customize shortcuts, hotkeys, sphere size, and animation settings</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Standalone" class="feature-icon">
+                        <h3>Standalone</h3>
+                        <p>No .NET installation required - all dependencies included</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screenshots Section -->
+            <section class="screenshots" id="screenshots">
+                <h2>Screenshots</h2>
+                <div class="screenshot-gallery">
+                    <div class="screenshot-item">
+                        <div class="gallery-image screenshot1">Main 3D Sphere Interface</div>
+                        <p>Main 3D Sphere Interface</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="gallery-image screenshot2">System Tray Integration</div>
+                        <p>System Tray Integration</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Download Section -->
+            <section class="download-section" id="download">
+                <h2>Download Orbiq</h2>
+                <div class="download-options">
+                    <div class="download-option">
+                        <div class="download-header">
+                            <img src="Images/SphereIcon.png" alt="Installer" class="download-icon">
+                            <h3>Windows Installer</h3>
+                            <span class="recommended">Recommended</span>
+                        </div>
+                        <div class="download-details">
+                            <ul>
+                                <li>Professional installation experience</li>
+                                <li>Start Menu and Desktop shortcuts</li>
+                                <li>Automatic uninstaller</li>
+                                <li>Smaller download size (61 MB)</li>
+                            </ul>
+                            <a href="https://drive.google.com/file/d/1uj_2634TuWt3p173SbGA3FGPu0wX9JWO/view?usp=sharing" class="btn btn-primary">Download
+                                Installer</a>
+                        </div>
+                    </div>
+                    <div class="download-option download-option-disabled">
+                        <div class="download-header">
+                            <img src="Images/SphereIcon.png" alt="Portable" class="download-icon">
+                            <h3>Portable Version</h3>
+                            <span class="coming-soon">Coming Soon</span>
+                        </div>
+                        <div class="download-details">
+                            <ul>
+                                <li>No installation required</li>
+                                <li>Run from any location</li>
+                                <li>Perfect for USB drives</li>
+                                <li>Complete package</li>
+                            </ul>
+                            <div class="btn btn-secondary btn-disabled">Available Soon</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Requirements -->
+            <section class="requirements">
+                <h2>System Requirements</h2>
+                <div class="requirements-content">
+                    <div class="req-column">
+                        <h3>Minimum Requirements</h3>
+                        <ul>
+                            <li>Windows 10 (64-bit)</li>
+                            <li>2 GB RAM</li>
+                            <li>200 MB free disk space</li>
+                            <li>DirectX 11 compatible graphics</li>
+                        </ul>
+                    </div>
+                    <div class="req-column">
+                        <h3>Recommended</h3>
+                        <ul>
+                            <li>Windows 11 (64-bit)</li>
+                            <li>4 GB RAM or more</li>
+                            <li>500 MB free disk space</li>
+                            <li>Dedicated graphics card</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Orbiq</h4>
+                    <p>© 2025 Orbiq. All rights reserved.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="license.html">License Agreement</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -404,6 +404,14 @@ body {
     background: linear-gradient(135deg, #8A2BE2 0%, #32CD32 100%);
 }
 
+.screenshot-gallery img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 .screenshot-item p {
     padding: 15px;
     text-align: center;

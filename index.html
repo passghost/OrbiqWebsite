@@ -569,6 +569,10 @@
             background: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(138, 43, 226, 0.5));
         }
 
+        .theme-default {
+            background: linear-gradient(135deg, #6a5acd 0%, #483d8b 100%);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -841,6 +845,7 @@
 
         <!-- Theme Swapper (Hidden by default) -->
         <div class="theme-swapper">
+            <button class="theme-button theme-default" onclick="setTheme('default')" title="Default Theme"></button>
             <button class="theme-button theme-black-gray" onclick="setTheme('black-gray')" title="Black & Gray Theme"></button>
             <button class="theme-button theme-crimson" onclick="setTheme('crimson')" title="Crimson Theme"></button>
             <button class="theme-button theme-ocean" onclick="setTheme('ocean')" title="Ocean Blue Theme"></button>
@@ -862,7 +867,8 @@
             button.addEventListener('click', () => {
                 const theme = button.classList.contains('theme-black-gray') ? 'black-gray' :
                               button.classList.contains('theme-crimson') ? 'crimson' :
-                              button.classList.contains('theme-ocean') ? 'ocean' : 'midnight';
+                              button.classList.contains('theme-ocean') ? 'ocean' :
+                              button.classList.contains('theme-midnight') ? 'midnight' : 'default';
                 body.setAttribute('data-theme', theme);
             });
         });
@@ -961,6 +967,13 @@
                 root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #8a2be2 0%, #9370db 100%)');
                 root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #2d0066 0%, #1a0033 100%)');
                 root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #4b0082 0%, #2d0066 50%, #1a0033 100%)');
+            } else if (theme === 'default') {
+                // Reset to default theme (Orbiq)
+                root.style = null;
+                // Optionally, reset title color and shadow
+                const title = document.querySelector('.header h1');
+                title.style.color = '';
+                title.style.textShadow = '';
             }
 
             // Update title colors dynamically
@@ -971,6 +984,9 @@
             } else if (theme === 'midnight') {
                 title.style.color = '#8a2be2';
                 title.style.textShadow = '2px 2px 5px rgba(138, 43, 226, 0.5)';
+            } else if (theme === 'default') {
+                title.style.color = '';
+                title.style.textShadow = '';
             }
 
             // Easter egg message logic

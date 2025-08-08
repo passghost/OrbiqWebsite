@@ -537,20 +537,20 @@
 
         /* Styling theme swapper buttons to be smaller and have a glass effect */
         .theme-button {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2);
         }
 
         .theme-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            transform: scale(1.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .theme-black-gray {
@@ -847,7 +847,7 @@
             <button class="theme-button theme-midnight" onclick="setTheme('midnight')" title="Midnight Purple Theme"></button>
             
             <!-- Adding Easter egg message below the theme buttons -->
-            <div id="easter-egg-message" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+            <div id="easter-egg-message" style="margin-top: 5px; font-size: 0.3rem; color: var(--text-muted); text-align: center;">
                 <!-- Message will update dynamically -->
             </div>
         </div>
@@ -883,7 +883,7 @@
         }
 
         const easterEggWords = [
-            "Color", "can't", "give", "diseases", "but", "I'm", "sorry", "it", "gave", "your", "brain", "cancer", "anyway"
+            "Color", "can't", "give", "diseases", "but", "I'm", "sorry", "it", "gave", "your", "brain", "cancer", "anyway", "here", "now", "you", "can", "make", "this", "easter", "egg", "last", "forever", "take", "a", "picture", "of", "that", "constipated", "face", "https://passghost.github.io/jodylabs/PhotoBooth/Photobooth.html"
         ];
         let currentWordIndex = 0;
 
@@ -974,7 +974,13 @@
             }
 
             // Easter egg message logic
-            message.textContent = easterEggWords[currentWordIndex];
+            const currentWord = easterEggWords[currentWordIndex];
+            if (currentWord.startsWith('https://')) {
+                // Create a clickable link for URLs
+                message.innerHTML = `<a href="${currentWord}" target="_blank" style="color: var(--text-muted); text-decoration: underline;">${currentWord}</a>`;
+            } else {
+                message.textContent = currentWord;
+            }
             currentWordIndex = (currentWordIndex + 1) % easterEggWords.length;
         }
     </script>

@@ -115,6 +115,7 @@
             padding: 20px;
         }
 
+        /* Making sure header has position relative for absolute positioning of theme swapper */
         .header {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -123,6 +124,7 @@
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .header .logo {
@@ -523,6 +525,50 @@
             text-decoration: underline;
         }
 
+        /* Moving theme swapper to the top-right corner for convenience */
+        .theme-swapper {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000; /* Ensure it stays above other elements */
+        }
+
+        /* Styling theme swapper buttons to be smaller and have a glass effect */
+        .theme-button {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-black-gray {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(96, 96, 96, 0.5));
+        }
+
+        .theme-crimson {
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.5), rgba(184, 49, 79, 0.5));
+        }
+
+        .theme-ocean {
+            background: linear-gradient(135deg, rgba(0, 119, 190, 0.5), rgba(0, 180, 216, 0.5));
+        }
+
+        .theme-midnight {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(138, 43, 226, 0.5));
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -575,6 +621,16 @@
         .feature-item:nth-child(4) { animation-delay: 0.4s; }
         .feature-item:nth-child(5) { animation-delay: 0.5s; }
         .feature-item:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Ensuring the Easter egg message is directly below the theme buttons container */
+        #easter-egg-message {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            position: relative;
+            top: 0;
+        }
     </style>
 </head>
 
@@ -782,7 +838,146 @@
                 <p>Contact us at: <a href="mailto:pass6host@gmail.com">pass6host@gmail.com</a></p>
             </div>
         </footer>
+
+        <!-- Theme Swapper (Hidden by default) -->
+        <div class="theme-swapper">
+            <button class="theme-button theme-black-gray" onclick="setTheme('black-gray')" title="Black & Gray Theme"></button>
+            <button class="theme-button theme-crimson" onclick="setTheme('crimson')" title="Crimson Theme"></button>
+            <button class="theme-button theme-ocean" onclick="setTheme('ocean')" title="Ocean Blue Theme"></button>
+            <button class="theme-button theme-midnight" onclick="setTheme('midnight')" title="Midnight Purple Theme"></button>
+            
+            <!-- Adding Easter egg message below the theme buttons -->
+            <div id="easter-egg-message" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+                <!-- Message will update dynamically -->
+            </div>
+        </div>
     </div>
+
+    <!-- JavaScript for theme swapping -->
+    <script>
+        const themeButtons = document.querySelectorAll('.theme-button');
+        const body = document.body;
+
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.classList.contains('theme-black-gray') ? 'black-gray' :
+                              button.classList.contains('theme-crimson') ? 'crimson' :
+                              button.classList.contains('theme-ocean') ? 'ocean' : 'midnight';
+                body.setAttribute('data-theme', theme);
+            });
+        });
+
+        // Show theme swapper on larger screens
+        window.addEventListener('resize', () => {
+            const themeSwapper = document.querySelector('.theme-swapper');
+            if (window.innerWidth > 768) {
+                themeSwapper.style.display = 'flex';
+            } else {
+                themeSwapper.style.display = 'none';
+            }
+        });
+
+        // Initial check
+        if (window.innerWidth > 768) {
+            document.querySelector('.theme-swapper').style.display = 'flex';
+        }
+
+        const easterEggWords = [
+            "Color", "can't", "give", "diseases", "but", "I'm", "sorry", "it", "gave", "your", "brain", "cancer", "anyway"
+        ];
+        let currentWordIndex = 0;
+
+        function setTheme(theme) {
+            const root = document.documentElement;
+            const message = document.getElementById('easter-egg-message');
+
+            if (theme === 'black-gray') {
+                // Black on Gray theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#000000');
+                root.style.setProperty('--primary-blue-hover', '#1a1a1a');
+                root.style.setProperty('--secondary-teal', '#808080');
+                root.style.setProperty('--accent-orange', '#606060');
+                root.style.setProperty('--accent-orange-hover', '#404040');
+                root.style.setProperty('--dark-bg', '#2a2a2a');
+                root.style.setProperty('--darker-bg', '#1a1a1a');
+                root.style.setProperty('--card-bg', '#404040');
+                root.style.setProperty('--card-hover', '#505050');
+                root.style.setProperty('--text-primary', '#ffffff');
+                root.style.setProperty('--text-secondary', '#d0d0d0');
+                root.style.setProperty('--text-muted', '#a0a0a0');
+                root.style.setProperty('--border-color', '#606060');
+                root.style.setProperty('--success', '#000000');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #000000 0%, #404040 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #404040 0%, #606060 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #000000 0%, #2a2a2a 50%, #404040 100%)');
+            } else if (theme === 'crimson') {
+                // Subtle Crimson theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#8b1538');
+                root.style.setProperty('--primary-blue-hover', '#6b0f2a');
+                root.style.setProperty('--secondary-teal', '#d2b4a8');
+                root.style.setProperty('--accent-orange', '#b8314f');
+                root.style.setProperty('--accent-orange-hover', '#9e2943');
+                root.style.setProperty('--dark-bg', '#2a1419');
+                root.style.setProperty('--darker-bg', '#1a0d11');
+                root.style.setProperty('--card-bg', '#3d1f26');
+                root.style.setProperty('--card-hover', '#4d2731');
+                root.style.setProperty('--text-primary', '#f5e6e8');
+                root.style.setProperty('--text-secondary', '#d2b4a8');
+                root.style.setProperty('--text-muted', '#a68b8b');
+                root.style.setProperty('--border-color', '#6b3344');
+                root.style.setProperty('--success', '#8b1538');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #8b1538 0%, #6b0f2a 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #b8314f 0%, #9e2943 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #6b3344 0%, #8b1538 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #8b1538 0%, #3d1f26 50%, #2a1419 100%)');
+            } else if (theme === 'ocean') {
+                // Ocean Blue theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#0077be');
+                root.style.setProperty('--primary-blue-hover', '#005a8b');
+                root.style.setProperty('--secondary-teal', '#00b4d8');
+                root.style.setProperty('--accent-orange', '#0096c7');
+                root.style.setProperty('--dark-bg', '#001d3d');
+                root.style.setProperty('--card-bg', '#003566');
+                root.style.setProperty('--text-primary', '#caf0f8');
+                root.style.setProperty('--text-secondary', '#90e0ef');
+                root.style.setProperty('--border-color', '#0077be');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #0077be 0%, #005a8b 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #00b4d8 0%, #0096c7 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #003566 0%, #001d3d 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #0077be 0%, #003566 50%, #001d3d 100%)');
+            } else if (theme === 'midnight') {
+                // Midnight Purple theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#4b0082');
+                root.style.setProperty('--primary-blue-hover', '#36006b');
+                root.style.setProperty('--secondary-teal', '#8a2be2');
+                root.style.setProperty('--accent-orange', '#9370db');
+                root.style.setProperty('--dark-bg', '#1a0033');
+                root.style.setProperty('--card-bg', '#2d0066');
+                root.style.setProperty('--text-primary', '#e6ccff');
+                root.style.setProperty('--text-secondary', '#cc99ff');
+                root.style.setProperty('--border-color', '#8a2be2');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #4b0082 0%, #36006b 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #8a2be2 0%, #9370db 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #2d0066 0%, #1a0033 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #4b0082 0%, #2d0066 50%, #1a0033 100%)');
+            }
+
+            // Update title colors dynamically
+            const title = document.querySelector('.header h1');
+            if (theme === 'ocean') {
+                title.style.color = '#00b4d8';
+                title.style.textShadow = '2px 2px 5px rgba(0, 180, 216, 0.5)';
+            } else if (theme === 'midnight') {
+                title.style.color = '#8a2be2';
+                title.style.textShadow = '2px 2px 5px rgba(138, 43, 226, 0.5)';
+            }
+
+            // Easter egg message logic
+            message.textContent = easterEggWords[currentWordIndex];
+            currentWordIndex = (currentWordIndex + 1) % easterEggWords.length;
+        }
+    </script>
 </body>
 
 </html>

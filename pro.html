@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbiq Pro - Advanced 3D Desktop Management | Professional Features</title>
+    <meta name="description" content="Orbiq Pro takes desktop management to the next level with wheel collections, advanced taskbar, hotkey customization, and position memory. Perfect for power users and professionals.">
+    <meta name="keywords" content="Orbiq Pro, advanced desktop launcher, wheel collections, professional productivity, hotkey customization, taskbar manager, desktop organization, Windows power user">
+    <meta name="author" content="Orbiq">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://orbiq.app/pro">
+    <meta property="og:title" content="Orbiq Pro - Advanced Desktop Management for Power Users">
+    <meta property="og:description" content="Transform your workflow with Orbiq Pro's advanced features: wheel collections, enhanced taskbar, custom hotkeys, and position memory. The professional desktop solution.">
+    <meta property="og:image" content="Images/SphereIcon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Orbiq Pro">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://orbiq.app/pro">
+    <meta property="twitter:title" content="Orbiq Pro - Advanced Desktop Management">
+    <meta property="twitter:description" content="Professional desktop management with wheel collections, enhanced taskbar, and advanced customization options.">
+    <meta property="twitter:image" content="Images/SphereIcon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
+    <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://orbiq.app/pro">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#8A2BE2">
+    <meta name="msapplication-TileColor" content="#8A2BE2">
+    <meta name="msapplication-TileImage" content="Images/SphereIcon.png">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Orbiq Pro",
+      "alternateName": "Orbiq Pro Advanced Desktop Manager",
+      "description": "Professional desktop management with advanced features",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "ProductivityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "19.99",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "JodyLabs"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Pro Business Styling - New York Professional */
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #333333;
+            --accent-color: #007acc;
+            --gold-accent: #d4af37;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --background-light: #f8f9fa;
+            --border-light: #e9ecef;
+            --white: #ffffff;
+            --shadow-light: 0 2px 8px rgba(26, 26, 26, 0.05);
+            --shadow-medium: 0 4px 16px rgba(26, 26, 26, 0.1);
+            --shadow-heavy: 0 8px 32px rgba(26, 26, 26, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--white);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-light);
+        }
+
+        .nav {
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            color: var(--text-primary);
+        }
+
+        .nav-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+        }
+
+        .pro-badge {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: 600;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 300;
+            margin: 0 0 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            margin: 0 0 30px;
+        }
+
+        .hero-description {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-pro {
+            background: var(--gold-accent);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1em;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-pro:hover {
+            background: #e6c547;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 14px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .back-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin: 0 0 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .feature h3 {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 15px;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Comparison Section */
+        .feature-comparison {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .feature-comparison h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin: 0 0 50px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            max-width: 800px;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .comparison-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--background-light);
+        }
+
+        .check-mark {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* Pricing Section */
+        .price-section {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+            margin: 0;
+        }
+
+        .price-section h2 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin: 0 0 30px;
+        }
+
+        .price-large {
+            font-size: 4em;
+            font-weight: 200;
+            margin: 30px 0;
+            color: var(--gold-accent);
+        }
+
+        .price-section p {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 80px 0;
+            background: var(--background-light);
+        }
+
+        .download-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            margin: 0 0 50px;
+        }
+
+        .download-options {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .download-option {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
+
+        .download-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .download-icon {
+            width: 48px;
+            height: 48px;
+            margin-right: 15px;
+        }
+
+        .download-header h3 {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .recommended {
+            background: var(--gold-accent);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+
+        .download-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+        }
+
+        .download-details li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .download-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Requirements Section */
+        .requirements {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .requirements h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 300;
+            margin: 0 0 50px;
+        }
+
+        .requirements-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .req-column {
+            background: var(--background-light);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .req-column h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin: 0 0 20px;
+            color: var(--text-primary);
+        }
+
+        .req-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .req-column li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .req-column li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 0 0 20px;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-contact {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-large {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="Images/SphereIcon.png" alt="Orbiq Pro" class="nav-logo">
+                    <span class="nav-title">Orbiq <span class="pro-badge">PRO</span></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#comparison">Compare</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="index.html">Free Version</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <a href="index.html" class="back-link">← Free Version</a>
+                <h1>Orbiq Pro<span class="pro-badge">PRO</span></h1>
+                <p class="hero-subtitle">Professional Desktop Management Suite</p>
+                <p class="hero-description">Engineered for professionals who demand excellence. Advanced workflow management, intelligent organization, and seamless productivity tools designed for the modern workspace.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-pro">Get Orbiq Pro — $19.99</a>
+                    <a href="#comparison" class="btn-outline">Compare Versions</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2>Enterprise-Grade Features</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Workspace Collections</h3>
+                        <p>Create and manage multiple workspace configurations tailored to different projects, clients, or workflows. Switch between contexts instantly with intelligent state preservation.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⌨️</div>
+                        <h3>Custom Hotkey Engine</h3>
+                        <p>Configure personalized keyboard shortcuts for maximum efficiency. Support for complex modifier combinations and context-aware hotkey management.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📍</div>
+                        <h3>Intelligent Positioning</h3>
+                        <p>Advanced position memory with multi-monitor support. Automatically adapts to screen changes while maintaining your preferred workspace layout.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🖥️</div>
+                        <h3>Enhanced Application Management</h3>
+                        <p>Sophisticated application filtering with priority-based organization. Focus on what matters with intelligent noise reduction and smart categorization.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>Professional Configuration</h3>
+                        <p>Comprehensive settings suite with validation, error handling, and backup capabilities. Enterprise-ready configuration management.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Refined Interface</h3>
+                        <p>Meticulously crafted user experience with attention to detail. Professional aesthetics that complement your business environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Comparison -->
+        <section class="feature-comparison" id="comparison">
+            <div class="container">
+                <h2>Feature Comparison</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Capability</th>
+                            <th>Free Edition</th>
+                            <th>Professional Suite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3D Workspace Launcher</td>
+                            <td><span class="check-mark">✓</span></td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Application Shortcuts</td>
+                            <td><span class="check-mark">✓</span></td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Basic Hotkey Support</td>
+                            <td><span class="check-mark">✓</span></td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Workspace Collections</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Custom Hotkey Engine</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Collection Cycling</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Intelligent Positioning</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Application Management</td>
+                            <td>Basic</td>
+                            <td><span class="check-mark">✓ Enhanced</span></td>
+                        </tr>
+                        <tr>
+                            <td>Professional Interface</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Advanced Configuration</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Professional Support</td>
+                            <td>—</td>
+                            <td><span class="check-mark">✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="price-section" id="pricing">
+            <div class="container">
+                <h2>Professional Investment</h2>
+                <div class="price-large">$19.99</div>
+                <p>One-time purchase • Regular updates included • No recurring fees</p>
+                <p>A professional desktop management solution designed to enhance your daily workflow efficiency.</p>
+                <a href="#download" class="btn-pro">Invest in Excellence</a>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section" id="download">
+            <div class="container">
+                <h2>Professional Installation</h2>
+                <div class="download-options">
+                    <div class="download-option">
+                        <div class="download-header">
+                            <img src="Images/SphereIcon.png" alt="Orbiq Pro" class="download-icon">
+                            <h3>Orbiq Pro Suite</h3>
+                            <span class="recommended">Professional</span>
+                        </div>
+                        <div class="download-details">
+                            <ul>
+                                <li>Complete feature suite</li>
+                                <li>Enterprise-grade installation</li>
+                                <li>Automatic update delivery</li>
+                                <li>Priority professional support</li>
+                                <li>Risk-free trial available</li>
+                            </ul>
+                            <a href="#" class="btn-pro">Secure Purchase — $19.99</a>
+                            <p style="margin-top: 20px; font-size: 0.9em; color: var(--text-light);">
+                                Secure payment processing • Instant download delivery • Professional licensing
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Requirements -->
+        <section class="requirements">
+            <h2>System Requirements</h2>
+            <div class="requirements-content">
+                <div class="req-column">
+                    <h3>Minimum Requirements</h3>
+                    <ul>
+                        <li>Windows 10 (64-bit)</li>
+                        <li>4 GB RAM</li>
+                        <li>300 MB free disk space</li>
+                        <li>DirectX 11 compatible graphics</li>
+                    </ul>
+                </div>
+                <div class="req-column">
+                    <h3>Recommended</h3>
+                    <ul>
+                        <li>Windows 11 (64-bit)</li>
+                        <li>8 GB RAM or more</li>
+                        <li>1 GB free disk space</li>
+                        <li>Dedicated graphics card</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Orbiq Pro</h4>
+                <p>© 2025 Orbiq. All rights reserved. Brought to you by <a href="https://passghost.github.io/jodylabs/" target="_blank">JodyLabs</a>.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Orbiq+Pro+Support&currency_code=USD">Priority Support</a></li>
+                    <li><a href="mailto:pass6host@gmail.com">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="license.html">License Agreement</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <p>Professional support: <a href="mailto:pass6host@gmail.com">pass6host@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy theme functionality from main site
+        function setTheme(theme) {
+            document.documentElement.className = theme;
+            localStorage.setItem('theme', theme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

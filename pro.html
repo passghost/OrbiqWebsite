@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://orbiq.app/pro">
     <meta property="og:title" content="Orbiq Pro - Advanced Desktop Management for Power Users">
     <meta property="og:description" content="Transform your workflow with Orbiq Pro's advanced features: wheel collections, enhanced taskbar, custom hotkeys, and position memory. The professional desktop solution.">
-    <meta property="og:image" content="Images/SphereIcon.png">
+    <meta property="og:image" content="Images/krakenicon2.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Orbiq Pro">
@@ -26,12 +26,12 @@
     <meta property="twitter:url" content="https://orbiq.app/pro">
     <meta property="twitter:title" content="Orbiq Pro - Advanced Desktop Management">
     <meta property="twitter:description" content="Professional desktop management with wheel collections, enhanced taskbar, and advanced customization options.">
-    <meta property="twitter:image" content="Images/SphereIcon.png">
+    <meta property="twitter:image" content="Images/krakenicon2.png">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
-    <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/krakenicon2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/krakenicon2.png">
+    <link rel="apple-touch-icon" href="Images/krakenicon2.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://orbiq.app/pro">
@@ -39,7 +39,7 @@
     <!-- Additional SEO -->
     <meta name="theme-color" content="#8A2BE2">
     <meta name="msapplication-TileColor" content="#8A2BE2">
-    <meta name="msapplication-TileImage" content="Images/SphereIcon.png">
+    <meta name="msapplication-TileImage" content="Images/krakenicon2.png">
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -87,12 +87,15 @@
         }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
             color: var(--text-primary);
-            background: var(--white);
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             margin: 0;
             padding: 0;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -103,56 +106,61 @@
 
         /* Header */
         .header {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-light);
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
         }
 
         .nav {
-            padding: 0 20px;
+            padding: 0 32px;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: -20px 0;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            font-weight: 600;
-            font-size: 1.5em;
+            font-weight: 700;
+            font-size: 4.4em;
             color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
 
         .nav-logo {
-            width: 32px;
-            height: 32px;
-            margin-right: 12px;
+            width: 96px;
+            height: 96px;
+            margin-right: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .pro-badge {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #9b59b6);
             color: var(--white);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.7em;
-            font-weight: 600;
-            margin-left: 8px;
-            letter-spacing: 0.5px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.5em;
+            font-weight: 700;
+            margin-left: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(138, 43, 226, 0.3);
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
-            gap: 32px;
+            gap: 48px;
             margin: 0;
             padding: 0;
         }
@@ -160,21 +168,41 @@
         .nav-menu a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
+            font-weight: 600;
+            font-size: 1.1em;
+            letter-spacing: -0.01em;
+            padding: 12px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
             color: var(--accent-color);
         }
 
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: var(--white);
-            padding: 80px 0 100px;
+            padding: 120px 0 140px;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .hero::before {
@@ -194,29 +222,31 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
         }
 
         .hero h1 {
-            font-size: 3.5em;
+            font-size: 6em;
             font-weight: 300;
-            margin: 0 0 20px;
-            letter-spacing: -1px;
+            margin: 0 0 30px;
+            letter-spacing: -3px;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: 1.3em;
+            font-size: 1.5em;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             margin: 0 0 30px;
         }
 
         .hero-description {
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
         .hero-buttons {
@@ -280,73 +310,126 @@
 
         /* Features Section */
         .features {
-            padding: 80px 0;
+            padding: 100px 0;
             background: var(--background-light);
         }
 
         .features h2 {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 300;
             color: var(--text-primary);
-            margin: 0 0 60px;
-            letter-spacing: -0.5px;
+            margin: 0 0 80px;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .features h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .feature {
             background: var(--white);
-            padding: 40px 30px;
-            border-radius: 8px;
+            padding: 50px 40px;
+            border-radius: 12px;
             box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border-top: 4px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature:hover::before {
+            left: 100%;
         }
 
         .feature:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-top-color: var(--gold-accent);
         }
 
         .feature-icon {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 3em;
+            margin-bottom: 25px;
             opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover .feature-icon {
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         .feature h3 {
-            font-size: 1.4em;
+            font-size: 1.6em;
             font-weight: 600;
             color: var(--text-primary);
-            margin: 0 0 15px;
+            margin: 0 0 20px;
+            line-height: 1.3;
         }
 
         .feature p {
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
             margin: 0;
+            font-size: 1.05em;
         }
 
         /* Comparison Section */
         .feature-comparison {
             background: var(--white);
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .feature-comparison h2 {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 300;
             color: var(--text-primary);
-            margin: 0 0 50px;
+            margin: 0 0 70px;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .feature-comparison h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
         }
 
         .comparison-table {
@@ -483,15 +566,20 @@
             padding: 8px 0;
             color: var(--text-secondary);
             position: relative;
-            padding-left: 25px;
+            padding-left: 35px;
+            line-height: 1.6;
         }
 
         .download-details li::before {
             content: '✓';
             position: absolute;
             left: 0;
+            top: 8px;
             color: var(--accent-color);
             font-weight: 600;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
         }
 
         /* Requirements Section */
@@ -598,8 +686,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-brand {
+                font-size: 1.8em;
+            }
+            
+            .nav-logo {
+                width: 36px;
+                height: 36px;
+                margin-right: 12px;
+            }
+            
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 4.5em;
             }
             
             .hero-buttons {
@@ -619,6 +717,27 @@
                 font-size: 3em;
             }
         }
+        
+        @media (max-width: 480px) {
+            .nav-brand {
+                font-size: 1.4em;
+            }
+            
+            .nav-logo {
+                width: 28px;
+                height: 28px;
+                margin-right: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 3em;
+                letter-spacing: -2px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+        }
     </style>
 </head>
 
@@ -627,7 +746,7 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-brand">
-                    <img src="Images/SphereIcon.png" alt="Orbiq Pro" class="nav-logo">
+                    <img src="Images/krakenicon2.png" alt="Orbiq Pro" class="nav-logo">
                     <span class="nav-title">Orbiq <span class="pro-badge">PRO</span></span>
                 </div>
                 <ul class="nav-menu">
@@ -646,7 +765,7 @@
         <section class="hero">
             <div class="hero-content">
                 <a href="index.html" class="back-link">← Free Version</a>
-                <h1>Orbiq Pro<span class="pro-badge">PRO</span></h1>
+                <h1>Orbiq<span class="pro-badge">PRO</span></h1>
                 <p class="hero-subtitle">Professional Desktop Management Suite</p>
                 <p class="hero-description">Engineered for professionals who demand excellence. Advanced workflow management, intelligent organization, and seamless productivity tools designed for the modern workspace.</p>
                 <div class="hero-buttons">
@@ -786,7 +905,7 @@
                 <div class="download-options">
                     <div class="download-option">
                         <div class="download-header">
-                            <img src="Images/SphereIcon.png" alt="Orbiq Pro" class="download-icon">
+                            <img src="Images/krakenicon2.png" alt="Orbiq Pro" class="download-icon">
                             <h3>Orbiq Pro Suite</h3>
                             <span class="recommended">Professional</span>
                         </div>

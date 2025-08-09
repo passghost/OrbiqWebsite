@@ -635,6 +635,18 @@
             position: relative;
             top: 0;
         }
+
+        /* v1.8 Feature Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
+        }
     </style>
 </head>
 
@@ -650,7 +662,7 @@
                 </div>
             </div>
             <div class="version-info">
-                <span class="version">Version 1.6</span>
+                <span class="version">Version 1.8</span>
                 <span class="platform">Windows PC Only</span>
             </div>
         </header>
@@ -673,6 +685,9 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h2>The launcher your desktop's been dreaming of.</h2>
+                        <div style="margin: 10px 0; padding: 8px 12px; background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 6px; font-size: 0.9em; color: #f0c040;">
+                            ⚡ <strong>Orbiq Pro</strong> - Advanced features under construction, available very soon!
+                        </div>
                         <p>A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
                         <div class="download-buttons">
                             <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">
@@ -680,10 +695,11 @@
                                 Download Orbiq
                                 <span class="file-info">0.8 MB - Windows Installer</span>
                             </a>
-                            <a href="../publish/" class="btn btn-secondary btn-disabled">
-                                <img src="Images/SphereIcon.png" alt="Orbiq Mobile">
-                                Mobile Coming Soon
-                                <span class="file-info">Coming Soon</span>
+                            <a href="#features" class="btn btn-secondary" style="background: linear-gradient(135deg, #4CAF50, #45a049); border: none; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                                <img src="Images/SphereIcon.png" alt="New in v1.8">
+                                <span style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 10px; font-weight: bold; animation: pulse 2s infinite;">NEW!</span>
+                                What's New in v1.8
+                                <span class="file-info">Multiple Collections • Auto-Start</span>
                             </a>
                         </div>
                     </div>
@@ -776,20 +792,20 @@
                                 Installer</a>
                         </div>
                     </div>
-                    <div class="download-option download-option-disabled">
+                    <div class="download-option" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1)); border: 2px solid #4CAF50; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);">
                         <div class="download-header">
-                            <img src="Images/SphereIcon.png" alt="Orbiq Mobile" class="download-icon">
-                            <h3>Mobile Coming Soon</h3>
-                            <span class="coming-soon">Coming Soon</span>
+                            <img src="Images/SphereIcon.png" alt="New Features" class="download-icon">
+                            <h3>Enhanced Features in v1.8</h3>
+                            <span class="recommended" style="background: linear-gradient(45deg, #4CAF50, #8BC34A); animation: glow 2s ease-in-out infinite alternate;">Latest!</span>
                         </div>
                         <div class="download-details">
-                            <ul>
-                                <li>Android & iOS versions</li>
-                                <li>Cross-device sync</li>
-                                <li>Mobile-optimized interface</li>
-                                <li>Touch-friendly controls</li>
+                            <ul style="line-height: 1.8;">
+                                <li><strong>Multiple Wheel Collections</strong> - Organize shortcuts into themed categories for better workflow management</li>
+                                <li><strong>Startup Integration</strong> - Automatically launch with Windows for seamless daily productivity</li>
+                                <li><strong>Wheel Cycling</strong> - Switch between collections using your mouse wheel for quick access</li>
+                                <li><strong>Enhanced Stability</strong> - Improved performance with comprehensive bug fixes and optimizations</li>
                             </ul>
-                            <div class="btn btn-secondary btn-disabled">Available Soon</div>
+                            <div class="btn btn-secondary" style="background: linear-gradient(45deg, #4CAF50, #45a049); border: none; color: white; font-weight: bold; box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);">All Features Included</div>
                         </div>
                     </div>
                 </div>

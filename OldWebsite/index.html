@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orbiq Launcher</title>
+  <meta name="description" content="An animated onepage experience  red/black theme, draggable icon orb, target lock, imagefirst panels." />
+  <style>
+    /* --- RESET --- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:#0a0a0c;color:#f4f4f5;overflow-x:hidden}
+    h1,h2,h3,p{margin:0}
+    a{color:inherit;text-decoration:none}
+    /* --- GLOBALS --- */
+    :root{
+      --color-bg:#0a0a0c;
+      --color-bg-alt:#16161a;
+      --color-fg:#f4f4f5;
+      --color-fg-muted:#a1a1a6;
+      --color-primary:#e63946;
+      --color-primary-hover:#d62839;
+      --color-secondary:#f1faee;
+      --color-accent:#a8dadc;
+      --color-border:#2a2a2e;
+      --color-shadow:rgba(0,0,0,0.3);
+      --font-sans:"Inter",ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;
+      --transition-fast:"0.2s ease-in-out";
+      --transition-slow:"0.4s ease-in-out";
+      --radius-sm:"0.125rem";
+      --radius-md:"0.375rem";
+      --radius-lg:"0.5rem";
+      --shadow-sm:"0 1px 2px var(--color-shadow)";
+      --shadow-md:"0 4px 8px var(--color-shadow)";
+      --shadow-lg:"0 8px 16px var(--color-shadow)";
+    }
+    /* --- BASE --- */
+    body{
+      background-color:var(--color-bg);
+      color:var(--color-fg);
+      font-family:var(--font-sans);
+      line-height:1.5;
+    }
+    h1,h2,h3{
+      color:var(--color-primary);
+      font-weight:600;
+      line-height:1.2;
+    }
+    h1{
+      font-size:2.5rem;
+    }
+    h2{
+      font-size:2rem;
+    }
+    h3{
+      font-size:1.75rem;
+    }
+    p{
+      margin-bottom:1rem;
+    }
+    a{
+      color:var(--color-primary);
+      text-decoration:underline;
+      transition:color var(--transition-fast);
+    }
+    a:hover{
+      color:var(--color-primary-hover);
+    }
+    /* --- HEADER --- */
+    header{
+      background:var(--color-bg-alt);
+      padding:2rem;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow-md);
+    }
+    .logo{
+      display:block;
+      margin:0 auto 1rem;
+      max-width:120px;
+    }
+    .title{
+      text-align:center;
+      margin-bottom:1rem;
+    }
+    .title h1{
+      margin-bottom:0.5rem;
+      font-size:2.5rem;
+      text-shadow:0 2px 4px rgba(0,0,0,0.3);
+    }
+    .title p{
+      font-size:1.125rem;
+      color:var(--color-fg-muted);
+    }
+    /* --- NAVIGATION --- */
+    nav{
+      background:var(--color-bg-alt);
+      padding:1rem;
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-md);
+      margin-bottom:2rem;
+    }
+    .nav-list{
+      display:flex;
+      justify-content:center;
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .nav-item{
+      margin:0 1rem;
+    }
+    .nav-link{
+      padding:0.5rem 1rem;
+      border-radius:var(--radius-md);
+      transition:background var(--transition-fast);
+    }
+    .nav-link:hover{
+      background:rgba(255,255,255,0.1);
+    }
+    /* --- HERO SECTION --- */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-lg);
+      margin-bottom:2rem;
+    }
+    .hero-bg{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:-1;
+      opacity:0.15;
+    }
+    .hero-content{
+      padding:4rem 2rem;
+      text-align:center;
+    }
+    .hero-title{
+      font-size:2.5rem;
+      margin-bottom:1rem;
+      position:relative;
+      display:inline-block;
+    }
+    .hero-title::after{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:2px;
+      bottom:-4px;
+      left:0;
+      background:linear-gradient(90deg,transparent, var(--color-primary), transparent);
+    }
+    .hero-description{
+      font-size:1.125rem;
+      margin-bottom:2rem;
+      color:var(--color-fg-muted);
+    }
+    /* --- BUTTONS --- */
+    .btn{
+      display:inline-block;
+      padding:0.75rem 1.5rem;
+      border-radius:var(--radius-md);
+      font-weight:500;
+      text-align:center;
+      transition:background var(--transition-fast), transform var(--transition-fast);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn-primary{
+      background:var(--color-primary);
+      color:white;
+      box-shadow:0 4px 8px rgba(230,57,70,0.2);
+    }
+    .btn-primary:hover{
+      background:var(--color-primary-hover);
+      transform:translateY(-2px);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--color-primary);
+      border:2px solid var(--color-primary);
+    }
+    .btn-secondary:hover{
+      background:var(--color-primary);
+      color:white;
+    }
+    /* --- FEATURES SECTION --- */
+    .features{
+      margin-bottom:2rem;
+    }
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+      gap:1.5rem;
+    }
+    .feature-item{
+      background:var(--color-bg-alt);
+      padding:1.5rem;
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-md);
+      transition:transform var(--transition-fast);
+    }
+    .feature-item:hover{
+      transform:translateY(-4px);
+    }
+    .feature-icon{
+      display:block;
+      margin:0 auto 1rem;
+      max-width:60px;
+    }
+    /* --- FOOTER --- */
+    footer{
+      background:var(--color-bg-alt);
+      padding:2rem;
+      border-radius:var(--radius-md);
+      box-shadow:var(--shadow-md);
+      margin-top:2rem;
+      text-align:center;
+    }
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0 0 1rem;
+    }
+    .footer-links li{
+      display:inline;
+      margin:0 0.5rem;
+    }
+    .footer-links a{
+      color:var(--color-primary);
+      transition:color var(--transition-fast);
+    }
+    .footer-links a:hover{
+      color:var(--color-primary-hover);
+    }
+    /* --- ANIMATIONS --- */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* --- MEDIA QUERIES --- */
+    @media (max-width:768px) {
+      .nav-list {
+        flex-direction: column;
+      }
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-description {
+        font-size: 1rem;
+      }
+      .btn {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <!-- HEADER -->
+  <header>
+    <a href="#home" class="logo">
+      <img src="Images/SphereIcon.png" alt="Orbiq Logo" class="logo">
+    </a>
+    <div class="title">
+      <h1>Orbiq Launcher</h1>
+      <p>3D Desktop Shortcut Manager</p>
+    </div>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+      <li class="nav-item"><a href="#download" class="nav-link">Download</a></li>
+      <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+      <li class="nav-item"><a href="#screenshots" class="nav-link">Screenshots</a></li>
+      <li class="nav-item"><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD" class="nav-link">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h2 class="hero-title">The launcher your desktop's been dreaming of.</h2>
+      <p class="hero-description">A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
+      <div class="download-buttons">
+        <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">
+          <img src="Images/SphereIcon.png" alt="Download">
+          Download Orbiq
+          <span class="file-info">0.8 MB - Windows Installer</span>
+        </a>
+        <a href="#features" class="btn btn-secondary" style="background: linear-gradient(135deg, #4CAF50, #45a049); border: none; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+          <img src="Images/SphereIcon.png" alt="New in v1.8">
+          <span style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 10px; font-weight: bold; animation: pulse 2s infinite;">NEW!</span>
+          What's New in v1.8
+          <span class="file-info">Multiple Collections • Auto-Start</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="3D Sphere" class="feature-icon">
+        <h3>3D Rotating Sphere</h3>
+        <p>Icons arranged on a beautiful 3D sphere that you can rotate with mouse drag</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="System Tray" class="feature-icon">
+        <h3>System Tray Integration</h3>
+        <p>Runs quietly in the background, accessible via system tray</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="Hotkey" class="feature-icon">
+        <h3>Global Hotkey</h3>
+        <p>Press Ctrl+Alt+Space to instantly show/hide the sphere</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="Wheel Cycling" class="feature-icon">
+        <h3>Wheel Cycling</h3>
+        <p>Use mouse wheel to cycle through different shortcut collections</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="Move Mode" class="feature-icon">
+        <h3>Move Mode</h3>
+        <p>Double-click center handle to reposition sphere anywhere on screen</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="Configurable" class="feature-icon">
+        <h3>Fully Configurable</h3>
+        <p>Customize shortcuts, hotkeys, sphere size, and animation settings</p>
+      </div>
+      <div class="feature-item">
+        <img src="Images/SphereIcon.png" alt="Standalone" class="feature-icon">
+        <h3>Standalone</h3>
+        <p>No .NET installation required - all dependencies included</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Section -->
+  <section class="screenshots" id="screenshots">
+    <h2>Screenshots</h2>
+    <div class="screenshot-gallery">
+      <div class="screenshot-item">
+        <div class="gallery-image screenshot1">
+          <img src="Images/main3d.gif" alt="Main 3D Sphere Interface">
+        </div>
+        <p>Main 3D Sphere Interface</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="gallery-image screenshot2">
+          <img src="Images/addingIcon.gif" alt="Adding A Shortcut or Folder">
+        </div>
+        <p>Adding A Shortcut or Folder</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section" id="download">
+    <h2>Download Orbiq</h2>
+    <div class="download-options">
+      <div class="download-option">
+        <div class="download-header">
+          <img src="Images/SphereIcon.png" alt="Installer" class="download-icon">
+          <h3>Windows Installer</h3>
+          <span class="recommended">Recommended</span>
+        </div>
+        <div class="download-details">
+          <ul>
+            <li>Professional installation experience</li>
+            <li>Start Menu and Desktop shortcuts</li>
+            <li>Automatic uninstaller</li>
+            <li>Compact download size (0.8 MB)</li>
+          </ul>
+          <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">Download
+            Installer</a>
+        </div>
+      </div>
+      <div class="download-option" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1)); border: 2px solid #4CAF50; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);">
+        <div class="download-header">
+          <img src="Images/SphereIcon.png" alt="New Features" class="download-icon">
+          <h3>Enhanced Features in v1.8</h3>
+          <span class="recommended" style="background: linear-gradient(45deg, #4CAF50, #8BC34A); animation: glow 2s ease-in-out infinite;">Latest!</span>
+        </div>
+        <div class="download-details">
+          <ul style="line-height: 1.8;">
+            <li><strong>Multiple Wheel Collections</strong> - Organize shortcuts into themed categories for better workflow management</li>
+            <li><strong>Startup Integration</strong> - Automatically launch with Windows for seamless daily productivity</li>
+            <li><strong>Wheel Cycling</strong> - Switch between collections using your mouse wheel for quick access</li>
+            <li><strong>Enhanced Stability</strong> - Improved performance with comprehensive bug fixes and optimizations</li>
+          </ul>
+          <div class="btn btn-secondary" style="background: linear-gradient(45deg, #4CAF50, #45a049); border: none; color: white; font-weight: bold; box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);">All Features Included</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Requirements -->
+  <section class="requirements">
+    <h2>System Requirements</h2>
+    <div class="requirements-content">
+      <div class="req-column">
+        <h3>Minimum Requirements</h3>
+        <ul>
+          <li>Windows 10 (64-bit)</li>
+          <li>2 GB RAM</li>
+          <li>200 MB free disk space</li>
+          <li>DirectX 11 compatible graphics</li>
+        </ul>
+      </div>
+      <div class="req-column">
+        <h3>Recommended</h3>
+        <ul>
+          <li>Windows 11 (64-bit)</li>
+          <li>4 GB RAM or more</li>
+          <li>500 MB free disk space</li>
+          <li>Dedicated graphics card</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pro Version Promotion -->
+  <section class="pro-promotion" style="background: linear-gradient(135deg, #8A2BE2, #9370DB); color: white; text-align: center; padding: 50px 20px; margin: 40px 0;">
+    <div class="container">
+      <h2 style="font-size: 2.5em; margin-bottom: 20px;">Want Even More Power?</h2>
+      <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">
+        Upgrade to <strong>Orbiq Pro</strong> for advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.
+      </p>
+      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 30px 0;">
+        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎯 Wheel Collections</span>
+        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">⌨️ Custom Hotkeys</span>
+        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">📍 Position Memory</span>
+        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎨 Professional UI</span>
+      </div>
+      <a href="pro.html" style="background: #FFD700; color: #000; font-weight: bold; font-size: 1.2em; padding: 15px 30px; border: none; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s ease; margin-top: 20px;" onmouseover="this.style.background='#FFE55C'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFD700'; this.style.transform='translateY(0)'">
+        Discover Orbiq Pro - $20.00
+      </a>
+      <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+        One-time purchase • Regular updates included • Professional support
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Orbiq</h4>
+        <p>© 2025 Orbiq. All rights reserved. Brought to you by <a href="https://passghost.github.io/jodylabs/" target="_blank">JodyLabs</a>.</p>
+        <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Orbiq, Kraken Icon, and Sphere Icon are trademarks of Orbiq.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="license.html">License Agreement</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <p>Contact us at: <a href="mailto:takeoff@techie.com">takeoff@techie.com</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for theme swapping -->
+    <script>
+        const themeButtons = document.querySelectorAll('.theme-button');
+        const body = document.body;
+
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.classList.contains('theme-black-gray') ? 'black-gray' :
+                              button.classList.contains('theme-crimson') ? 'crimson' :
+                              button.classList.contains('theme-ocean') ? 'ocean' :
+                              button.classList.contains('theme-midnight') ? 'midnight' : 'default';
+                body.setAttribute('data-theme', theme);
+            });
+        });
+
+        // Show theme swapper on larger screens
+        window.addEventListener('resize', () => {
+            const themeSwapper = document.querySelector('.theme-swapper');
+            if (window.innerWidth > 768) {
+                themeSwapper.style.display = 'flex';
+            } else {
+                themeSwapper.style.display = 'none';
+            }
+        });
+
+        // Initial check
+        if (window.innerWidth > 768) {
+            document.querySelector('.theme-swapper').style.display = 'flex';
+        }
+
+        const easterEggWords = [
+            "Color", "can't", "give", "diseases", "but", "I'm", "sorry", "it", "gave", "your", "brain", "cancer", "anyway", "here", "now", "you", "can", "make", "this", "easter", "egg", "last", "forever", "take", "a", "picture", "of", "that", "constipated", "face", "https://passghost.github.io/jodylabs/PhotoBooth/Photobooth.html"
+        ];
+        let currentWordIndex = 0;
+
+        function setTheme(theme) {
+            const root = document.documentElement;
+            const message = document.getElementById('easter-egg-message');
+
+            if (theme === 'black-gray') {
+                // Black on Gray theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#000000');
+                root.style.setProperty('--primary-blue-hover', '#1a1a1a');
+                root.style.setProperty('--secondary-teal', '#808080');
+                root.style.setProperty('--accent-orange', '#606060');
+                root.style.setProperty('--accent-orange-hover', '#404040');
+                root.style.setProperty('--dark-bg', '#2a2a2a');
+                root.style.setProperty('--darker-bg', '#1a1a1a');
+                root.style.setProperty('--card-bg', '#404040');
+                root.style.setProperty('--card-hover', '#505050');
+                root.style.setProperty('--text-primary', '#ffffff');
+                root.style.setProperty('--text-secondary', '#d0d0d0');
+                root.style.setProperty('--text-muted', '#a0a0a0');
+                root.style.setProperty('--border-color', '#606060');
+                root.style.setProperty('--success', '#000000');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #000000 0%, #404040 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #404040 0%, #606060 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #000000 0%, #2a2a2a 50%, #404040 100%)');
+            } else if (theme === 'crimson') {
+                // Subtle Crimson theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#8b1538');
+                root.style.setProperty('--primary-blue-hover', '#6b0f2a');
+                root.style.setProperty('--secondary-teal', '#d2b4a8');
+                root.style.setProperty('--accent-orange', '#b8314f');
+                root.style.setProperty('--accent-orange-hover', '#9e2943');
+                root.style.setProperty('--dark-bg', '#2a1419');
+                root.style.setProperty('--darker-bg', '#1a0d11');
+                root.style.setProperty('--card-bg', '#3d1f26');
+                root.style.setProperty('--card-hover', '#4d2731');
+                root.style.setProperty('--text-primary', '#f5e6e8');
+                root.style.setProperty('--text-secondary', '#d2b4a8');
+                root.style.setProperty('--text-muted', '#a68b8b');
+                root.style.setProperty('--border-color', '#6b3344');
+                root.style.setProperty('--success', '#8b1538');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #8b1538 0%, #6b0f2a 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #b8314f 0%, #9e2943 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #6b3344 0%, #8b1538 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #8b1538 0%, #3d1f26 50%, #2a1419 100%)');
+            } else if (theme === 'ocean') {
+                // Ocean Blue theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#0077be');
+                root.style.setProperty('--primary-blue-hover', '#005a8b');
+                root.style.setProperty('--secondary-teal', '#00b4d8');
+                root.style.setProperty('--accent-orange', '#0096c7');
+                root.style.setProperty('--dark-bg', '#001d3d');
+                root.style.setProperty('--card-bg', '#003566');
+                root.style.setProperty('--text-primary', '#caf0f8');
+                root.style.setProperty('--text-secondary', '#90e0ef');
+                root.style.setProperty('--border-color', '#0077be');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #0077be 0%, #005a8b 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #00b4d8 0%, #0096c7 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #003566 0%, #001d3d 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #0077be 0%, #003566 50%, #001d3d 100%)');
+            } else if (theme === 'midnight') {
+                // Midnight Purple theme - complete site transformation
+                root.style.setProperty('--primary-blue', '#4b0082');
+                root.style.setProperty('--primary-blue-hover', '#36006b');
+                root.style.setProperty('--secondary-teal', '#8a2be2');
+                root.style.setProperty('--accent-orange', '#9370db');
+                root.style.setProperty('--dark-bg', '#1a0033');
+                root.style.setProperty('--card-bg', '#2d0066');
+                root.style.setProperty('--text-primary', '#e6ccff');
+                root.style.setProperty('--text-secondary', '#cc99ff');
+                root.style.setProperty('--border-color', '#8a2be2');
+                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #4b0082 0%, #36006b 100%)');
+                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #8a2be2 0%, #9370db 100%)');
+                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #2d0066 0%, #1a0033 100%)');
+                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #4b0082 0%, #2d0066 50%, #1a0033 100%)');
+            } else if (theme === 'default') {
+                // Reset to default theme (Orbiq)
+                root.style = null;
+                // Optionally, reset title color and shadow
+                const title = document.querySelector('.header h1');
+                title.style.color = '';
+                title.style.textShadow = '';
+            }
+
+            // Update title colors dynamically
+            const title = document.querySelector('.header h1');
+            if (theme === 'ocean') {
+                title.style.color = '#00b4d8';
+                title.style.textShadow = '2px 2px 5px rgba(0, 180, 216, 0.5)';
+            } else if (theme === 'midnight') {
+                title.style.color = '#8a2be2';
+                title.style.textShadow = '2px 2px 5px rgba(138, 43, 226, 0.5)';
+            } else if (theme === 'default') {
+                title.style.color = '';
+                title.style.textShadow = '';
+            }
+
+            // Easter egg message logic
+            const currentWord = easterEggWords[currentWordIndex];
+            if (currentWord.startsWith('https://')) {
+                // Create a clickable link for URLs
+                message.innerHTML = `<a href="${currentWord}" target="_blank" style="color: var(--text-muted); text-decoration: underline;">${currentWord}</a>`;
+            } else {
+                message.textContent = currentWord;
+            }
+            currentWordIndex = (currentWordIndex + 1) % easterEggWords.length;
+        }
+    </script>
+    <!-- Second Sphere JS moved to end of body for proper DOM access -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script>
+      // --- SPHERE ANIMATION ---
+      const sphereAnimation = bodymovin.loadAnimation({
+        container: document.getElementById('bg'), // the dom element that will contain the animation
+        path: 'https://assets3.lottiefiles.com/packages/lf20_8jz8gk.json', // the path to the animation json
+        renderer: 'svg', // render as svg
+        loop: true, // loop the animation
+        autoplay: true, // start playing the animation immediately
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice' // cover the entire container
+        }
+      });
+
+      // --- DRAGGABLE SPHERE ICON ---
+      const sphereIcon = document.querySelector('.logo');
+      let isDragging = false;
+      let offset = { x: 0, y: 0 };
+
+      sphereIcon.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offset.x = e.clientX - sphereIcon.getBoundingClientRect().left;
+        offset.y = e.clientY - sphereIcon.getBoundingClientRect().top;
+        sphereIcon.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const x = e.clientX - offset.x;
+        const y = e.clientY - offset.y;
+        sphereIcon.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+        sphereIcon.style.cursor = 'grab';
+      });
+
+      // --- TARGET LOCK ANIMATION ---
+      const targetLock = document.createElement('div');
+      targetLock.style.position = 'fixed';
+      targetLock.style.width = '100px';
+      targetLock.style.height = '100px';
+      targetLock.style.border = '2px dashed var(--color-primary)';
+      targetLock.style.borderRadius = '50%';
+      targetLock.style.pointerEvents = 'none';
+      targetLock.style.transition = 'transform var(--transition-fast)';
+      document.body.appendChild(targetLock);
+
+      let isLocked = false;
+      let lockPosition = { x: 0, y: 0 };
+
+      sphereIcon.addEventListener('click', () => {
+        isLocked = !isLocked;
+        if (isLocked) {
+          targetLock.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
+          sphereIcon.style.transition = 'transform var(--transition-fast)';
+          sphereIcon.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
+        } else {
+          targetLock.style.transform = 'scale(0)';
+          sphereIcon.style.transform = 'translate(0, 0)';
+        }
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isLocked) return;
+        lockPosition.x = e.clientX - targetLock.offsetWidth / 2;
+        lockPosition.y = e.clientY - targetLock.offsetHeight / 2;
+        targetLock.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
+        sphereIcon.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
+      });
+    </script>
+</body>
+</html>

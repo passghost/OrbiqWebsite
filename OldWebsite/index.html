@@ -801,6 +801,17 @@
             0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
             100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
         }
+
+    /* Center hero title and demo image */
+    .hero .hero-content { display:flex; align-items:center; justify-content:center; gap:28px; flex-wrap:wrap; }
+    .hero .hero-text { flex:1 1 420px; }
+    .hero .hero-text h2 { text-align:center !important; }
+    .hero .hero-text p { text-align:center !important; margin:0 auto !important; }
+    .hero .hero-image { flex:1 1 420px; display:flex; align-items:center; justify-content:center; }
+    .hero .hero-image .demo-gif { margin:0 auto; max-width:480px; }
+    /* Strong overrides for stubborn inline styles */
+    .hero .hero-content, .hero .hero-text, .hero .hero-image { width:100% !important; max-width:1200px; margin:0 auto !important; }
+    .hero .download-buttons, .hero .badges { justify-content:center !important; display:flex !important; }
     </style>
 </head>
 

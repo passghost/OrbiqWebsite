@@ -802,16 +802,19 @@
             100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
         }
 
-    /* Center hero title and demo image */
-    .hero .hero-content { display:flex; align-items:center; justify-content:center; gap:28px; flex-wrap:wrap; }
-    .hero .hero-text { flex:1 1 420px; }
-    .hero .hero-text h2 { text-align:center !important; }
-    .hero .hero-text p { text-align:center !important; margin:0 auto !important; }
-    .hero .hero-image { flex:1 1 420px; display:flex; align-items:center; justify-content:center; }
-    .hero .hero-image .demo-gif { margin:0 auto; max-width:480px; }
-    /* Strong overrides for stubborn inline styles */
-    .hero .hero-content, .hero .hero-text, .hero .hero-image { width:100% !important; max-width:1200px; margin:0 auto !important; }
-    .hero .download-buttons, .hero .badges { justify-content:center !important; display:flex !important; }
+    /* Simplified centering: stack header and center hero content */
+    .header { display:block !important; text-align:center !important; }
+    .header .logo-section { display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; gap:8px !important; margin:0 auto !important; }
+    .header .title-section { text-align:center !important; }
+    .header .title-section h1, .header .title-section .subtitle { margin:0 !important; }
+
+    .hero .hero-content { display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; gap:18px !important; max-width:900px !important; margin:0 auto !important; padding: 20px !important; }
+    .hero .hero-text, .hero .hero-image { width:100% !important; max-width:100% !important; text-align:center !important; }
+    .hero .hero-image .demo-gif { margin:0 auto !important; max-width:480px !important; }
+
+    @media (max-width: 820px) {
+        .hero { padding: 24px 12px !important; }
+    }
     </style>
 </head>
 

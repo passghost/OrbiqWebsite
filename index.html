@@ -6,6 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Orbiq Launcher</title>
   <meta name="description" content="An animated one‑page experience — red/black theme, draggable icon orb, target lock, image‑first panels." />
+  <!-- Copied metadata from OldWebsite for improved SEO/social cards -->
+  <meta name="keywords" content="Orbiq, free desktop launcher, 3D desktop launcher Windows, desktop shortcut manager, sphere launcher, productivity software" />
+  <meta name="author" content="Orbiq - JodyLabs">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="language" content="en-US">
+  <meta name="rating" content="general">
+  <meta name="distribution" content="global">
+
+  <!-- Enhanced SEO and App metadata -->
+  <meta name="application-name" content="Orbiq Desktop Launcher">
+  <meta name="msapplication-tooltip" content="Revolutionary 3D desktop launcher for Windows productivity">
+  <meta name="price" content="Free">
+  <meta name="priceCurrency" content="USD">
+  <meta name="software-version" content="1.8">
+  <meta name="operating-system" content="Windows 10, Windows 11">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://passghost.github.io/OrbiqWebsite/">
+  <meta property="og:title" content="Orbiq - The launcher your desktop's been dreaming of">
+  <meta property="og:description" content="A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey.">
+  <meta property="og:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:site_name" content="Orbiq">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://passghost.github.io/OrbiqWebsite/">
+  <meta name="twitter:title" content="Orbiq - 3D Desktop Launcher for Windows">
+  <meta name="twitter:description" content="Transform your desktop with Orbiq's elegant 3D sphere launcher. Free for personal use, perfect for productivity.">
+  <meta name="twitter:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png">
+
+  <!-- Canonical and favicons -->
+  <link rel="canonical" href="https://passghost.github.io/OrbiqWebsite/">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
+  <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+
+  <!-- Schema.org structured data (basic) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Orbiq - 3D Desktop Launcher","url":"https://passghost.github.io/OrbiqWebsite/","description":"Orbiq is a lightweight 3D sphere launcher for Windows that boosts productivity with instant hotkey access and a beautiful UI.","applicationCategory":"ProductivityApplication","operatingSystem":"Windows 10, Windows 11","softwareVersion":"1.8"}
+  </script>
   <style>
     /* --- RESET --- */
     *,*::before,*::after{box-sizing:border-box}
@@ -172,6 +215,7 @@
   opacity: .32;
   transition: opacity .25s ease;
   mix-blend-mode: screen;
+  pointer-events: none;
       }
 
       /* Second orb custom animation */
@@ -190,7 +234,9 @@
     }
 
   #ringBg2 { background-image: url('Images/Hypno.gif'); }
-    #ringBg { background-image: url('Images/floatback.gif'); }
+  #ringBg { background-image: url('Images/floatback.gif'); }
+  /* Defensive: ensure specific ring background layers never capture pointer events */
+  #ringBg, #ringBg2 { pointer-events: none; }
       .node button {
         width: 84px;
         height: 84px;
@@ -238,6 +284,13 @@
         font-size: 13px;
         opacity: .8;
         letter-spacing: 0.5px;
+      }
+      /* Ensure accessible cards (rendered under the second sphere) are above decorative orbit layers
+         so their buttons receive clicks. */
+      #accessibleCards {
+        position: relative;
+        z-index: 9999 !important;
+        pointer-events: auto !important;
       }
       #expandedCard, #expandedFeatureCard {
         background: rgba(30,34,54,0.92);
@@ -492,6 +545,30 @@
     // Show all cards below the wheel for accessibility
     const accessibleCards = document.getElementById('accessibleCards');
     accessibleCards.innerHTML = contentNodes.map(node => `<div class='card'>${node.card}</div>`).join('');
+    // Ensure anchors inside accessible cards behave like the working download CTA.
+    // Idempotent wiring: mark anchors with data-wired to avoid duplicate handlers.
+    (function wireAccessibleCardLinks(){
+      if(!accessibleCards) return;
+      const anchors = accessibleCards.querySelectorAll('a');
+      anchors.forEach(a=>{
+        if(a.dataset.wired) return;
+        a.dataset.wired = '1';
+        function openAnchorViaJS(ev) {
+          try {
+            ev.preventDefault && ev.preventDefault();
+          } catch(e){}
+          ev.stopPropagation && ev.stopPropagation();
+          const href = a.getAttribute('href');
+          const target = a.getAttribute('target') || '_self';
+          if(!href) return;
+          try { window.open(href, target); } catch(e) { location.href = href; }
+        }
+        // Use pointerdown which fires before pointer capture interferes with clicks.
+        a.addEventListener('pointerdown', openAnchorViaJS);
+        // Fallback for browsers that don't support pointer events
+        a.addEventListener('mousedown', openAnchorViaJS);
+      });
+    })();
   }
 
   // Open a content panel for a given content node index

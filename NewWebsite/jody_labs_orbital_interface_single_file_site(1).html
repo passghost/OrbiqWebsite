@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JodyLabs — Orbital Interface</title>
+  <meta name="description" content="An animated one‑page experience — red/black theme, draggable icon orb, target lock, image‑first panels." />
+  <style>
+    /* --- RESET --- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:#0a0a0c;color:#f4f4f5;overflow-x:hidden}
+    h1,h2,h3,p{margin:0}
+    a{color:inherit;text-decoration:none}
+
+    :root{
+      --accent:#ff1a1a; /* deep red */
+      --accent-2:#ff3b30; /* pure red-orange */
+      --text:#f7f7f8;
+      --muted:#b1b1b6;
+      --panel:#101014ee;
+      --card:#0c0c12;
+      --glass:rgba(255,0,0,.06);
+      --radius:22px;
+      --shadow:0 12px 28px rgba(255,26,26,.25), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    /* --- Background --- */
+    #bg {position:fixed;inset:0;z-index:-1;background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(255,26,26,.16), rgba(255,26,26,0) 60%),
+      radial-gradient(900px 600px at 10% 120%, rgba(255,59,48,.12), rgba(255,59,48,0) 55%),
+      linear-gradient(180deg,#050507 0%,#0a0a0c 100%);
+    }
+
+    /* --- Top bar --- */
+    .topbar{position:fixed;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);z-index:40}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 40px rgba(255,26,26,.45)}
+    .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(255,26,26,.35))}
+    .brand h3{font-weight:800;letter-spacing:.4px}
+    .pill{font-size:12px;color:var(--muted);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#0a0a0c;font-weight:800;border:none;box-shadow:0 10px 26px rgba(255,26,26,.35);cursor:pointer}
+
+    /* --- Hero --- */
+    .hero{min-height:100svh;display:grid;place-items:center;padding:120px 20px 80px}
+    .hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+    .headline{font-size:clamp(32px,6vw,64px);line-height:1.06;font-weight:900;letter-spacing:.2px}
+    .headline .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{margin-top:14px;color:var(--muted);font-size:clamp(14px,2vw,18px)}
+    .hero-card{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .badge{padding:8px 10px;border-radius:999px;background:rgba(255,0,0,.06);border:1px solid rgba(255,0,0,.18);font-size:13px;color:#fff}
+
+    /* --- Orbital stage (CENTERED SPHERE) --- */
+    .stage{position:relative;min-height:520px;perspective:1200px;display:grid;place-items:center}
+    .orbit-wrap{position:relative;width:min(90vw,680px);height:min(90vw,680px);max-width:700px;max-height:700px;transform-style:preserve-3d;user-select:none}
+    .ring{position:relative;width:100%;height:100%;display:grid;place-items:center;transform-style:preserve-3d}
+    .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.08)}
+  .ring-bg{position:absolute;inset:12%;border-radius:50%;background:url('floatback.gif') center center/cover no-repeat;filter:blur(8px) saturate(120%);opacity:.42;transition:opacity .25s ease;mix-blend-mode:screen}
+
+    /* Target indicator */
+
+    /* Orbiq tag */
+    .orbiq-tag {
+      position: fixed;
+      left: 24px;
+      bottom: 24px;
+      background: rgba(30,34,44,0.92);
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 10px 22px 10px 18px;
+      border-radius: 18px 8px 18px 8px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .orbiq-tag:hover {
+      background: #2e3a54;
+      color: #aeeaff;
+    }
+  /* Removed unused target styles */
+
+    .node{position:absolute;left:50%;top:50%;display:flex;flex-direction:column;align-items:center;gap:10px;transform-style:preserve-3d}
+  .node button{width:84px;height:84px;border:none;border-radius:50%;padding:0;background:transparent;background-size:cover;background-position:center;box-shadow:none;cursor:pointer;display:grid;place-items:center;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease}
+  .node button::after{content:"";display:none;}
+    .node button .label{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:12px;color:#fff;background:rgba(0,0,0,.4);padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
+    .node.hit button{box-shadow:0 20px 40px rgba(255,26,26,.25);transform:translateZ(6px)}
+
+    .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
+
+    /* --- Panels --- */
+    .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
+    .panel.open{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
+    .panel header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .panel header h3{font-weight:800}
+    .panel .content{padding:18px;display:grid;gap:12px}
+    .panel .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+    .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
+
+    /* --- Footer --- */
+    .footer{padding:40px 20px 70px;text-align:center;color:var(--muted)}
+
+    /* --- Responsive --- */
+    @media (max-width: 920px){
+      .hero-inner{grid-template-columns:1fr;gap:20px}
+      .stage{min-height:460px}
+      .target{right:1.5%}
+    }
+    @media (max-width: 560px){
+      .headline{font-size:clamp(28px,8vw,44px)}
+      .topbar{top:8px;left:8px;right:8px;padding:8px 10px}
+      .hero{padding:96px 14px 60px}
+      .panel{left:8px;right:8px;top:72px;border-radius:18px}
+      .node button{width:70px;height:70px}
+      .card img{height:120px}
+      .badge{font-size:12px}
+  /* Removed unused target styles in media query */
+    }
+    @media (prefers-reduced-motion: reduce){
+      .ring::before{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <nav class="topbar" aria-label="Primary">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="JodyLabs logo" />
+      </div>
+      <h3>JodyLabs</h3>
+      <span class="pill">Interactive R&D</span>
+    </div>
+    <button class="cta" id="contactOpen" aria-haspopup="dialog" aria-controls="panel-contact">Contact</button>
+  </nav>
+
+  <main class="hero">
+    <section class="hero-inner">
+      <div>
+        <h1 class="headline">A laboratory of <span class="accent">code based experiments</span>.</h1>
+        <p class="sub">An interactive showcase of tools, visuals, and prototypes built with my own artwork and code. Explore the cards to see what’s active right now.</p>
+        <div class="badges" aria-hidden="true">
+          <span class="badge">Crimson glass panels</span>
+          <span class="badge">3D icon orb</span>
+          <span class="badge">Responsive</span>
+          <span class="badge">Vanilla JS</span>
+        </div>
+      </div>
+
+      <div class="hero-card stage" aria-label="Icon orb interface">
+        <div class="orbit-wrap" id="orbit" aria-live="polite">
+          <div class="ring" id="ring">
+            <div class="ring-bg" id="ringBg"></div>
+            <!-- Orbiq tag moved for fixed positioning -->
+          </div>
+          <!-- Removed unused target element -->
+          <p class="hint">Experimental interface</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Panels -->
+  <section class="panel" id="panel-projects" role="dialog" aria-modal="true" aria-labelledby="panel-projects-title">
+    <header>
+      <h3 id="panel-projects-title">Projects</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="Project screenshot"><h4>Shortcut Sphere</h4><p>A draggable shortcut orb for Windows with hotkey summon and theming.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Orbiq Eyeball"><h4>Orbiq Icons</h4><p>Procedural icon set and 3D spin rig with back‑fade.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red texture"><h4>Peeks</h4><p>Pygame UI with voice control, RGB sliders, and idle animations.</p></article>
+        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere Icon"><h4>Stream Automator</h4><p>Unreal scene pilot with chat‑driven control surfaces.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-experiments" role="dialog" aria-modal="true" aria-labelledby="panel-experiments-title">
+    <header>
+      <h3 id="panel-experiments-title">Experiments</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red edge"><h4>Grid Glitch</h4><p>CSS-only aurora lighting with conic gradients.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Edge‑Aware Pixel Heli</h4><p>Tiny canvas toy that knows its bounds.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="CardCake"><h4>LLM Prompter</h4><p>In‑browser prompt macros & tokens playground.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-tools" role="dialog" aria-modal="true" aria-labelledby="panel-tools-title">
+    <header>
+      <h3 id="panel-tools-title">Tools</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red"><h4>Download</h4><p>Link your latest launcher build here.</p></article>
+        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Press Kit</h4><p>Logos, screenshots, and a one‑pager.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-contact" role="dialog" aria-modal="true" aria-labelledby="panel-contact-title">
+    <header>
+      <h3 id="panel-contact-title">Contact</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red edge"><h4>Email</h4><p><a href="mailto:hello@jodylabs.dev">hello@jodylabs.dev</a></p></article>
+        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Twitter / X</h4><p><a href="#">@JodyLabs</a></p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="CardCake"><h4>GitHub</h4><p><a href="https://github.com/passghost" target="_blank" rel="noopener">passghost</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">© <span id="year"></span> JodyLabs • Built with vanilla HTML/CSS/JS.
+  </footer>
+
+  <script>
+  // ===== 1) LIVING BACKGROUND (particle flowfield) =====
+  const bg = document.getElementById('bg');
+  const g = bg.getContext('2d');
+  let W, H, dpr, particles, t = 0, mouse = {x:0,y:0, active:false};
+
+  function resize(){
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = bg.width = innerWidth * dpr;
+    H = bg.height = innerHeight * dpr;
+    bg.style.width = innerWidth + 'px';
+    bg.style.height = innerHeight + 'px';
+    initParticles();
+  }
+
+  function initParticles(){
+    const count = Math.floor((W*H) / (22000 * dpr));
+    particles = new Array(count).fill().map(()=>({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      v: 0,
+      a: 0,
+      s: 0.7 + Math.random()*1.1
+    }));
+  }
+
+  function noise(x,y){
+    return Math.sin(x*0.0009 + t*0.002) + Math.cos(y*0.0012 - t*0.002);
+  }
+
+  function tick(){
+    t+=1;
+    g.clearRect(0,0,W,H);
+
+    g.globalCompositeOperation = 'lighter';
+    for(const p of particles){
+      const n = noise(p.x, p.y);
+      const angle = n * Math.PI;
+      const force = 0.6;
+
+      p.a += (angle - p.a)*0.08;
+      p.v += force * 0.6;
+
+      if(mouse.active){
+        const dx = (mouse.x*dpr - p.x), dy = (mouse.y*dpr - p.y);
+        const d = Math.hypot(dx,dy) + 0.0001;
+        const pull = Math.min(1.5, 40/d);
+        p.x += dx * pull * 0.008;
+        p.y += dy * pull * 0.008;
+      }
+
+      p.x += Math.cos(p.a) * p.v * 0.08;
+      p.y += Math.sin(p.a) * p.v * 0.08;
+      p.v *= 0.92;
+
+      if(p.x<0) p.x+=W; if(p.x>W) p.x-=W; if(p.y<0) p.y+=H; if(p.y>H) p.y-=H;
+
+      g.beginPath();
+      g.arc(p.x, p.y, p.s, 0, Math.PI*2);
+      const grad = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, 16);
+      grad.addColorStop(0, 'rgba(255,26,26,.55)');
+      grad.addColorStop(1, 'rgba(255,26,26,0)');
+      g.fillStyle = grad;
+      g.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  addEventListener('resize', resize);
+  bg.addEventListener('pointermove', e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+  bg.addEventListener('pointerdown', ()=>mouse.active=true);
+  bg.addEventListener('pointerup', ()=>mouse.active=false);
+  resize(); tick();
+
+  // ===== 2) ICON SPHERE (DOUBLED ICON COUNT) =====
+  const ICON_URL_1 = 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png';
+  const ICON_URL_2 = 'https://passghost.github.io/OrbiqWebsite/Images/krakenicon2.png';
+
+  const ring = document.getElementById('ring');
+  const ringBg = document.getElementById('ringBg');
+  const orbit = document.getElementById('orbit');
+
+  const baseNodes = [
+    {label:'Projects', panel:'#panel-projects'},
+    {label:'Experiments', panel:'#panel-experiments'},
+    {label:'Tools', panel:'#panel-tools'},
+    {label:'Contact', panel:'#panel-contact'},
+  ];
+
+  const TOTAL_ICONS = 32; // doubled from 16 → 32
+  const nodes = [];
+  for(let i=0;i<TOTAL_ICONS;i++){
+    nodes.push({
+      ...baseNodes[i % baseNodes.length],
+      icon: i % 2 === 0 ? ICON_URL_1 : ICON_URL_2
+    });
+  }
+
+  // Build fibonacci sphere points
+  const points = [];
+  (function buildSphere(){
+    const n = TOTAL_ICONS;
+    for(let i=0;i<n;i++){
+      const k = i + 0.5;
+      const phi = Math.acos(1 - 2*k/n);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * k;
+      const x = Math.cos(theta) * Math.sin(phi);
+      const y = Math.cos(phi);
+      const z = Math.sin(theta) * Math.sin(phi);
+      points.push({x,y,z});
+    }
+  })();
+
+  let rotX = -0.3, rotY = 0; // free rotation
+  let dragging = false, last = {x:0,y:0}, inertia = {x:0,y:0};
+
+  // Floating mode variables
+  let floatMode = true;
+  let floatTimeout = null;
+  const floatStates = Array(TOTAL_ICONS).fill().map(() => ({
+    x: 0, y: 0, vx: 0, vy: 0, speed: 0, angle: 0
+  }));
+
+  function startFloatMode() {
+    floatMode = true;
+    // Randomize float states
+    const bounds = orbit.getBoundingClientRect();
+    const R = Math.min(bounds.width, bounds.height) * 0.42;
+    for (let i = 0; i < TOTAL_ICONS; i++) {
+      // Start near orb position
+      const v = rotateVec(points[i]);
+      floatStates[i].x = v.x * R;
+      floatStates[i].y = v.y * R;
+      floatStates[i].angle = Math.random() * Math.PI * 2;
+      floatStates[i].speed = 0.8 + Math.random() * 1.2;
+      floatStates[i].vx = Math.cos(floatStates[i].angle) * floatStates[i].speed;
+      floatStates[i].vy = Math.sin(floatStates[i].angle) * floatStates[i].speed;
+    }
+    positionNodes();
+  }
+
+  function stopFloatMode() {
+    floatMode = false;
+    positionNodes();
+  }
+
+  function scheduleFloatResume() {
+    if (floatTimeout) clearTimeout(floatTimeout);
+    floatTimeout = setTimeout(() => {
+      startFloatMode();
+    }, 5000);
+  }
+
+
+  // Animate icons back to orb positions with a visible transition
+  let snapAnimating = false;
+  function positionNodes(snapBack = false) {
+    const children = Array.from(ring.querySelectorAll('.node'));
+    const bounds = orbit.getBoundingClientRect();
+    const R = Math.min(bounds.width, bounds.height) * 0.42;
+
+    let hitIdx = -1, hitScore = 0;
+
+    children.forEach((el, i) => {
+      let x, y, z, scale, opacity, v;
+      if (floatMode) {
+        // Floating mode: update position
+        floatStates[i].x += floatStates[i].vx;
+        floatStates[i].y += floatStates[i].vy;
+        if (floatStates[i].x > R) floatStates[i].vx *= -1;
+        if (floatStates[i].x < -R) floatStates[i].vx *= -1;
+        if (floatStates[i].y > R) floatStates[i].vy *= -1;
+        if (floatStates[i].y < -R) floatStates[i].vy *= -1;
+        x = floatStates[i].x;
+        y = floatStates[i].y;
+        z = Math.sqrt(Math.max(0, R * R - x * x - y * y));
+        scale = 0.65 + 0.35 * ((z + R) / (2 * R));
+        opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
+        v = rotateVec(points[i]);
+      } else {
+        // Orb mode: regular sphere
+        v = rotateVec(points[i]);
+        x = v.x * R;
+        y = v.y * R;
+        z = v.z * R;
+        scale = 0.65 + 0.35 * ((z + R) / (2 * R));
+        opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
+        // Animate back to orb position (ease)
+        // Make snap-back faster for visible transition
+        const snapSpeed = snapBack ? 0.08 : 0.03;
+        floatStates[i].x += (x - floatStates[i].x) * snapSpeed;
+        floatStates[i].y += (y - floatStates[i].y) * snapSpeed;
+        x = floatStates[i].x;
+        y = floatStates[i].y;
+      }
+      el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), ${z}px)`;
+      el.style.zIndex = 1000 + Math.round(z);
+      el.firstChild.style.transform = `scale(${scale.toFixed(3)})`;
+      el.style.opacity = opacity;
+      el.firstChild.style.border = 'none';
+      el.firstChild.style.boxShadow = 'none';
+      el.firstChild.style.outline = 'none';
+
+      const rightness = Math.max(0, (v.x + 1) / 2);
+      const frontness = Math.max(0, (v.z + 1) / 2);
+      const s = Math.pow(rightness, 3) * frontness;
+      if (s > hitScore) { hitScore = s; hitIdx = i; }
+    });
+
+    children.forEach(c => c.classList.remove('hit'));
+    const bgEl = document.getElementById('ringBg');
+    bgEl.classList.remove('show');
+  }
+
+  // Animate snap-back after user interaction
+  function animateSnapBack() {
+    let snapFrames = 0;
+    snapAnimating = true;
+    function snapStep() {
+      positionNodes(true);
+      snapFrames++;
+      // Stop after ~30 frames (~0.5s at 60fps)
+      if (snapFrames < 30) {
+        requestAnimationFrame(snapStep);
+      } else {
+        snapAnimating = false;
+      }
+    }
+    snapStep();
+  }
+
+  function rotateVec(v){
+    // rotate around X then Y
+    const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+    const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+    let y = v.y * cosX - v.z * sinX;
+    let z = v.y * sinX + v.z * cosX;
+    let x = v.x * cosY + z * sinY;
+    z = -v.x * sinY + z * cosY;
+    return {x,y,z};
+  }
+
+  function onDown(e){ dragging=true; last.x=e.clientX; last.y=e.clientY; inertia.x=0; inertia.y=0; orbit.setPointerCapture(e.pointerId); }
+  function onMove(e){ if(!dragging) return; const dx=e.clientX-last.x, dy=e.clientY-last.y; last.x=e.clientX; last.y=e.clientY; rotY += dx*0.008; rotX += dy*0.008; inertia.x = dx*0.008; inertia.y = dy*0.008; positionNodes(); }
+  function onUp(e){ dragging=false; orbit.releasePointerCapture(e.pointerId); }
+
+  function animate(){
+    if(!floatMode){
+      rotX += (inertia.y *= 0.94) * 0.3;
+      rotY += (inertia.x *= 0.94) * 0.3;
+    }
+    // Flex/rotate the GIF background with the orb
+    if (ringBg) {
+      // Use a subtle scale and rotation based on rotX/rotY
+      const scale = 1 + Math.sin(rotY) * 0.07 + Math.cos(rotX) * 0.07;
+      const rotate = rotY * 18;
+      ringBg.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+    }
+    positionNodes();
+    // Draw particle system lines from home to floating position, behind icons
+    // Always draw trails with a flexing joint
+    g.save();
+    g.setTransform(1,0,0,1,0,0);
+    g.globalAlpha = 0.45;
+    const bounds = orbit.getBoundingClientRect();
+    const orbCenterX = (bounds.left + bounds.width/2) * dpr;
+    const orbCenterY = (bounds.top + bounds.height/2) * dpr;
+    const R = Math.min(bounds.width, bounds.height) * 0.42 * dpr;
+    for (let i = 0; i < TOTAL_ICONS; i++) {
+      // Home position (on sphere)
+      const v = rotateVec(points[i]);
+      const hx = orbCenterX + v.x * R;
+      const hy = orbCenterY + v.y * R;
+      // Current floating position
+      const fx = orbCenterX + floatStates[i].x * dpr;
+      const fy = orbCenterY + floatStates[i].y * dpr;
+      // Only draw trail if icon is not at home position
+      const dist = Math.hypot(fx - hx, fy - hy);
+      if (dist > 2 * dpr) {
+        // Joint position: 40% along the line, flexed by a sine offset
+        const t = 0.4;
+        const jx = hx + (fx - hx) * t;
+        const jy = hy + (fy - hy) * t;
+        // Flex offset (per icon, animated)
+        const flexMag = 32 * dpr;
+        const flexAngle = Math.atan2(fy - hy, fx - hx) + Math.sin(Date.now()/400 + i) * 0.7;
+        const jxFlex = jx + Math.cos(flexAngle + Math.PI/2) * flexMag;
+        const jyFlex = jy + Math.sin(flexAngle + Math.PI/2) * flexMag;
+        // Draw trail: home -> joint -> floating
+        g.beginPath();
+        g.moveTo(hx, hy);
+        g.lineTo(jxFlex, jyFlex);
+        g.lineTo(fx, fy);
+        const grad = g.createLinearGradient(hx, hy, fx, fy);
+        grad.addColorStop(0, '#a259ff');
+        grad.addColorStop(1, '#00ff99');
+        g.strokeStyle = grad;
+        g.lineWidth = 4;
+        g.shadowColor = '#a259ff';
+        g.shadowBlur = 12;
+        g.stroke();
+  // Draw a tiny icon at the joint (less visible)
+  const iconImg = new Image();
+  iconImg.src = nodes[i].icon;
+  // Draw icon at joint, 18x18px, semi-transparent
+  g.save();
+  g.globalAlpha = 0.35;
+  g.drawImage(iconImg, jxFlex - 9 * dpr, jyFlex - 9 * dpr, 18 * dpr, 18 * dpr);
+  g.restore();
+      }
+    }
+    g.restore();
+    requestAnimationFrame(animate);
+  }
+
+  function buildRing(){
+    ring.innerHTML = '<div class="ring-bg" id="ringBg"></div>';
+    for(let i=0;i<TOTAL_ICONS;i++){
+      const el = document.createElement('div');
+      el.className = 'node';
+      el.setAttribute('data-index', i);
+
+      const btn = document.createElement('button');
+      btn.setAttribute('type','button');
+      btn.style.backgroundImage = `url(${nodes[i].icon})`;
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = nodes[i].label;
+      btn.appendChild(label);
+      btn.addEventListener('click', ()=>openPanel(nodes[i].panel, el));
+
+      el.appendChild(btn);
+      ring.appendChild(el);
+    }
+    positionNodes();
+  }
+
+  buildRing();
+  startFloatMode();
+  animate();
+  addEventListener('resize', ()=>{positionNodes()});
+
+
+  function triggerSnapBack() {
+    stopFloatMode();
+    scheduleFloatResume();
+    if (!snapAnimating) animateSnapBack();
+  }
+
+  orbit.addEventListener('pointerdown', e => {
+    triggerSnapBack();
+    onDown(e);
+  });
+  orbit.addEventListener('pointermove', e => {
+    triggerSnapBack();
+    onMove(e);
+  });
+  orbit.addEventListener('pointerup', e => {
+    triggerSnapBack();
+    onUp(e);
+  });
+
+
+  addEventListener('keydown', (e) => {
+    triggerSnapBack();
+    if (e.key === 'ArrowRight') { rotY += 0.2; }
+    else if (e.key === 'ArrowLeft') { rotY -= 0.2; }
+    else if (e.key === 'ArrowUp') { rotX -= 0.2; }
+    else if (e.key === 'ArrowDown') { rotX += 0.2; }
+    else if (e.key === 'Escape') { closeAllPanels(); }
+    positionNodes();
+  });
+
+  // Resume float mode after 15s of no mouse movement
+  let lastMouseMove = Date.now();
+
+  function onUserInput() {
+    triggerSnapBack();
+    lastMouseMove = Date.now();
+  }
+  document.addEventListener('mousemove', onUserInput);
+  document.addEventListener('mousedown', onUserInput);
+  document.addEventListener('touchstart', onUserInput);
+  document.addEventListener('pointermove', onUserInput);
+
+  // ===== 3) PANELS =====
+  const panels = document.querySelectorAll('.panel');
+
+  function openPanel(selector, anchor){
+    const p = document.querySelector(selector);
+    const rect = anchor.getBoundingClientRect();
+    p.style.setProperty('--x', ((rect.left + rect.width/2) / innerWidth * 100).toFixed(2) + '%');
+    p.style.setProperty('--y', ((rect.top + rect.height/2) / innerHeight * 100).toFixed(2) + '%');
+    p.classList.add('open');
+  }
+  function closeAllPanels(){ panels.forEach(p=>p.classList.remove('open')); }
+  document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeAllPanels));
+  document.getElementById('contactOpen').addEventListener('click', ()=>openPanel('#panel-contact', document.querySelector('.cta')));
+
+  // ===== 4) Misc =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <a class="orbiq-tag" href="https://passghost.github.io/OrbiqWebsite/" target="_blank" rel="noopener">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:4px"><circle cx="11" cy="11" r="10" fill="#aeeaff"/><text x="11" y="16" text-anchor="middle" font-size="12" fill="#1e223c" font-family="Arial, sans-serif">OQ</text></svg>
+    Orbiq Website
+  </a>
+</body>
+</html>

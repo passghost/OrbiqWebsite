@@ -334,6 +334,17 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
+        /* Ensure demo gif and other images keep aspect and don't overflow */
+        .demo-gif, .feature-icon, .download-icon {
+            display: inline-block;
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .logo { width: 96px; height: 96px; object-fit: contain; }
+        .hero-image .demo-gif { max-width: 480px; }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -497,6 +508,30 @@
             background-clip: text;
         }
 
+        /* Enforce sensible sizes for download icons and images in download cards */
+        .download-header img,
+        .download-option .download-icon,
+        .download-option img {
+            width: 64px !important;
+            height: 64px !important;
+            max-width: 64px !important;
+            object-fit: contain !important;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Smaller icons for the hero download buttons */
+        .hero .download-buttons img {
+            width: 40px !important;
+            height: 40px !important;
+            max-width: 40px !important;
+            object-fit: contain !important;
+            margin-right: 10px;
+        }
+
+        /* Ensure the download section title is visually centered */
+        .download-section { text-align: center; }
+
         .download-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -531,6 +566,19 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+
+    /* Download option header layout and icon sizing */
+    .download-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+    .download-header h3 { margin:0; font-size:1.25rem; }
+    .download-header .download-icon { width:64px; height:64px; object-fit:contain; flex:0 0 64px; }
+    .download-details { margin-top:6px; }
+    .download-details ul { margin:12px 0 16px 18px; }
+
+    /* Screenshot gallery sizing */
+    .screenshot-gallery { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+    .screenshot-item { width: calc(50% - 18px); max-width:420px; }
+    .gallery-image { border-radius:12px; overflow:hidden; display:block; }
+    .gallery-image img { width:100%; height:auto; display:block; }
 
         .coming-soon {
             background: var(--text-muted);

@@ -218,7 +218,15 @@
         border-radius: 999px;
         border: 1px solid rgba(255,255,255,.1);
         box-shadow: 0 2px 8px rgba(0,234,255,0.10);
-      }
+    }
+
+    /* --------------- Added overrides: force download icon sizing and center download title --------------- */
+    .download-section, .download-options { text-align: center; }
+    .download-section h2 { text-align: center; }
+    .download-header { display: flex; align-items: center; gap:12px; justify-content:center; }
+    .download-header img, .download-option img, .download-card img { width:64px !important; height:64px !important; object-fit:contain !important; }
+    .hero .download-buttons img { width:40px !important; height:40px !important; }
+    .card img, .demo-gif { max-width:100%; height:auto; object-fit:cover; }
       .hint {
         position: absolute;
         bottom: 8px;

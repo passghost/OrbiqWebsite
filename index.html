@@ -1,1152 +1,921 @@
+<!-- Second Sphere JS moved to end of body for proper DOM access -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbiq - Best Free 3D Desktop Launcher for Windows | Productivity Software 2025</title>
-    <meta name="description" content="Download Orbiq - The #1 rated free 3D desktop launcher for Windows. Revolutionary sphere interface, instant hotkey access, professional productivity tool. Used by 100k+ users worldwide.">
-    <meta name="keywords" content="Orbiq, free desktop launcher, 3D desktop launcher Windows, best productivity software 2025, desktop shortcut manager, sphere launcher, Windows utility free, desktop organizer app, application launcher Windows, file launcher 3D, desktop enhancement tool, productivity app Windows, shortcut sphere, desktop management software, Windows desktop tool, free productivity software, desktop sphere launcher, hotkey launcher, workspace organizer, desktop productivity suite, Windows launcher app, 3D interface Windows, desktop automation tool, efficient desktop manager, Windows productivity enhancement">
-    <meta name="author" content="Orbiq - JodyLabs">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="en-US">
-    <meta name="geo.region" content="US-KY">
-    <meta name="geo.placename" content="Pikeville, Kentucky">
-    <meta name="rating" content="general">
-    <meta name="distribution" content="global">
-    <meta name="revisit-after" content="1 days">
-    <meta name="category" content="Software, Productivity, Desktop Tools, Windows Utilities">
-    <meta name="coverage" content="Worldwide">
-    <meta name="target" content="Windows users, productivity enthusiasts, desktop power users, professionals, developers">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- Enhanced SEO -->
-    <meta name="application-name" content="Orbiq Desktop Launcher">
-    <meta name="msapplication-tooltip" content="Revolutionary 3D desktop launcher for Windows productivity">
-    <meta name="price" content="Free">
-    <meta name="priceCurrency" content="USD">
-    <meta name="availability" content="InStock">
-    <meta name="software-version" content="1.8">
-    <meta name="operating-system" content="Windows 10, Windows 11">
-    <meta name="file-size" content="15MB">
-    <meta name="license" content="Freemium">
-    <meta name="developer" content="JodyLabs - Orbiq">
-    <meta name="release-date" content="2025-08-09">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://passghost.github.io/OrbiqWebsite/">
-    <meta property="og:title" content="Orbiq - The launcher your desktop's been dreaming of">
-    <meta property="og:description" content="A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey.">
-    <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-    <meta property="og:site_name" content="Orbiq">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://passghost.github.io/OrbiqWebsite/">
-    <meta property="twitter:title" content="Orbiq - 3D Desktop Launcher for Windows">
-    <meta property="twitter:description" content="Transform your desktop with Orbiq's elegant 3D sphere launcher. Free for personal use, perfect for productivity.">
-    <meta property="twitter:image" content="https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
-    <link rel="apple-touch-icon" href="Images/SphereIcon.png">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://passghost.github.io/OrbiqWebsite/">
-    
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://drive.google.com">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
-    
-    <!-- Additional SEO Links -->
-    <link rel="alternate" type="application/rss+xml" title="Orbiq Updates" href="https://passghost.github.io/OrbiqWebsite/feed.xml">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://passghost.github.io/OrbiqWebsite/sitemap.xml">
-    
-    <!-- Additional SEO -->
-    <meta name="theme-color" content="#32CD32">
-    <meta name="msapplication-TileColor" content="#8A2BE2">
-    <meta name="msapplication-TileImage" content="Images/SphereIcon.png">
-    
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": ["SoftwareApplication", "Product"],
-      "name": "Orbiq - 3D Desktop Launcher",
-      "alternateName": ["Orbiq Desktop Manager", "Orbiq Sphere Launcher", "Best Windows Desktop Launcher"],
-      "description": "Orbiq is the #1 rated free 3D desktop launcher for Windows. Revolutionary sphere interface with instant hotkey access, transforming desktop productivity for over 100,000 users worldwide.",
-      "url": "https://passghost.github.io/OrbiqWebsite/",
-      "downloadUrl": "https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link",
-      "applicationCategory": ["UtilitiesApplication", "ProductivityApplication", "DesktopEnhancement"],
-      "operatingSystem": ["Windows 10", "Windows 11"],
-      "softwareVersion": "1.8",
-      "releaseNotes": "Latest version with enhanced wheel cycling, improved stability, and professional features",
-      "datePublished": "2025-08-09",
-      "dateModified": "2025-08-09",
-      "programmingLanguage": "C#",
-      "fileSize": "15MB",
-      "memoryRequirements": "2GB RAM",
-      "processorRequirements": "Intel/AMD x64",
-      "storageRequirements": "50MB",
-      "screenshot": ["Images/example.gif", "Images/main3d.gif"],
-      "featureList": [
-        "3D Sphere Desktop Interface",
-        "Instant Hotkey Access",
-        "Customizable Shortcuts",
-        "Multi-Monitor Support",
-        "Lightweight Performance",
-        "Free Personal License",
-        "Professional Business License"
-      ],
-      "keywords": "desktop launcher, Windows productivity, 3D interface, shortcut manager, desktop organizer, productivity software, Windows utility, free software",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Orbiq Lite - Personal License",
-          "price": "0",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2026-12-31",
-          "description": "Free forever for personal use with core desktop launcher features",
-          "category": "Personal"
-        },
-        {
-          "@type": "Offer", 
-          "name": "Orbiq Pro - Business License",
-          "price": "20",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "2026-12-31",
-          "description": "Professional features with advanced workspace management and priority support",
-          "category": "Commercial"
-        }
-      ],
-      "author": {
-        "@type": "Organization",
-        "name": "JodyLabs",
-        "url": "https://passghost.github.io/jodylabs/",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Pikeville",
-          "addressRegion": "Kentucky",
-          "addressCountry": "United States"
-        }
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Orbiq",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1247",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Windows Power User"
-          },
-          "reviewBody": "Revolutionary desktop management. The 3D sphere interface is incredibly intuitive and has transformed my workflow completely."
-        }
-      ],
-      "mainEntity": {
-        "@type": "SoftwareApplication",
-        "name": "Orbiq Desktop Launcher",
-        "applicationCategory": "Productivity Software"
-      }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orbiq Launcher</title>
+  <meta name="description" content="An animated one‑page experience — red/black theme, draggable icon orb, target lock, image‑first panels." />
+  <style>
+    /* --- RESET --- */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:#0a0a0c;color:#f4f4f5;overflow-x:hidden}
+    h1,h2,h3,p{margin:0}
+    a{color:inherit;text-decoration:none}
+
+    :root{
+      --accent:#6C63FF; /* main accent: soft indigo */
+      --accent-2:#48C9B0; /* secondary accent: teal */
+      --text:#F3F3F7;
+      --muted:#A3A3B3;
+      --panel:#232347ee;
+      --card:#1B1B2A;
+      --glass:rgba(108,99,255,.08);
+      --radius:22px;
+      --shadow:0 12px 28px rgba(108,99,255,.18), inset 0 1px 0 rgba(255,255,255,.04);
     }
-    </script>
-    
-    <link rel="stylesheet" href="style.css">
+
+    body{background:#18182A;color:var(--text)}
+    /* --- Background --- */
+    #bg {position:fixed;inset:0;z-index:-1;background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(108,99,255,.16), rgba(108,99,255,0) 60%),
+      radial-gradient(900px 600px at 10% 120%, rgba(72,201,176,.12), rgba(72,201,176,0) 55%),
+      linear-gradient(180deg,#18182A 0%,#232347 100%);
+    }
+
+    /* --- Top bar --- */
+    .topbar{position:fixed;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);z-index:40}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 40px rgba(108,99,255,.35)}
+    .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(108,99,255,.25))}
+    .brand h3{font-weight:800;letter-spacing:.4px}
+    .pill{font-size:12px;color:var(--muted);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#18182A;font-weight:800;border:none;box-shadow:0 10px 26px rgba(108,99,255,.18);cursor:pointer}
+    .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#232347}
+
+    /* --- Hero --- */
+    .hero{min-height:100svh;display:grid;place-items:center;padding:120px 20px 80px}
+    .hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+    .headline{font-size:clamp(32px,6vw,64px);line-height:1.06;font-weight:900;letter-spacing:.2px}
+    .headline .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{margin-top:14px;color:var(--muted);font-size:clamp(14px,2vw,18px)}
+    .hero-card{background:var(--glass);border:1px solid rgba(108,99,255,.10);box-shadow:var(--shadow)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .badge{padding:8px 10px;border-radius:999px;background:rgba(108,99,255,.10);border:1px solid rgba(108,99,255,.18);font-size:13px;color:#fff}
+
+    /* --- Orbital stage (CENTERED SPHERE) --- */
+    .stage{position:relative;min-height:520px;perspective:1200px;display:grid;place-items:center}
+    .orbit-wrap{position:relative;width:min(90vw,680px);height:min(90vw,680px);max-width:700px;max-height:700px;transform-style:preserve-3d;user-select:none}
+    .ring{position:relative;width:100%;height:100%;display:grid;place-items:center;transform-style:preserve-3d}
+    .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.08)}
+  .ring-bg{position:absolute;inset:12%;border-radius:50%;background:url('floatback.gif') center center/cover no-repeat;filter:blur(8px) saturate(120%);opacity:.32;transition:opacity .25s ease;mix-blend-mode:screen}
+
+    /* Target indicator */
+
+    /* Orbiq tag */
+    .orbiq-tag {
+      position: fixed;
+      left: 24px;
+      bottom: 24px;
+      background: rgba(72,201,176,0.92);
+      color: #232347;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 10px 22px 10px 18px;
+      border-radius: 18px 8px 18px 8px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 100;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .orbiq-tag:hover {
+      background: #48C9B0;
+      color: #fff;
+    }
+  /* Removed unused target styles */
+
+    .node{position:absolute;left:50%;top:50%;display:flex;flex-direction:column;align-items:center;gap:10px;transform-style:preserve-3d}
+  .node button{width:84px;height:84px;border:none;border-radius:50%;padding:0;background:transparent;background-size:cover;background-position:center;box-shadow:none;cursor:pointer;display:grid;place-items:center;position:relative;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease}
+  .node button::after{content:"";display:none;}
+    .node button .label{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font-size:12px;color:#fff;background:rgba(0,0,0,.4);padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
+    .node.hit button{box-shadow:0 20px 40px rgba(255,26,26,.25);transform:translateZ(6px)}
+
+    .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
+
+    /* --- Panels --- */
+    .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(108,99,255,.10);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
+    .panel.open{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
+    .panel header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .panel header h3{font-weight:800}
+    .panel .content{padding:18px;display:grid;gap:12px}
+    .panel .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .card{background:var(--card);border:1px solid rgba(108,99,255,.10);border-radius:18px;padding:14px;box-shadow:var(--shadow);color:var(--text)}
+    .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(108,99,255,0.10)}
+    .close{background:transparent;border:1px solid rgba(108,99,255,.18);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
+
+    /* --- Footer --- */
+    .footer{padding:40px 20px 70px;text-align:center;color:var(--muted)}
+
+    /* --- Responsive --- */
+    @media (max-width: 920px){
+      .hero-inner{grid-template-columns:1fr;gap:20px}
+      .stage{min-height:460px}
+      .target{right:1.5%}
+    }
+    @media (max-width: 560px){
+      .headline{font-size:clamp(28px,8vw,44px)}
+      .topbar{top:8px;left:8px;right:8px;padding:8px 10px}
+      .hero{padding:96px 14px 60px}
+      .panel{left:8px;right:8px;top:72px;border-radius:18px}
+      .node button{width:70px;height:70px}
+      .card img{height:120px}
+      .badge{font-size:12px}
+  /* Removed unused target styles in media query */
+    }
+    @media (prefers-reduced-motion: reduce){
+      .ring::before{animation:none}
+    }
+  </style>
     <style>
-        :root {
-            --primary-blue: #6a5acd; /* Lilac */
-            --primary-blue-hover: #483d8b; /* Darker lilac */
-            --secondary-teal: #708090; /* Slate gray */
-            --accent-orange: #8b008b; /* Dark magenta */
-            --accent-orange-hover: #4b0082; /* Indigo */
-            --dark-bg: #1c1c1c; /* Very dark gray */
-            --darker-bg: #121212; /* Almost black */
-            --card-bg: #2f2f2f; /* Dark gray */
-            --card-hover: #3f3f3f; /* Slightly lighter gray */
-            --text-primary: #dcdcdc; /* Light gray */
-            --text-secondary: #a9a9a9; /* Dim gray */
-            --text-muted: #696969; /* Dark gray */
-            --border-color: #4b0082; /* Indigo */
-            --success: #6a5acd; /* Lilac */
-            --gradient-1: linear-gradient(135deg, #6a5acd 0%, #483d8b 100%); /* Lilac gradient */
-            --gradient-2: linear-gradient(135deg, #8b008b 0%, #4b0082 100%); /* Magenta to indigo */
-            --gradient-3: linear-gradient(135deg, #708090 0%, #2f2f2f 100%); /* Slate gray gradient */
-            --gradient-hero: linear-gradient(135deg, #6a5acd 0%, #483d8b 50%, #1c1c1c 100%); /* Lilac to dark gray */
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Making sure header has position relative for absolute positioning of theme swapper */
-        .header {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .header .logo {
-            max-width: 80px;
-            margin-bottom: 16px;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
-        }
-
-        .header h1 {
-            color: #6a5acd; /* Purple text */
-            font-size: 3.5rem; /* Increased size */
-            font-weight: 800;
-            margin: 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(50, 205, 50, 0.8), 0 0 20px rgba(34, 139, 34, 0.6); /* Green glow */
-            font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif; /* Nicer font */
-            transform: perspective(500px) rotateX(10deg) rotateY(-10deg); /* 3D perspective */
-        }
-
-        .navigation ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-        }
-
-        .navigation ul li {
-            flex: 1;
-        }
-
-        .navigation ul li a {
-            display: block;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            padding: 16px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-right: 1px solid var(--border-color);
-        }
-
-        .navigation ul li:last-child a {
-            border-right: none;
-        }
-
-        .navigation ul li a:hover,
-        .navigation ul li a.active {
-            background: var(--gradient-1);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--gradient-hero);
-            border-radius: 20px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(1px);
-        }
-
-        .hero > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.95;
-        }
-
-        .demo-gif {
-            max-width: 100%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--gradient-3);
-            color: white;
-            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.6);
-        }
-
-        .btn-secondary {
-            background: var(--card-bg);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--card-hover);
-            border-color: var(--secondary-teal);
-        }
-
-        .btn-disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        .features {
-            background: var(--darker-bg);
-            padding: 60px 20px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .features h2 {
-            text-align: center;
-            color: var(--text-primary);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 32px 24px;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 0;
-        }
-
-        .feature-item:hover::before {
-            left: 0;
-            opacity: 0.1;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
-        }
-
-        .feature-item > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-icon {
-            max-width: 60px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
-        }
-
-        .feature-item h3 {
-            color: var(--text-primary);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .feature-item p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .screenshots {
-            padding: 60px 20px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            margin: 20px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .screenshots h2 {
-            text-align: center;
-            color: var(--text-primary);
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-
-        .download-section {
-            padding: 60px 20px;
-            background: var(--darker-bg);
-            border-radius: 20px;
-            margin: 20px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .download-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .download-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .download-option {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .download-option:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
-        }
-
-        .download-option-disabled {
-            opacity: 0.6;
-        }
-
-        .recommended, .coming-soon {
-            background: var(--gradient-2);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .coming-soon {
-            background: var(--text-muted);
-        }
-
-        .requirements {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 60px 20px;
-            margin: 20px 0;
-        }
-
-        .requirements h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: var(--text-primary);
-        }
-
-        .requirements-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .req-column {
-            background: var(--darker-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .req-column h3 {
-            color: var(--secondary-teal);
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-        }
-
-        .req-column ul {
-            list-style: disc inside;
-            padding-left: 20px;
-        }
-
-        .req-column li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-left: 20px; /* Ensures proper alignment */
-        }
-
-        .req-column li:last-child {
-            border-bottom: none;
-        }
-
-        .footer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            padding: 10px 20px;
-            margin-top: 20px;
-            color: white;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-            margin: 0;
-        }
-
-        .footer-contact {
-            font-size: 0.8rem;
-            text-align: right;
-            margin: 0;
-        }
-
-        .footer-contact a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .footer-contact a:hover {
-            text-decoration: underline;
-        }
-
-        /* Moving theme swapper to the top-right corner for convenience */
-        .theme-swapper {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000; /* Ensure it stays above other elements */
-        }
-
-        /* Styling theme swapper buttons to be smaller and have a glass effect */
-        .theme-button {
-            width: 12px;
-            height: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-        }
-
-        .theme-button:hover {
-            transform: scale(1.2);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-        }
-
-        .theme-black-gray {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(96, 96, 96, 0.5));
-        }
-
-        .theme-crimson {
-            background: linear-gradient(135deg, rgba(139, 21, 56, 0.5), rgba(184, 49, 79, 0.5));
-        }
-
-        .theme-ocean {
-            background: linear-gradient(135deg, rgba(0, 119, 190, 0.5), rgba(0, 180, 216, 0.5));
-        }
-
-        .theme-midnight {
-            background: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(138, 43, 226, 0.5));
-        }
-
-        .theme-default {
-            background: linear-gradient(135deg, #6a5acd 0%, #483d8b 100%);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .navigation ul {
-                flex-direction: column;
-            }
-
-            .navigation ul li a {
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .navigation ul li:last-child a {
-                border-bottom: none;
-            }
-
-            .features-grid,
-            .download-options,
-            .requirements-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for loading */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature-item {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .feature-item:nth-child(1) { animation-delay: 0.1s; }
-        .feature-item:nth-child(2) { animation-delay: 0.2s; }
-        .feature-item:nth-child(3) { animation-delay: 0.3s; }
-        .feature-item:nth-child(4) { animation-delay: 0.4s; }
-        .feature-item:nth-child(5) { animation-delay: 0.5s; }
-        .feature-item:nth-child(6) { animation-delay: 0.6s; }
-        
-        /* Ensuring the Easter egg message is directly below the theme buttons container */
-        #easter-egg-message {
-            margin-top: 5px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
-            position: relative;
-            top: 0;
-        }
-
-        /* v1.8 Feature Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
-            100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
-        }
+      body {
+        background: linear-gradient(120deg, #181a2a 0%, #23243a 100%);
+        color: #eaf6fb;
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+      }
+      .stage {
+        background: rgba(30,34,54,0.7);
+        border-radius: 32px;
+        box-shadow: 0 8px 32px rgba(0,234,255,0.08);
+        padding: 32px 0 48px 0;
+        margin-bottom: 48px;
+      }
+      .orbit-wrap {
+        margin: 0 auto;
+        max-width: 700px;
+        max-height: 700px;
+        width: min(90vw,680px);
+        height: min(90vw,680px);
+        background: none;
+      }
+      .ring {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: grid;
+        place-items: center;
+        transform-style: preserve-3d;
+      }
+      .ring-bg {
+        position: absolute;
+        inset: 12%;
+        border-radius: 50%;
+        background: url('floatback.gif') center center/cover no-repeat;
+        filter: blur(8px) saturate(120%);
+        opacity: .32;
+        transition: opacity .25s ease;
+        mix-blend-mode: screen;
+      }
+      .node button {
+        width: 84px;
+        height: 84px;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 2px 12px rgba(0,234,255,0.12);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform .2s, box-shadow .2s;
+      }
+      .node button .label {
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 13px;
+        color: #eaf6fb;
+        background: rgba(0,0,0,.4);
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.1);
+        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+      }
+      .hint {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #7fd7ff;
+        font-size: 13px;
+        opacity: .8;
+        letter-spacing: 0.5px;
+      }
+      #expandedCard, #expandedFeatureCard {
+        background: rgba(30,34,54,0.92);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0,234,255,0.12);
+        padding: 32px 28px;
+        color: #eaf6fb;
+        font-size: 1.08rem;
+        min-height: 120px;
+        margin-bottom: 24px;
+      }
+      .card {
+        background: rgba(40,44,64,0.98);
+        border-radius: 18px;
+        box-shadow: 0 2px 12px rgba(0,234,255,0.10);
+        padding: 18px;
+        margin-bottom: 18px;
+        color: #eaf6fb;
+      }
+      .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(90deg,#00eaff,#7fd7ff);
+        padding: 10px 18px;
+        border-radius: 999px;
+        color: #181a2a;
+        font-weight: 800;
+        border: none;
+        box-shadow: 0 10px 26px rgba(0,234,255,.18);
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 12px;
+        text-decoration: none;
+      }
+      .cta:hover {
+        background: linear-gradient(90deg,#7fd7ff,#00eaff);
+        color: #23243a;
+      }
+      @media (max-width: 700px) {
+        .stage { padding: 18px 0 32px 0; }
+        #expandedCard, #expandedFeatureCard { padding: 18px 8px; }
+        .card img { height: 100px; }
+      }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-section">
-                <img src="Images/SphereIcon.png" alt="Orbiq Logo" class="logo">
-                <div class="title-section">
-                    <h1>Orbiq</h1>
-                    <p class="subtitle">3D Desktop Shortcut Manager</p>
-                </div>
-            </div>
-            <div class="version-info">
-                <span class="version">Version 1.8</span>
-                <span class="platform">Windows PC Only</span>
-            </div>
-        </header>
+  <canvas id="bg"></canvas>
 
-        <!-- Navigation -->
-        <nav class="navigation">
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#screenshots">Screenshots</a></li>
-                <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h2>The launcher your desktop's been dreaming of.</h2>
-                        <p>A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
-                        <div class="download-buttons">
-                            <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">
-                                <img src="Images/SphereIcon.png" alt="Download">
-                                Download Orbiq
-                                <span class="file-info">0.8 MB - Windows Installer</span>
-                            </a>
-                            <a href="#features" class="btn btn-secondary" style="background: linear-gradient(135deg, #4CAF50, #45a049); border: none; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
-                                <img src="Images/SphereIcon.png" alt="New in v1.8">
-                                <span style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 10px; font-weight: bold; animation: pulse 2s infinite;">NEW!</span>
-                                What's New in v1.8
-                                <span class="file-info">Multiple Collections • Auto-Start</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="Images/example.gif" alt="3D Sphere Demo" class="demo-gif">
-                        <p style="font-size: 0.9rem; color: #ccc; margin-top: 10px;">(Simply double click to move)</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="features" id="features">
-                <h2>Key Features</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="3D Sphere" class="feature-icon">
-                        <h3>3D Rotating Sphere</h3>
-                        <p>Icons arranged on a beautiful 3D sphere that you can rotate with mouse drag</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="System Tray" class="feature-icon">
-                        <h3>System Tray Integration</h3>
-                        <p>Runs quietly in the background, accessible via system tray</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="Hotkey" class="feature-icon">
-                        <h3>Global Hotkey</h3>
-                        <p>Press Ctrl+Alt+Space to instantly show/hide the sphere</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="Wheel Cycling" class="feature-icon">
-                        <h3>Wheel Cycling</h3>
-                        <p>Use mouse wheel to cycle through different shortcut collections</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="Move Mode" class="feature-icon">
-                        <h3>Move Mode</h3>
-                        <p>Double-click center handle to reposition sphere anywhere on screen</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="Configurable" class="feature-icon">
-                        <h3>Fully Configurable</h3>
-                        <p>Customize shortcuts, hotkeys, sphere size, and animation settings</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="Images/SphereIcon.png" alt="Standalone" class="feature-icon">
-                        <h3>Standalone</h3>
-                        <p>No .NET installation required - all dependencies included</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Screenshots Section -->
-            <section class="screenshots" id="screenshots">
-                <h2>Screenshots</h2>
-                <div class="screenshot-gallery">
-                    <div class="screenshot-item">
-                        <div class="gallery-image screenshot1">
-                            <img src="Images/main3d.gif" alt="Main 3D Sphere Interface">
-                        </div>
-                        <p>Main 3D Sphere Interface</p>
-                    </div>
-                    <div class="screenshot-item">
-                        <div class="gallery-image screenshot2">
-                            <img src="Images/addingIcon.gif" alt="Adding A Shortcut or Folder">
-                        </div>
-                        <p>Adding A Shortcut or Folder</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Download Section -->
-            <section class="download-section" id="download">
-                <h2>Download Orbiq</h2>
-                <div class="download-options">
-                    <div class="download-option">
-                        <div class="download-header">
-                            <img src="Images/SphereIcon.png" alt="Installer" class="download-icon">
-                            <h3>Windows Installer</h3>
-                            <span class="recommended">Recommended</span>
-                        </div>
-                        <div class="download-details">
-                            <ul>
-                                <li>Professional installation experience</li>
-                                <li>Start Menu and Desktop shortcuts</li>
-                                <li>Automatic uninstaller</li>
-                                <li>Compact download size (0.8 MB)</li>
-                            </ul>
-                            <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">Download
-                                Installer</a>
-                        </div>
-                    </div>
-                    <div class="download-option" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1)); border: 2px solid #4CAF50; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);">
-                        <div class="download-header">
-                            <img src="Images/SphereIcon.png" alt="New Features" class="download-icon">
-                            <h3>Enhanced Features in v1.8</h3>
-                            <span class="recommended" style="background: linear-gradient(45deg, #4CAF50, #8BC34A); animation: glow 2s ease-in-out infinite alternate;">Latest!</span>
-                        </div>
-                        <div class="download-details">
-                            <ul style="line-height: 1.8;">
-                                <li><strong>Multiple Wheel Collections</strong> - Organize shortcuts into themed categories for better workflow management</li>
-                                <li><strong>Startup Integration</strong> - Automatically launch with Windows for seamless daily productivity</li>
-                                <li><strong>Wheel Cycling</strong> - Switch between collections using your mouse wheel for quick access</li>
-                                <li><strong>Enhanced Stability</strong> - Improved performance with comprehensive bug fixes and optimizations</li>
-                            </ul>
-                            <div class="btn btn-secondary" style="background: linear-gradient(45deg, #4CAF50, #45a049); border: none; color: white; font-weight: bold; box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);">All Features Included</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- System Requirements -->
-            <section class="requirements">
-                <h2>System Requirements</h2>
-                <div class="requirements-content">
-                    <div class="req-column">
-                        <h3>Minimum Requirements</h3>
-                        <ul>
-                            <li>Windows 10 (64-bit)</li>
-                            <li>2 GB RAM</li>
-                            <li>200 MB free disk space</li>
-                            <li>DirectX 11 compatible graphics</li>
-                        </ul>
-                    </div>
-                    <div class="req-column">
-                        <h3>Recommended</h3>
-                        <ul>
-                            <li>Windows 11 (64-bit)</li>
-                            <li>4 GB RAM or more</li>
-                            <li>500 MB free disk space</li>
-                            <li>Dedicated graphics card</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Pro Version Promotion -->
-        <section class="pro-promotion" style="background: linear-gradient(135deg, #8A2BE2, #9370DB); color: white; text-align: center; padding: 50px 20px; margin: 40px 0;">
-            <div class="container">
-                <h2 style="font-size: 2.5em; margin-bottom: 20px;">Want Even More Power?</h2>
-                <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">
-                    Upgrade to <strong>Orbiq Pro</strong> for advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 30px 0;">
-                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎯 Wheel Collections</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">⌨️ Custom Hotkeys</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">📍 Position Memory</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎨 Professional UI</span>
-                </div>
-                <a href="pro.html" style="background: #FFD700; color: #000; font-weight: bold; font-size: 1.2em; padding: 15px 30px; border: none; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s ease; margin-top: 20px;" onmouseover="this.style.background='#FFE55C'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFD700'; this.style.transform='translateY(0)'">
-                    Discover Orbiq Pro - $20.00
-                </a>
-                <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
-                    One-time purchase • Regular updates included • Professional support
-                </p>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Orbiq</h4>
-                    <p>© 2025 Orbiq. All rights reserved. Brought to you by <a href="https://passghost.github.io/jodylabs/" target="_blank">JodyLabs</a>.</p>
-                    <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Orbiq, Kraken Icon, and Sphere Icon are trademarks of Orbiq.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="license.html">License Agreement</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-contact">
-                <p>Contact us at: <a href="mailto:takeoff@techie.com">takeoff@techie.com</a></p>
-            </div>
-        </footer>
-
-        <!-- Theme Swapper (Hidden by default) -->
-        <div class="theme-swapper">
-            <button class="theme-button theme-default" onclick="setTheme('default')" title="Default Theme"></button>
-            <button class="theme-button theme-black-gray" onclick="setTheme('black-gray')" title="Black & Gray Theme"></button>
-            <button class="theme-button theme-crimson" onclick="setTheme('crimson')" title="Crimson Theme"></button>
-            <button class="theme-button theme-ocean" onclick="setTheme('ocean')" title="Ocean Blue Theme"></button>
-            <button class="theme-button theme-midnight" onclick="setTheme('midnight')" title="Midnight Purple Theme"></button>
-            
-            <!-- Adding Easter egg message below the theme buttons -->
-            <div id="easter-egg-message" style="margin-top: 5px; font-size: 0.3rem; color: var(--text-muted); text-align: center;">
-                <!-- Message will update dynamically -->
-            </div>
-        </div>
+  <nav class="topbar" aria-label="Primary">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="JodyLabs logo" />
+      </div>
+      <h3>JodyLabs</h3>
+      <span class="pill">Interactive R&D</span>
     </div>
+    <button class="cta" id="contactOpen" aria-haspopup="dialog" aria-controls="panel-contact">Contact</button>
+  </nav>
 
-    <!-- JavaScript for theme swapping -->
-    <script>
-        const themeButtons = document.querySelectorAll('.theme-button');
-        const body = document.body;
+  <main class="hero">
+    <section class="hero-inner" style="display:grid;grid-template-columns:380px 1fr;gap:40px;align-items:start;max-width:1200px;margin:0 auto;">
+      <aside class="sidebar" style="position:sticky;top:70px;align-self:start;display:flex;flex-direction:column;gap:28px;">
+        <h1 class="headline" style="text-align:left;">Orbiq<br><span class="accent">The launcher your desktop's been dreaming of.</span></h1>
+        <p class="sub" style="text-align:left;max-width:340px;">A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
+        <div class="badges" aria-hidden="true" style="justify-content:flex-start;">
+          <span class="badge">New in v1.8</span>
+          <span class="badge">Multiple Collections</span>
+          <span class="badge">Auto-Start</span>
+        </div>
+        <a class="cta" href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" target="_blank" style="align-self:flex-start;">Download Orbiq 0.8 MB - Windows Installer</a>
+  <!-- Only spheres and their expanded cards are shown below -->
+      </aside>
 
-        themeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const theme = button.classList.contains('theme-black-gray') ? 'black-gray' :
-                              button.classList.contains('theme-crimson') ? 'crimson' :
-                              button.classList.contains('theme-ocean') ? 'ocean' :
-                              button.classList.contains('theme-midnight') ? 'midnight' : 'default';
-                body.setAttribute('data-theme', theme);
-            });
-        });
+      <div style="display:flex;flex-direction:column;gap:40px;">
+        <div class="hero-card stage" aria-label="Icon orb interface" style="position:relative;z-index:10;">
+          <div class="orbit-wrap" id="orbit" aria-live="polite" style="position:sticky;top:80px;">
+            <div class="ring" id="ring">
+              <div class="ring-bg" id="ringBg"></div>
+            </div>
+            <p class="hint">3D Rotating Sphere — Drag to rotate, double-click to move</p>
+          </div>
+        </div>
+      </div>
+    </section>
+      <!-- SECOND SPHERE: All content below Key Features is now inside this interactive orb -->
+      <section class="hero-card stage" aria-label="Content orb interface" style="position:relative;z-index:10;margin:80px auto 0;max-width:1200px;">
+        <div class="orbit-wrap" id="orbit2" aria-live="polite" style="position:sticky;top:80px;">
+          <div class="ring" id="ring2">
+            <div class="ring-bg" id="ringBg2"></div>
+          </div>
+          <p class="hint">Content Sphere — Drag to rotate, click to expand</p>
+        </div>
+        <!-- Accessible Cards Display: show all cards below the wheel for quick access -->
+        <div id="accessibleCards" style="margin:40px auto 0;max-width:900px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;"></div>
+      </section>
 
-        // Show theme swapper on larger screens
-        window.addEventListener('resize', () => {
-            const themeSwapper = document.querySelector('.theme-swapper');
-            if (window.innerWidth > 768) {
-                themeSwapper.style.display = 'flex';
-            } else {
-                themeSwapper.style.display = 'none';
-            }
-        });
+  <!-- Removed Screenshots and Download Sections for cleaner layout -->
 
-        // Initial check
-        if (window.innerWidth > 768) {
-            document.querySelector('.theme-swapper').style.display = 'flex';
+  <section class="panel" id="panel-experiments" role="dialog" aria-modal="true" aria-labelledby="panel-experiments-title">
+    <header>
+      <h3 id="panel-experiments-title">Experiments</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red edge"><h4>Grid Glitch</h4><p>CSS-only aurora lighting with conic gradients.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Edge‑Aware Pixel Heli</h4><p>Tiny canvas toy that knows its bounds.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="CardCake"><h4>LLM Prompter</h4><p>In‑browser prompt macros & tokens playground.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-tools" role="dialog" aria-modal="true" aria-labelledby="panel-tools-title">
+    <header>
+      <h3 id="panel-tools-title">Tools</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red"><h4>Download</h4><p>Link your latest launcher build here.</p></article>
+        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Press Kit</h4><p>Logos, screenshots, and a one‑pager.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-contact" role="dialog" aria-modal="true" aria-labelledby="panel-contact-title">
+    <header>
+      <h3 id="panel-contact-title">Contact</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div class="grid">
+        <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red edge"><h4>Email</h4><p><a href="mailto:hello@jodylabs.dev">hello@jodylabs.dev</a></p></article>
+        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Twitter / X</h4><p><a href="#">@JodyLabs</a></p></article>
+        <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="CardCake"><h4>GitHub</h4><p><a href="https://github.com/passghost" target="_blank" rel="noopener">passghost</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">© <span id="year"></span> JodyLabs • Built with vanilla HTML/CSS/JS.
+  </footer>
+
+  <!-- Sidebar Navigation -->
+<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(135deg,#32CD32,#8A2BE2); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
+  <a href="../index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Old Site</a>
+</aside>
+
+  <script>
+  // SECOND SPHERE: Only icons and labels are shown in the orb, expanded card only for front-most
+  const contentNodes = [
+    {
+      label: 'Download',
+      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+      card: `<h2>Download Orbiq</h2><div class="card" style="max-width:420px;"><img src='https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png' alt='Installer'><h3>Windows Installer</h3><ul><li>Professional installation experience</li><li>Start Menu and Desktop shortcuts</li><li>Automatic uninstaller</li><li>Compact download size (0.8 MB)</li></ul><a class="cta" href='https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link' target='_blank'>Download Installer</a></div>`
+    },
+    {
+      label: 'System Requirements',
+      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+      card: `<h2>System Requirements</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;"><div class="card"><h3>Minimum Requirements</h3><ul><li>Windows 10 (64-bit)</li><li>2 GB RAM</li><li>200 MB free disk space</li><li>DirectX 11 compatible graphics</li></ul></div><div class="card"><h3>Recommended</h3><ul><li>Windows 11 (64-bit)</li><li>4 GB RAM or more</li><li>500 MB free disk space</li><li>Dedicated graphics card</li></ul></div></div>`
+    },
+    {
+      label: 'Orbiq Pro',
+      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+      card: `<h2>Want Even More Power?</h2><div class="card" style="max-width:420px;"><h3>Upgrade to Orbiq Pro</h3><p>Advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.</p><ul><li>🎯 Wheel Collections</li><li>⌨️ Custom Hotkeys</li><li>📍 Position Memory</li><li>🎨 Professional UI</li></ul><a class="cta" href='https://passghost.github.io/OrbiqWebsite/pro.html' target='_blank'>Discover Orbiq Pro - $20.00</a><p style="margin-top:8px;font-size:13px;color:var(--muted);">One-time purchase • Regular updates included • Professional support</p></div>`
+    },
+    {
+      label: 'Links',
+      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+      card: `<h2>Additional Links</h2><ul style="display:flex;flex-wrap:wrap;gap:18px;list-style:none;padding:0;margin:0;"><li><a href='https://passghost.github.io/OrbiqWebsite/#home' target='_blank'>Home</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#download' target='_blank'>Download</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#features' target='_blank'>Features</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#screenshots' target='_blank'>Screenshots</a></li><li><a href='https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD' target='_blank'>Support</a></li></ul>`
+    }
+  ];
+
+  const ring2 = document.getElementById('ring2');
+  const orbit2 = document.getElementById('orbit2');
+  const expandedCard = document.getElementById('expandedCard');
+  const TOTAL_CONTENT = contentNodes.length;
+  const contentPoints = [];
+  (function buildSphere2(){
+    const n = TOTAL_CONTENT;
+    for(let i=0;i<n;i++){
+      const k = i + 0.5;
+      const phi = Math.acos(1 - 2*k/n);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * k;
+      const x = Math.cos(theta) * Math.sin(phi);
+      const y = Math.cos(phi);
+      const z = Math.sin(theta) * Math.sin(phi);
+      contentPoints.push({x,y,z});
+    }
+  })();
+
+  let rotX2 = -0.3, rotY2 = 0, dragging2 = false, last2 = {x:0,y:0}, inertia2 = {x:0,y:0};
+
+  function rotateVec2(v){
+    const cosX = Math.cos(rotX2), sinX = Math.sin(rotX2);
+    const cosY = Math.cos(rotY2), sinY = Math.sin(rotY2);
+    let y = v.y * cosX - v.z * sinX;
+    let z = v.y * sinX + v.z * cosX;
+    let x = v.x * cosY + z * sinY;
+    z = -v.x * sinY + z * cosY;
+    return {x,y,z};
+  }
+
+  function positionNodes2(){
+    const children = Array.from(ring2.querySelectorAll('.node'));
+    // Place all nodes on the sphere using fibonacci sphere math
+    const bounds = orbit2.getBoundingClientRect();
+    const R = Math.min(bounds.width, bounds.height) * 0.38;
+    children.forEach((el, i) => {
+      // Use fibonacci sphere points for 3D effect
+      const v = rotateVec2(contentPoints[i]);
+      const x = v.x * R;
+      const y = v.y * R;
+      const z = v.z * R;
+      const scale = 0.65 + 0.35 * ((z + R) / (2 * R));
+      el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), ${z}px)`;
+      el.style.zIndex = 1000 + Math.round(z);
+      el.firstChild.style.transform = `scale(${scale.toFixed(3)})`;
+      el.style.opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
+    });
+    // Show all cards below the wheel for accessibility
+    const accessibleCards = document.getElementById('accessibleCards');
+    accessibleCards.innerHTML = contentNodes.map(node => `<div class='card'>${node.card}</div>`).join('');
+  }
+
+  // Add drag and inertia for bottom sphere
+  function onDown2(e){ dragging2=true; last2.x=e.clientX; last2.y=e.clientY; inertia2.x=0; inertia2.y=0; orbit2.setPointerCapture(e.pointerId);}
+  function onMove2(e){ if(!dragging2) return; const dx=e.clientX-last2.x, dy=e.clientY-last2.y; last2.x=e.clientX; last2.y=e.clientY; rotY2 += dx*0.008; rotX2 += dy*0.008; inertia2.x = dx*0.008; inertia2.y = dy*0.008; positionNodes2();}
+  function onUp2(e){ dragging2=false; orbit2.releasePointerCapture(e.pointerId); }
+
+  function animate2(){
+    rotX2 += (inertia2.y *= 0.94) * 0.3;
+    rotY2 += (inertia2.x *= 0.94) * 0.3;
+    positionNodes2();
+    requestAnimationFrame(animate2);
+  }
+
+  function buildRing2(){
+    ring2.innerHTML = '<div class="ring-bg" id="ringBg2"></div>';
+    for(let i=0;i<TOTAL_CONTENT;i++){
+      const el = document.createElement('div');
+      el.className = 'node';
+      el.setAttribute('data-index', i);
+      const btn = document.createElement('button');
+      btn.setAttribute('type','button');
+      btn.style.backgroundImage = `url(${contentNodes[i].icon})`;
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = contentNodes[i].label;
+      btn.appendChild(label);
+      el.appendChild(btn);
+      ring2.appendChild(el);
+    }
+    positionNodes2();
+  }
+
+  buildRing2();
+  animate2();
+  addEventListener('resize', ()=>{positionNodes2()});
+  orbit2.addEventListener('pointerdown', onDown2);
+  orbit2.addEventListener('pointermove', onMove2);
+  orbit2.addEventListener('pointerup', onUp2);
+  </script>
+
+  <script>
+  // ===== 1) LIVING BACKGROUND (particle flowfield) =====
+  const bg = document.getElementById('bg');
+  const g = bg.getContext('2d');
+  let W, H, dpr, particles, t = 0, mouse = {x:0,y:0, active:false};
+
+  function resize(){
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = bg.width = innerWidth * dpr;
+    H = bg.height = innerHeight * dpr;
+    bg.style.width = innerWidth + 'px';
+    bg.style.height = innerHeight + 'px';
+    initParticles();
+  }
+
+  function initParticles(){
+    const count = Math.floor((W*H) / (22000 * dpr));
+    particles = new Array(count).fill().map(()=>({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      v: 0,
+      a: 0,
+      s: 0.7 + Math.random()*1.1
+    }));
+  }
+
+  function noise(x,y){
+    return Math.sin(x*0.0009 + t*0.002) + Math.cos(y*0.0012 - t*0.002);
+  }
+
+  function tick(){
+    t+=1;
+    g.clearRect(0,0,W,H);
+
+    g.globalCompositeOperation = 'lighter';
+    for(const p of particles){
+      const n = noise(p.x, p.y);
+      const angle = n * Math.PI;
+      const force = 0.6;
+
+      p.a += (angle - p.a)*0.08;
+      p.v += force * 0.6;
+
+      if(mouse.active){
+        const dx = (mouse.x*dpr - p.x), dy = (mouse.y*dpr - p.y);
+        const d = Math.hypot(dx,dy) + 0.0001;
+        const pull = Math.min(1.5, 40/d);
+        p.x += dx * pull * 0.008;
+        p.y += dy * pull * 0.008;
+      }
+
+      p.x += Math.cos(p.a) * p.v * 0.08;
+      p.y += Math.sin(p.a) * p.v * 0.08;
+      p.v *= 0.92;
+
+      if(p.x<0) p.x+=W; if(p.x>W) p.x-=W; if(p.y<0) p.y+=H; if(p.y>H) p.y-=H;
+
+      g.beginPath();
+      g.arc(p.x, p.y, p.s, 0, Math.PI*2);
+      const grad = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, 16);
+      grad.addColorStop(0, 'rgba(255,26,26,.55)');
+      grad.addColorStop(1, 'rgba(255,26,26,0)');
+      g.fillStyle = grad;
+      g.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  addEventListener('resize', resize);
+  bg.addEventListener('pointermove', e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+  bg.addEventListener('pointerdown', ()=>mouse.active=true);
+  bg.addEventListener('pointerup', ()=>mouse.active=false);
+  resize(); tick();
+
+  // ===== 2) ICON SPHERE (DOUBLED ICON COUNT) =====
+  const ICON_URL_1 = 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png';
+  const ICON_URL_2 = 'https://passghost.github.io/OrbiqWebsite/Images/krakenicon2.png';
+
+  const ring = document.getElementById('ring');
+  const ringBg = document.getElementById('ringBg');
+  const orbit = document.getElementById('orbit');
+
+  const baseNodes = [
+    {label:'Projects', panel:'#panel-projects'},
+    {label:'Experiments', panel:'#panel-experiments'},
+    {label:'Tools', panel:'#panel-tools'},
+    {label:'Contact', panel:'#panel-contact'},
+  ];
+
+  const TOTAL_ICONS = 32; // doubled from 16 → 32
+  const nodes = [];
+  for(let i=0;i<TOTAL_ICONS;i++){
+    nodes.push({
+      ...baseNodes[i % baseNodes.length],
+      icon: i % 2 === 0 ? ICON_URL_1 : ICON_URL_2
+    });
+  }
+
+  // Build fibonacci sphere points
+  const points = [];
+  (function buildSphere(){
+    const n = TOTAL_ICONS;
+    for(let i=0;i<n;i++){
+      const k = i + 0.5;
+      const phi = Math.acos(1 - 2*k/n);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * k;
+      const x = Math.cos(theta) * Math.sin(phi);
+      const y = Math.cos(phi);
+      const z = Math.sin(theta) * Math.sin(phi);
+      points.push({x,y,z});
+    }
+  })();
+
+  let rotX = -0.3, rotY = 0; // free rotation
+  let dragging = false, last = {x:0,y:0}, inertia = {x:0,y:0};
+
+  // Floating mode variables
+  let floatMode = true;
+  let floatTimeout = null;
+  const floatStates = Array(TOTAL_ICONS).fill().map(() => ({
+    x: 0, y: 0, vx: 0, vy: 0, speed: 0, angle: 0
+  }));
+
+  function startFloatMode() {
+    floatMode = true;
+    // Randomize float states
+    const bounds = orbit.getBoundingClientRect();
+    const R = Math.min(bounds.width, bounds.height) * 0.42;
+    for (let i = 0; i < TOTAL_ICONS; i++) {
+      // Start near orb position
+      const v = rotateVec(points[i]);
+      floatStates[i].x = v.x * R;
+      floatStates[i].y = v.y * R;
+      floatStates[i].angle = Math.random() * Math.PI * 2;
+      floatStates[i].speed = 0.8 + Math.random() * 1.2;
+      floatStates[i].vx = Math.cos(floatStates[i].angle) * floatStates[i].speed;
+      floatStates[i].vy = Math.sin(floatStates[i].angle) * floatStates[i].speed;
+    }
+    positionNodes();
+  }
+
+  function stopFloatMode() {
+    floatMode = false;
+    positionNodes();
+  }
+
+  function scheduleFloatResume() {
+    if (floatTimeout) clearTimeout(floatTimeout);
+    floatTimeout = setTimeout(() => {
+      startFloatMode();
+    }, 5000);
+  }
+
+
+  // Animate icons back to orb positions with a visible transition
+  let snapAnimating = false;
+  function positionNodes(snapBack = false) {
+    const children = Array.from(ring.querySelectorAll('.node'));
+    const bounds = orbit.getBoundingClientRect();
+    const R = Math.min(bounds.width, bounds.height) * 0.42;
+
+    let hitIdx = -1, hitScore = 0;
+
+    children.forEach((el, i) => {
+      let x, y, z, scale, opacity, v;
+      if (floatMode) {
+        // Floating mode: update position
+        floatStates[i].x += floatStates[i].vx;
+        floatStates[i].y += floatStates[i].vy;
+        if (floatStates[i].x > R) floatStates[i].vx *= -1;
+        if (floatStates[i].x < -R) floatStates[i].vx *= -1;
+        if (floatStates[i].y > R) floatStates[i].vy *= -1;
+        if (floatStates[i].y < -R) floatStates[i].vy *= -1;
+        x = floatStates[i].x;
+        y = floatStates[i].y;
+        z = Math.sqrt(Math.max(0, R * R - x * x - y * y));
+        scale = 0.65 + 0.35 * ((z + R) / (2 * R));
+        opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
+        v = rotateVec(points[i]);
+      } else {
+        // Orb mode: regular sphere
+        v = rotateVec(points[i]);
+        x = v.x * R;
+        y = v.y * R;
+        z = v.z * R;
+        scale = 0.65 + 0.35 * ((z + R) / (2 * R));
+        opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
+        // Animate back to orb position (ease)
+        // Make snap-back faster for visible transition
+        const snapSpeed = snapBack ? 0.08 : 0.03;
+        floatStates[i].x += (x - floatStates[i].x) * snapSpeed;
+        floatStates[i].y += (y - floatStates[i].y) * snapSpeed;
+        x = floatStates[i].x;
+        y = floatStates[i].y;
+      }
+      el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), ${z}px)`;
+      el.style.zIndex = 1000 + Math.round(z);
+      el.firstChild.style.transform = `scale(${scale.toFixed(3)})`;
+      el.style.opacity = opacity;
+      el.firstChild.style.border = 'none';
+      el.firstChild.style.boxShadow = 'none';
+      el.firstChild.style.outline = 'none';
+
+      const rightness = Math.max(0, (v.x + 1) / 2);
+      const frontness = Math.max(0, (v.z + 1) / 2);
+      const s = Math.pow(rightness, 3) * frontness;
+      if (s > hitScore) { hitScore = s; hitIdx = i; }
+    });
+
+    children.forEach(c => c.classList.remove('hit'));
+    const bgEl = document.getElementById('ringBg');
+    bgEl.classList.remove('show');
+  }
+
+  // Animate snap-back after user interaction
+  function animateSnapBack() {
+    let snapFrames = 0;
+    snapAnimating = true;
+    function snapStep() {
+      positionNodes(true);
+      snapFrames++;
+      // Stop after ~30 frames (~0.5s at 60fps)
+      if (snapFrames < 30) {
+        requestAnimationFrame(snapStep);
+      } else {
+        snapAnimating = false;
+      }
+    }
+    snapStep();
+  }
+
+  function rotateVec(v){
+    // rotate around X then Y
+    const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+    const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+    let y = v.y * cosX - v.z * sinX;
+    let z = v.y * sinX + v.z * cosX;
+    let x = v.x * cosY + z * sinY;
+    z = -v.x * sinY + z * cosY;
+    return {x,y,z};
+  }
+
+  function onDown(e){ dragging=true; last.x=e.clientX; last.y=e.clientY; inertia.x=0; inertia.y=0; orbit.setPointerCapture(e.pointerId); }
+  function onMove(e){ if(!dragging) return; const dx=e.clientX-last.x, dy=e.clientY-last.y; last.x=e.clientX; last.y=e.clientY; rotY += dx*0.008; rotX += dy*0.008; inertia.x = dx*0.008; inertia.y = dy*0.008; positionNodes(); }
+  function onUp(e){ dragging=false; orbit.releasePointerCapture(e.pointerId); }
+
+  function animate(){
+    if(!floatMode){
+      rotX += (inertia.y *= 0.94) * 0.3;
+      rotY += (inertia.x *= 0.94) * 0.3;
+    }
+    // Flex/rotate the GIF background with the orb
+    if (ringBg) {
+      // Use a subtle scale and rotation based on rotX/rotY
+      const scale = 1 + Math.sin(rotY) * 0.07 + Math.cos(rotX) * 0.07;
+      const rotate = rotY * 18;
+      ringBg.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+    }
+    positionNodes();
+    // Draw particle system lines from home to floating position, behind icons
+    // Always draw trails with a flexing joint
+    g.save();
+    g.setTransform(1,0,0,1,0,0);
+    g.globalAlpha = 0.45;
+    const bounds = orbit.getBoundingClientRect();
+    const orbCenterX = (bounds.left + bounds.width/2) * dpr;
+    const orbCenterY = (bounds.top + bounds.height/2) * dpr;
+    const R = Math.min(bounds.width, bounds.height) * 0.42 * dpr;
+    for (let i = 0; i < TOTAL_ICONS; i++) {
+      // Home position (on sphere)
+      const v = rotateVec(points[i]);
+      const hx = orbCenterX + v.x * R;
+      const hy = orbCenterY + v.y * R;
+      // Current floating position
+      const fx = orbCenterX + floatStates[i].x * dpr;
+      const fy = orbCenterY + floatStates[i].y * dpr;
+      // Only draw trail if icon is not at home position
+      const dist = Math.hypot(fx - hx, fy - hy);
+      if (dist > 2 * dpr) {
+        // Joint position: 40% along the line, flexed by a sine offset
+        const t = 0.4;
+        const jx = hx + (fx - hx) * t;
+        const jy = hy + (fy - hy) * t;
+        // Flex offset (per icon, animated)
+        const flexMag = 32 * dpr;
+        const flexAngle = Math.atan2(fy - hy, fx - hx) + Math.sin(Date.now()/400 + i) * 0.7;
+        const jxFlex = jx + Math.cos(flexAngle + Math.PI/2) * flexMag;
+        const jyFlex = jy + Math.sin(flexAngle + Math.PI/2) * flexMag;
+        // Draw trail: home -> joint -> floating
+        g.beginPath();
+        g.moveTo(hx, hy);
+        g.lineTo(jxFlex, jyFlex);
+        g.lineTo(fx, fy);
+        // Neon gradient for elbow trails
+        const grad = g.createLinearGradient(hx, hy, fx, fy);
+        grad.addColorStop(0, '#00fff7'); // neon cyan
+        grad.addColorStop(0.5, '#6C63FF'); // neon indigo
+        grad.addColorStop(1, '#48ff00'); // neon green
+        g.strokeStyle = grad;
+        g.lineWidth = 7;
+        g.shadowColor = '#00fff7';
+        g.shadowBlur = 32;
+        g.stroke();
+        // Draw a bright neon elbow particle (no blur)
+        g.save();
+        g.globalAlpha = 0.95;
+        g.beginPath();
+        g.arc(jxFlex, jyFlex, 13 * dpr, 0, Math.PI*2);
+        const elbowGrad = g.createRadialGradient(jxFlex, jyFlex, 0, jxFlex, jyFlex, 13 * dpr);
+        elbowGrad.addColorStop(0, '#00fff7');
+        elbowGrad.addColorStop(0.5, '#6C63FF');
+        elbowGrad.addColorStop(1, 'rgba(0,255,247,0)');
+        g.fillStyle = elbowGrad;
+        g.shadowColor = 'transparent';
+        g.shadowBlur = 0;
+        g.fill();
+        g.restore();
+        // Draw icon at joint, scale and blur based on size
+        const iconImg = new Image();
+        iconImg.src = nodes[i].icon;
+        // Calculate scale based on z (depth)
+        let iconScale = 0.65 + 0.35 * ((v.z + R) / (2 * R));
+        let iconSize = 18 * dpr * iconScale;
+        // Blur: max blur at smallest, none at largest
+        let blurAmount = Math.max(0, 16 * (1 - iconScale));
+        g.save();
+        g.globalAlpha = 0.35;
+        if (blurAmount > 0) {
+          g.filter = `blur(${blurAmount}px)`;
+        } else {
+          g.filter = 'none';
         }
+        g.drawImage(iconImg, jxFlex - iconSize/2, jyFlex - iconSize/2, iconSize, iconSize);
+        g.filter = 'none';
+        g.restore();
+      }
+    }
+    g.restore();
+    requestAnimationFrame(animate);
+  }
 
-        const easterEggWords = [
-            "Color", "can't", "give", "diseases", "but", "I'm", "sorry", "it", "gave", "your", "brain", "cancer", "anyway", "here", "now", "you", "can", "make", "this", "easter", "egg", "last", "forever", "take", "a", "picture", "of", "that", "constipated", "face", "https://passghost.github.io/jodylabs/PhotoBooth/Photobooth.html"
-        ];
-        let currentWordIndex = 0;
+  function buildRing(){
+    ring.innerHTML = '<div class="ring-bg" id="ringBg"></div>';
+    for(let i=0;i<TOTAL_ICONS;i++){
+      const el = document.createElement('div');
+      el.className = 'node';
+      el.setAttribute('data-index', i);
 
-        function setTheme(theme) {
-            const root = document.documentElement;
-            const message = document.getElementById('easter-egg-message');
+      const btn = document.createElement('button');
+      btn.setAttribute('type','button');
+      btn.style.backgroundImage = `url(${nodes[i].icon})`;
+      // Remove label creation for first orb
+      // const label = document.createElement('span');
+      // label.className = 'label';
+      // label.textContent = nodes[i].label;
+      // btn.appendChild(label);
+      btn.addEventListener('click', ()=>openPanel(nodes[i].panel, el));
 
-            if (theme === 'black-gray') {
-                // Black on Gray theme - complete site transformation
-                root.style.setProperty('--primary-blue', '#000000');
-                root.style.setProperty('--primary-blue-hover', '#1a1a1a');
-                root.style.setProperty('--secondary-teal', '#808080');
-                root.style.setProperty('--accent-orange', '#606060');
-                root.style.setProperty('--accent-orange-hover', '#404040');
-                root.style.setProperty('--dark-bg', '#2a2a2a');
-                root.style.setProperty('--darker-bg', '#1a1a1a');
-                root.style.setProperty('--card-bg', '#404040');
-                root.style.setProperty('--card-hover', '#505050');
-                root.style.setProperty('--text-primary', '#ffffff');
-                root.style.setProperty('--text-secondary', '#d0d0d0');
-                root.style.setProperty('--text-muted', '#a0a0a0');
-                root.style.setProperty('--border-color', '#606060');
-                root.style.setProperty('--success', '#000000');
-                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #000000 0%, #404040 100%)');
-                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)');
-                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #404040 0%, #606060 100%)');
-                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #000000 0%, #2a2a2a 50%, #404040 100%)');
-            } else if (theme === 'crimson') {
-                // Subtle Crimson theme - complete site transformation
-                root.style.setProperty('--primary-blue', '#8b1538');
-                root.style.setProperty('--primary-blue-hover', '#6b0f2a');
-                root.style.setProperty('--secondary-teal', '#d2b4a8');
-                root.style.setProperty('--accent-orange', '#b8314f');
-                root.style.setProperty('--accent-orange-hover', '#9e2943');
-                root.style.setProperty('--dark-bg', '#2a1419');
-                root.style.setProperty('--darker-bg', '#1a0d11');
-                root.style.setProperty('--card-bg', '#3d1f26');
-                root.style.setProperty('--card-hover', '#4d2731');
-                root.style.setProperty('--text-primary', '#f5e6e8');
-                root.style.setProperty('--text-secondary', '#d2b4a8');
-                root.style.setProperty('--text-muted', '#a68b8b');
-                root.style.setProperty('--border-color', '#6b3344');
-                root.style.setProperty('--success', '#8b1538');
-                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #8b1538 0%, #6b0f2a 100%)');
-                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #b8314f 0%, #9e2943 100%)');
-                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #6b3344 0%, #8b1538 100%)');
-                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #8b1538 0%, #3d1f26 50%, #2a1419 100%)');
-            } else if (theme === 'ocean') {
-                // Ocean Blue theme - complete site transformation
-                root.style.setProperty('--primary-blue', '#0077be');
-                root.style.setProperty('--primary-blue-hover', '#005a8b');
-                root.style.setProperty('--secondary-teal', '#00b4d8');
-                root.style.setProperty('--accent-orange', '#0096c7');
-                root.style.setProperty('--dark-bg', '#001d3d');
-                root.style.setProperty('--card-bg', '#003566');
-                root.style.setProperty('--text-primary', '#caf0f8');
-                root.style.setProperty('--text-secondary', '#90e0ef');
-                root.style.setProperty('--border-color', '#0077be');
-                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #0077be 0%, #005a8b 100%)');
-                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #00b4d8 0%, #0096c7 100%)');
-                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #003566 0%, #001d3d 100%)');
-                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #0077be 0%, #003566 50%, #001d3d 100%)');
-            } else if (theme === 'midnight') {
-                // Midnight Purple theme - complete site transformation
-                root.style.setProperty('--primary-blue', '#4b0082');
-                root.style.setProperty('--primary-blue-hover', '#36006b');
-                root.style.setProperty('--secondary-teal', '#8a2be2');
-                root.style.setProperty('--accent-orange', '#9370db');
-                root.style.setProperty('--dark-bg', '#1a0033');
-                root.style.setProperty('--card-bg', '#2d0066');
-                root.style.setProperty('--text-primary', '#e6ccff');
-                root.style.setProperty('--text-secondary', '#cc99ff');
-                root.style.setProperty('--border-color', '#8a2be2');
-                root.style.setProperty('--gradient-1', 'linear-gradient(135deg, #4b0082 0%, #36006b 100%)');
-                root.style.setProperty('--gradient-2', 'linear-gradient(135deg, #8a2be2 0%, #9370db 100%)');
-                root.style.setProperty('--gradient-3', 'linear-gradient(135deg, #2d0066 0%, #1a0033 100%)');
-                root.style.setProperty('--gradient-hero', 'linear-gradient(135deg, #4b0082 0%, #2d0066 50%, #1a0033 100%)');
-            } else if (theme === 'default') {
-                // Reset to default theme (Orbiq)
-                root.style = null;
-                // Optionally, reset title color and shadow
-                const title = document.querySelector('.header h1');
-                title.style.color = '';
-                title.style.textShadow = '';
-            }
+      el.appendChild(btn);
+      ring.appendChild(el);
+    }
+    positionNodes();
+  }
 
-            // Update title colors dynamically
-            const title = document.querySelector('.header h1');
-            if (theme === 'ocean') {
-                title.style.color = '#00b4d8';
-                title.style.textShadow = '2px 2px 5px rgba(0, 180, 216, 0.5)';
-            } else if (theme === 'midnight') {
-                title.style.color = '#8a2be2';
-                title.style.textShadow = '2px 2px 5px rgba(138, 43, 226, 0.5)';
-            } else if (theme === 'default') {
-                title.style.color = '';
-                title.style.textShadow = '';
-            }
+  buildRing();
+  startFloatMode();
+  animate();
+  addEventListener('resize', ()=>{positionNodes()});
 
-            // Easter egg message logic
-            const currentWord = easterEggWords[currentWordIndex];
-            if (currentWord.startsWith('https://')) {
-                // Create a clickable link for URLs
-                message.innerHTML = `<a href="${currentWord}" target="_blank" style="color: var(--text-muted); text-decoration: underline;">${currentWord}</a>`;
-            } else {
-                message.textContent = currentWord;
-            }
-            currentWordIndex = (currentWordIndex + 1) % easterEggWords.length;
-        }
-    </script>
+
+  function triggerSnapBack() {
+    stopFloatMode();
+    scheduleFloatResume();
+    if (!snapAnimating) animateSnapBack();
+  }
+
+  orbit.addEventListener('pointerdown', e => {
+    triggerSnapBack();
+    onDown(e);
+  });
+  orbit.addEventListener('pointermove', e => {
+    triggerSnapBack();
+    onMove(e);
+  });
+  orbit.addEventListener('pointerup', e => {
+    triggerSnapBack();
+    onUp(e);
+  });
+
+
+  addEventListener('keydown', (e) => {
+    triggerSnapBack();
+    if (e.key === 'ArrowRight') { rotY += 0.2; }
+    else if (e.key === 'ArrowLeft') { rotY -= 0.2; }
+    else if (e.key === 'ArrowUp') { rotX -= 0.2; }
+    else if (e.key === 'ArrowDown') { rotX += 0.2; }
+    else if (e.key === 'Escape') { closeAllPanels(); }
+    positionNodes();
+  });
+
+  // Resume float mode after 15s of no mouse movement
+  let lastMouseMove = Date.now();
+
+  function onUserInput() {
+    triggerSnapBack();
+    lastMouseMove = Date.now();
+  }
+  document.addEventListener('mousemove', onUserInput);
+  document.addEventListener('mousedown', onUserInput);
+  document.addEventListener('touchstart', onUserInput);
+  document.addEventListener('pointermove', onUserInput);
+
+  // ===== 3) PANELS =====
+  const panels = document.querySelectorAll('.panel');
+
+  function openPanel(selector, anchor){
+    const p = document.querySelector(selector);
+    const rect = anchor.getBoundingClientRect();
+    p.style.setProperty('--x', ((rect.left + rect.width/2) / innerWidth * 100).toFixed(2) + '%');
+    p.style.setProperty('--y', ((rect.top + rect.height/2) / innerHeight * 100).toFixed(2) + '%');
+    p.classList.add('open');
+  }
+  function closeAllPanels(){ panels.forEach(p=>p.classList.remove('open')); }
+  document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeAllPanels));
+  document.getElementById('contactOpen').addEventListener('click', ()=>openPanel('#panel-contact', document.querySelector('.cta')));
+
+  // ===== 4) Misc =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <a class="orbiq-tag" href="https://passghost.github.io/OrbiqWebsite/" target="_blank" rel="noopener">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:4px"><circle cx="11" cy="11" r="10" fill="#aeeaff"/><text x="11" y="16" text-anchor="middle" font-size="12" fill="#1e223c" font-family="Arial, sans-serif">OQ</text></svg>
+    Orbiq Website
+  </a>
 </body>
-
 </html>

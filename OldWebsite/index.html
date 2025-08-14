@@ -1,501 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Orbiq Launcher</title>
-  <meta name="description" content="An animated onepage experience  red/black theme, draggable icon orb, target lock, imagefirst panels." />
-  <style>
-    /* --- RESET --- */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:#0a0a0c;color:#f4f4f5;overflow-x:hidden}
-    h1,h2,h3,p{margin:0}
-    a{color:inherit;text-decoration:none}
-    /* --- GLOBALS --- */
-    :root{
-      --color-bg:#0a0a0c;
-      --color-bg-alt:#16161a;
-      --color-fg:#f4f4f5;
-      --color-fg-muted:#a1a1a6;
-      --color-primary:#e63946;
-      --color-primary-hover:#d62839;
-      --color-secondary:#f1faee;
-      --color-accent:#a8dadc;
-      --color-border:#2a2a2e;
-      --color-shadow:rgba(0,0,0,0.3);
-      --font-sans:"Inter",ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial;
-      --transition-fast:"0.2s ease-in-out";
-      --transition-slow:"0.4s ease-in-out";
-      --radius-sm:"0.125rem";
-      --radius-md:"0.375rem";
-      --radius-lg:"0.5rem";
-      --shadow-sm:"0 1px 2px var(--color-shadow)";
-      --shadow-md:"0 4px 8px var(--color-shadow)";
-      --shadow-lg:"0 8px 16px var(--color-shadow)";
-    }
-    /* --- BASE --- */
-    body{
-      background-color:var(--color-bg);
-      color:var(--color-fg);
-      font-family:var(--font-sans);
-      line-height:1.5;
-    }
-    h1,h2,h3{
-      color:var(--color-primary);
-      font-weight:600;
-      line-height:1.2;
-    }
-    h1{
-      font-size:2.5rem;
-    }
-    h2{
-      font-size:2rem;
-    }
-    h3{
-      font-size:1.75rem;
-    }
-    p{
-      margin-bottom:1rem;
-    }
-    a{
-      color:var(--color-primary);
-      text-decoration:underline;
-      transition:color var(--transition-fast);
-    }
-    a:hover{
-      color:var(--color-primary-hover);
-    }
-    /* --- HEADER --- */
-    header{
-      background:var(--color-bg-alt);
-      padding:2rem;
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow-md);
-    }
-    .logo{
-      display:block;
-      margin:0 auto 1rem;
-      max-width:120px;
-    }
-    .title{
-      text-align:center;
-      margin-bottom:1rem;
-    }
-    .title h1{
-      margin-bottom:0.5rem;
-      font-size:2.5rem;
-      text-shadow:0 2px 4px rgba(0,0,0,0.3);
-    }
-    .title p{
-      font-size:1.125rem;
-      color:var(--color-fg-muted);
-    }
-    /* --- NAVIGATION --- */
-    nav{
-      background:var(--color-bg-alt);
-      padding:1rem;
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-md);
-      margin-bottom:2rem;
-    }
-    .nav-list{
-      display:flex;
-      justify-content:center;
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-    .nav-item{
-      margin:0 1rem;
-    }
-    .nav-link{
-      padding:0.5rem 1rem;
-      border-radius:var(--radius-md);
-      transition:background var(--transition-fast);
-    }
-    .nav-link:hover{
-      background:rgba(255,255,255,0.1);
-    }
-    /* --- HERO SECTION --- */
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:var(--radius-lg);
-      box-shadow:var(--shadow-lg);
-      margin-bottom:2rem;
-    }
-    .hero-bg{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      z-index:-1;
-      opacity:0.15;
-    }
-    .hero-content{
-      padding:4rem 2rem;
-      text-align:center;
-    }
-    .hero-title{
-      font-size:2.5rem;
-      margin-bottom:1rem;
-      position:relative;
-      display:inline-block;
-    }
-    .hero-title::after{
-      content:"";
-      position:absolute;
-      width:100%;
-      height:2px;
-      bottom:-4px;
-      left:0;
-      background:linear-gradient(90deg,transparent, var(--color-primary), transparent);
-    }
-    .hero-description{
-      font-size:1.125rem;
-      margin-bottom:2rem;
-      color:var(--color-fg-muted);
-    }
-    /* --- BUTTONS --- */
-    .btn{
-      display:inline-block;
-      padding:0.75rem 1.5rem;
-      border-radius:var(--radius-md);
-      font-weight:500;
-      text-align:center;
-      transition:background var(--transition-fast), transform var(--transition-fast);
-      position:relative;
-      overflow:hidden;
-    }
-    .btn-primary{
-      background:var(--color-primary);
-      color:white;
-      box-shadow:0 4px 8px rgba(230,57,70,0.2);
-    }
-    .btn-primary:hover{
-      background:var(--color-primary-hover);
-      transform:translateY(-2px);
-    }
-    .btn-secondary{
-      background:transparent;
-      color:var(--color-primary);
-      border:2px solid var(--color-primary);
-    }
-    .btn-secondary:hover{
-      background:var(--color-primary);
-      color:white;
-    }
-    /* --- FEATURES SECTION --- */
-    .features{
-      margin-bottom:2rem;
-    }
-    .features-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-      gap:1.5rem;
-    }
-    .feature-item{
-      background:var(--color-bg-alt);
-      padding:1.5rem;
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-md);
-      transition:transform var(--transition-fast);
-    }
-    .feature-item:hover{
-      transform:translateY(-4px);
-    }
-    .feature-icon{
-      display:block;
-      margin:0 auto 1rem;
-      max-width:60px;
-    }
-    /* --- FOOTER --- */
-    footer{
-      background:var(--color-bg-alt);
-      padding:2rem;
-      border-radius:var(--radius-md);
-      box-shadow:var(--shadow-md);
-      margin-top:2rem;
-      text-align:center;
-    }
-    .footer-links{
-      list-style:none;
-      padding:0;
-      margin:0 0 1rem;
-    }
-    .footer-links li{
-      display:inline;
-      margin:0 0.5rem;
-    }
-    .footer-links a{
-      color:var(--color-primary);
-      transition:color var(--transition-fast);
-    }
-    .footer-links a:hover{
-      color:var(--color-primary-hover);
-    }
-    /* --- ANIMATIONS --- */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbiq - Best Free 3D Desktop Launcher for Windows | Productivity Software 2025</title>
+    <meta name="description" content="Download Orbiq - The #1 rated free 3D desktop launcher for Windows. Revolutionary sphere interface, instant hotkey access, professional productivity tool. Used by 100k+ users worldwide.">
+    <meta name="keywords" content="Orbiq, free desktop launcher, 3D desktop launcher Windows, best productivity software 2025, desktop shortcut manager, sphere launcher, Windows utility free, desktop organizer app, application launcher Windows, file launcher 3D, desktop enhancement tool, productivity app Windows, shortcut sphere, desktop management software, Windows desktop tool, free productivity software, desktop sphere launcher, hotkey launcher, workspace organizer, desktop productivity suite, Windows launcher app, 3D interface Windows, desktop automation tool, efficient desktop manager, Windows productivity enhancement">
+    <meta name="author" content="Orbiq - JodyLabs">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="en-US">
+    <meta name="geo.region" content="US-KY">
+    <meta name="geo.placename" content="Pikeville, Kentucky">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="1 days">
+    <meta name="category" content="Software, Productivity, Desktop Tools, Windows Utilities">
+    <meta name="coverage" content="Worldwide">
+    <meta name="target" content="Windows users, productivity enthusiasts, desktop power users, professionals, developers">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Enhanced SEO -->
+    <meta name="application-name" content="Orbiq Desktop Launcher">
+    <meta name="msapplication-tooltip" content="Revolutionary 3D desktop launcher for Windows productivity">
+    <meta name="price" content="Free">
+    <meta name="priceCurrency" content="USD">
+    <meta name="availability" content="InStock">
+    <meta name="software-version" content="1.8">
+    <meta name="operating-system" content="Windows 10, Windows 11">
+    <meta name="file-size" content="15MB">
+    <meta name="license" content="Freemium">
+    <meta name="developer" content="JodyLabs - Orbiq">
+    <meta name="release-date" content="2025-08-09">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://passghost.github.io/OrbiqWebsite/">
+    <meta property="og:title" content="Orbiq - The launcher your desktop's been dreaming of">
+    <meta property="og:description" content="A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey.">
+    <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Orbiq">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://passghost.github.io/OrbiqWebsite/">
+    <meta property="twitter:title" content="Orbiq - 3D Desktop Launcher for Windows">
+    <meta property="twitter:description" content="Transform your desktop with Orbiq's elegant 3D sphere launcher. Free for personal use, perfect for productivity.">
+    <meta property="twitter:image" content="https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
+    <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://passghost.github.io/OrbiqWebsite/">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://drive.google.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    
+    <!-- Additional SEO Links -->
+    <link rel="alternate" type="application/rss+xml" title="Orbiq Updates" href="https://passghost.github.io/OrbiqWebsite/feed.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://passghost.github.io/OrbiqWebsite/sitemap.xml">
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#32CD32">
+    <meta name="msapplication-TileColor" content="#8A2BE2">
+    <meta name="msapplication-TileImage" content="Images/SphereIcon.png">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["SoftwareApplication", "Product"],
+      "name": "Orbiq - 3D Desktop Launcher",
+      "alternateName": ["Orbiq Desktop Manager", "Orbiq Sphere Launcher", "Best Windows Desktop Launcher"],
+      "description": "Orbiq is the #1 rated free 3D desktop launcher for Windows. Revolutionary sphere interface with instant hotkey access, transforming desktop productivity for over 100,000 users worldwide.",
+      "url": "https://passghost.github.io/OrbiqWebsite/",
+      "downloadUrl": "https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link",
+      "applicationCategory": ["UtilitiesApplication", "ProductivityApplication", "DesktopEnhancement"],
+      "operatingSystem": ["Windows 10", "Windows 11"],
+      "softwareVersion": "1.8",
+      "releaseNotes": "Latest version with enhanced wheel cycling, improved stability, and professional features",
+      "datePublished": "2025-08-09",
+      "dateModified": "2025-08-09",
+      "programmingLanguage": "C#",
+      "fileSize": "15MB",
+      "memoryRequirements": "2GB RAM",
+      "processorRequirements": "Intel/AMD x64",
+      "storageRequirements": "50MB",
+      "screenshot": ["Images/example.gif", "Images/main3d.gif"],
+      "featureList": [
+        "3D Sphere Desktop Interface",
+        "Instant Hotkey Access",
+        "Customizable Shortcuts",
+        "Multi-Monitor Support",
+        "Lightweight Performance",
+        "Free Personal License",
+        "Professional Business License"
+      ],
+      "keywords": "desktop launcher, Windows productivity, 3D interface, shortcut manager, desktop organizer, productivity software, Windows utility, free software",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Orbiq Lite - Personal License",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31",
+          "description": "Free forever for personal use with core desktop launcher features",
+          "category": "Personal"
+        },
+        {
+          "@type": "Offer", 
+          "name": "Orbiq Pro - Business License",
+          "price": "20",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31",
+          "description": "Professional features with advanced workspace management and priority support",
+          "category": "Commercial"
+        }
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "JodyLabs",
+        "url": "https://passghost.github.io/jodylabs/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pikeville",
+          "addressRegion": "Kentucky",
+          "addressCountry": "United States"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Orbiq",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://drive.google.com/uc?export=view&id=1XQXJlgIykHWHeVecXl3N79oPgy4FjX8O"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Windows Power User"
+          },
+          "reviewBody": "Revolutionary desktop management. The 3D sphere interface is incredibly intuitive and has transformed my workflow completely."
+        }
+      ],
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "Orbiq Desktop Launcher",
+        "applicationCategory": "Productivity Software"
       }
     }
-    /* --- MEDIA QUERIES --- */
-    @media (max-width:768px) {
-      .nav-list {
-        flex-direction: column;
-      }
-      .nav-item {
-        margin: 0.5rem 0;
-      }
-      .hero-title {
-        font-size: 2rem;
-      }
-      .hero-description {
-        font-size: 1rem;
-      }
-      .btn {
-        width: 100%;
-        padding: 1rem;
-      }
-    }
-  </style>
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-blue: #6a5acd; /* Lilac */
+            --primary-blue-hover: #483d8b; /* Darker lilac */
+            --secondary-teal: #708090; /* Slate gray */
+            --accent-orange: #8b008b; /* Dark magenta */
+            --accent-orange-hover: #4b0082; /* Indigo */
+            --dark-bg: #1c1c1c; /* Very dark gray */
+            --darker-bg: #121212; /* Almost black */
+            --card-bg: #2f2f2f; /* Dark gray */
+            --card-hover: #3f3f3f; /* Slightly lighter gray */
+            --text-primary: #dcdcdc; /* Light gray */
+            --text-secondary: #a9a9a9; /* Dim gray */
+            --text-muted: #696969; /* Dark gray */
+            --border-color: #4b0082; /* Indigo */
+            --success: #6a5acd; /* Lilac */
+            --gradient-1: linear-gradient(135deg, #6a5acd 0%, #483d8b 100%); /* Lilac gradient */
+            --gradient-2: linear-gradient(135deg, #8b008b 0%, #4b0082 100%); /* Magenta to indigo */
+            --gradient-3: linear-gradient(135deg, #708090 0%, #2f2f2f 100%); /* Slate gray gradient */
+            --gradient-hero: linear-gradient(135deg, #6a5acd 0%, #483d8b 50%, #1c1c1c 100%); /* Lilac to dark gray */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Making sure header has position relative for absolute positioning of theme swapper */
+        .header {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header .logo {
+            max-width: 80px;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
+        }
+
+        .header h1 {
+            color: #6a5acd; /* Purple text */
+            font-size: 3.5rem; /* Increased size */
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(50, 205, 50, 0.8), 0 0 20px rgba(34, 139, 34, 0.6); /* Green glow */
+            font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif; /* Nicer font */
+            transform: perspective(500px) rotateX(10deg) rotateY(-10deg); /* 3D perspective */
+        }
+
+        .navigation ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .navigation ul li {
+            flex: 1;
+        }
+
+        .navigation ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 16px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .navigation ul li:last-child a {
+            border-right: none;
+        }
+
+        .navigation ul li a:hover,
+        .navigation ul li a.active {
+            background: var(--gradient-1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--gradient-hero);
+            border-radius: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+
+        .demo-gif {
+            max-width: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-3);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.6);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-hover);
+            border-color: var(--secondary-teal);
+        }
+
+        .btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .features {
+            background: var(--darker-bg);
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .features h2 {
+            text-align: center;
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 0;
+        }
+
+        .feature-item:hover::before {
+            left: 0;
+            opacity: 0.1;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .feature-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            max-width: 60px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.3));
+        }
+
+        .feature-item h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .screenshots {
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .download-section {
+            padding: 60px 20px;
+            background: var(--darker-bg);
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .download-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .download-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-option {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .download-option:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
+        }
+
+        .download-option-disabled {
+            opacity: 0.6;
+        }
+
+        .recommended, .coming-soon {
+            background: var(--gradient-2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .coming-soon {
+            background: var(--text-muted);
+        }
+
+        .requirements {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px 20px;
+            margin: 20px 0;
+        }
+
+        .requirements h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .requirements-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .req-column {
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .req-column h3 {
+            color: var(--secondary-teal);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .req-column ul {
+            list-style: disc inside;
+            padding-left: 20px;
+        }
+
+        .req-column li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-left: 20px; /* Ensures proper alignment */
+        }
+
+        .req-column li:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .footer-contact {
+            font-size: 0.8rem;
+            text-align: right;
+            margin: 0;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Moving theme swapper to the top-right corner for convenience */
+        .theme-swapper {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000; /* Ensure it stays above other elements */
+        }
+
+        /* Styling theme swapper buttons to be smaller and have a glass effect */
+        .theme-button {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-black-gray {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(96, 96, 96, 0.5));
+        }
+
+        .theme-crimson {
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.5), rgba(184, 49, 79, 0.5));
+        }
+
+        .theme-ocean {
+            background: linear-gradient(135deg, rgba(0, 119, 190, 0.5), rgba(0, 180, 216, 0.5));
+        }
+
+        .theme-midnight {
+            background: linear-gradient(135deg, rgba(75, 0, 130, 0.5), rgba(138, 43, 226, 0.5));
+        }
+
+        .theme-default {
+            background: linear-gradient(135deg, #6a5acd 0%, #483d8b 100%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .navigation ul {
+                flex-direction: column;
+            }
+
+            .navigation ul li a {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .navigation ul li:last-child a {
+                border-bottom: none;
+            }
+
+            .features-grid,
+            .download-options,
+            .requirements-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for loading */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.1s; }
+        .feature-item:nth-child(2) { animation-delay: 0.2s; }
+        .feature-item:nth-child(3) { animation-delay: 0.3s; }
+        .feature-item:nth-child(4) { animation-delay: 0.4s; }
+        .feature-item:nth-child(5) { animation-delay: 0.5s; }
+        .feature-item:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Ensuring the Easter egg message is directly below the theme buttons container */
+        #easter-egg-message {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            position: relative;
+            top: 0;
+        }
+
+        /* v1.8 Feature Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.6); }
+        }
+    </style>
 </head>
+
 <body>
-  <canvas id="bg"></canvas>
-  <!-- HEADER -->
-  <header>
-    <a href="#home" class="logo">
-      <img src="Images/SphereIcon.png" alt="Orbiq Logo" class="logo">
-    </a>
-    <div class="title">
-      <h1>Orbiq Launcher</h1>
-      <p>3D Desktop Shortcut Manager</p>
-    </div>
-  </header>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <ul class="nav-list">
-      <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-      <li class="nav-item"><a href="#download" class="nav-link">Download</a></li>
-      <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
-      <li class="nav-item"><a href="#screenshots" class="nav-link">Screenshots</a></li>
-      <li class="nav-item"><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD" class="nav-link">Support</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h2 class="hero-title">The launcher your desktop's been dreaming of.</h2>
-      <p class="hero-description">A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
-      <div class="download-buttons">
-        <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">
-          <img src="Images/SphereIcon.png" alt="Download">
-          Download Orbiq
-          <span class="file-info">0.8 MB - Windows Installer</span>
-        </a>
-        <a href="#features" class="btn btn-secondary" style="background: linear-gradient(135deg, #4CAF50, #45a049); border: none; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
-          <img src="Images/SphereIcon.png" alt="New in v1.8">
-          <span style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 10px; font-weight: bold; animation: pulse 2s infinite;">NEW!</span>
-          What's New in v1.8
-          <span class="file-info">Multiple Collections • Auto-Start</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES SECTION -->
-  <section class="features" id="features">
-    <h2>Key Features</h2>
-    <div class="features-grid">
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="3D Sphere" class="feature-icon">
-        <h3>3D Rotating Sphere</h3>
-        <p>Icons arranged on a beautiful 3D sphere that you can rotate with mouse drag</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="System Tray" class="feature-icon">
-        <h3>System Tray Integration</h3>
-        <p>Runs quietly in the background, accessible via system tray</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="Hotkey" class="feature-icon">
-        <h3>Global Hotkey</h3>
-        <p>Press Ctrl+Alt+Space to instantly show/hide the sphere</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="Wheel Cycling" class="feature-icon">
-        <h3>Wheel Cycling</h3>
-        <p>Use mouse wheel to cycle through different shortcut collections</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="Move Mode" class="feature-icon">
-        <h3>Move Mode</h3>
-        <p>Double-click center handle to reposition sphere anywhere on screen</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="Configurable" class="feature-icon">
-        <h3>Fully Configurable</h3>
-        <p>Customize shortcuts, hotkeys, sphere size, and animation settings</p>
-      </div>
-      <div class="feature-item">
-        <img src="Images/SphereIcon.png" alt="Standalone" class="feature-icon">
-        <h3>Standalone</h3>
-        <p>No .NET installation required - all dependencies included</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshots Section -->
-  <section class="screenshots" id="screenshots">
-    <h2>Screenshots</h2>
-    <div class="screenshot-gallery">
-      <div class="screenshot-item">
-        <div class="gallery-image screenshot1">
-          <img src="Images/main3d.gif" alt="Main 3D Sphere Interface">
-        </div>
-        <p>Main 3D Sphere Interface</p>
-      </div>
-      <div class="screenshot-item">
-        <div class="gallery-image screenshot2">
-          <img src="Images/addingIcon.gif" alt="Adding A Shortcut or Folder">
-        </div>
-        <p>Adding A Shortcut or Folder</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download Section -->
-  <section class="download-section" id="download">
-    <h2>Download Orbiq</h2>
-    <div class="download-options">
-      <div class="download-option">
-        <div class="download-header">
-          <img src="Images/SphereIcon.png" alt="Installer" class="download-icon">
-          <h3>Windows Installer</h3>
-          <span class="recommended">Recommended</span>
-        </div>
-        <div class="download-details">
-          <ul>
-            <li>Professional installation experience</li>
-            <li>Start Menu and Desktop shortcuts</li>
-            <li>Automatic uninstaller</li>
-            <li>Compact download size (0.8 MB)</li>
-          </ul>
-          <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">Download
-            Installer</a>
-        </div>
-      </div>
-      <div class="download-option" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1)); border: 2px solid #4CAF50; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);">
-        <div class="download-header">
-          <img src="Images/SphereIcon.png" alt="New Features" class="download-icon">
-          <h3>Enhanced Features in v1.8</h3>
-          <span class="recommended" style="background: linear-gradient(45deg, #4CAF50, #8BC34A); animation: glow 2s ease-in-out infinite;">Latest!</span>
-        </div>
-        <div class="download-details">
-          <ul style="line-height: 1.8;">
-            <li><strong>Multiple Wheel Collections</strong> - Organize shortcuts into themed categories for better workflow management</li>
-            <li><strong>Startup Integration</strong> - Automatically launch with Windows for seamless daily productivity</li>
-            <li><strong>Wheel Cycling</strong> - Switch between collections using your mouse wheel for quick access</li>
-            <li><strong>Enhanced Stability</strong> - Improved performance with comprehensive bug fixes and optimizations</li>
-          </ul>
-          <div class="btn btn-secondary" style="background: linear-gradient(45deg, #4CAF50, #45a049); border: none; color: white; font-weight: bold; box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);">All Features Included</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- System Requirements -->
-  <section class="requirements">
-    <h2>System Requirements</h2>
-    <div class="requirements-content">
-      <div class="req-column">
-        <h3>Minimum Requirements</h3>
-        <ul>
-          <li>Windows 10 (64-bit)</li>
-          <li>2 GB RAM</li>
-          <li>200 MB free disk space</li>
-          <li>DirectX 11 compatible graphics</li>
-        </ul>
-      </div>
-      <div class="req-column">
-        <h3>Recommended</h3>
-        <ul>
-          <li>Windows 11 (64-bit)</li>
-          <li>4 GB RAM or more</li>
-          <li>500 MB free disk space</li>
-          <li>Dedicated graphics card</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pro Version Promotion -->
-  <section class="pro-promotion" style="background: linear-gradient(135deg, #8A2BE2, #9370DB); color: white; text-align: center; padding: 50px 20px; margin: 40px 0;">
     <div class="container">
-      <h2 style="font-size: 2.5em; margin-bottom: 20px;">Want Even More Power?</h2>
-      <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">
-        Upgrade to <strong>Orbiq Pro</strong> for advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.
-      </p>
-      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 30px 0;">
-        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎯 Wheel Collections</span>
-        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">⌨️ Custom Hotkeys</span>
-        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">📍 Position Memory</span>
-        <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎨 Professional UI</span>
-      </div>
-      <a href="pro.html" style="background: #FFD700; color: #000; font-weight: bold; font-size: 1.2em; padding: 15px 30px; border: none; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s ease; margin-top: 20px;" onmouseover="this.style.background='#FFE55C'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFD700'; this.style.transform='translateY(0)'">
-        Discover Orbiq Pro - $20.00
-      </a>
-      <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
-        One-time purchase • Regular updates included • Professional support
-      </p>
-    </div>
-  </section>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <img src="Images/SphereIcon.png" alt="Orbiq Logo" class="logo">
+                <div class="title-section">
+                    <h1>Orbiq</h1>
+                    <p class="subtitle">3D Desktop Shortcut Manager</p>
+                </div>
+            </div>
+            <div class="version-info">
+                <span class="version">Version 1.8</span>
+                <span class="platform">Windows PC Only</span>
+            </div>
+        </header>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Orbiq</h4>
-        <p>© 2025 Orbiq. All rights reserved. Brought to you by <a href="https://passghost.github.io/jodylabs/" target="_blank">JodyLabs</a>.</p>
-        <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Orbiq, Kraken Icon, and Sphere Icon are trademarks of Orbiq.</p>
-      </div>
-      <div class="footer-section">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="license.html">License Agreement</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-contact">
-      <p>Contact us at: <a href="mailto:takeoff@techie.com">takeoff@techie.com</a></p>
-    </div>
-  </footer>
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
+            </ul>
+        </nav>
 
-  <!-- JavaScript for theme swapping -->
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>The launcher your desktop's been dreaming of.</h2>
+                        <p>A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
+                        <div class="download-buttons">
+                            <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">
+                                <img src="Images/SphereIcon.png" alt="Download">
+                                Download Orbiq
+                                <span class="file-info">0.8 MB - Windows Installer</span>
+                            </a>
+                            <a href="#features" class="btn btn-secondary" style="background: linear-gradient(135deg, #4CAF50, #45a049); border: none; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                                <img src="Images/SphereIcon.png" alt="New in v1.8">
+                                <span style="position: absolute; top: -5px; right: -5px; background: #ff4444; color: white; font-size: 0.7em; padding: 2px 6px; border-radius: 10px; font-weight: bold; animation: pulse 2s infinite;">NEW!</span>
+                                What's New in v1.8
+                                <span class="file-info">Multiple Collections • Auto-Start</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="Images/example.gif" alt="3D Sphere Demo" class="demo-gif">
+                        <p style="font-size: 0.9rem; color: #ccc; margin-top: 10px;">(Simply double click to move)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features" id="features">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="3D Sphere" class="feature-icon">
+                        <h3>3D Rotating Sphere</h3>
+                        <p>Icons arranged on a beautiful 3D sphere that you can rotate with mouse drag</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="System Tray" class="feature-icon">
+                        <h3>System Tray Integration</h3>
+                        <p>Runs quietly in the background, accessible via system tray</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Hotkey" class="feature-icon">
+                        <h3>Global Hotkey</h3>
+                        <p>Press Ctrl+Alt+Space to instantly show/hide the sphere</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Wheel Cycling" class="feature-icon">
+                        <h3>Wheel Cycling</h3>
+                        <p>Use mouse wheel to cycle through different shortcut collections</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Move Mode" class="feature-icon">
+                        <h3>Move Mode</h3>
+                        <p>Double-click center handle to reposition sphere anywhere on screen</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Configurable" class="feature-icon">
+                        <h3>Fully Configurable</h3>
+                        <p>Customize shortcuts, hotkeys, sphere size, and animation settings</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="Images/SphereIcon.png" alt="Standalone" class="feature-icon">
+                        <h3>Standalone</h3>
+                        <p>No .NET installation required - all dependencies included</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screenshots Section -->
+            <section class="screenshots" id="screenshots">
+                <h2>Screenshots</h2>
+                <div class="screenshot-gallery">
+                    <div class="screenshot-item">
+                        <div class="gallery-image screenshot1">
+                            <img src="Images/main3d.gif" alt="Main 3D Sphere Interface">
+                        </div>
+                        <p>Main 3D Sphere Interface</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="gallery-image screenshot2">
+                            <img src="Images/addingIcon.gif" alt="Adding A Shortcut or Folder">
+                        </div>
+                        <p>Adding A Shortcut or Folder</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Download Section -->
+            <section class="download-section" id="download">
+                <h2>Download Orbiq</h2>
+                <div class="download-options">
+                    <div class="download-option">
+                        <div class="download-header">
+                            <img src="Images/SphereIcon.png" alt="Installer" class="download-icon">
+                            <h3>Windows Installer</h3>
+                            <span class="recommended">Recommended</span>
+                        </div>
+                        <div class="download-details">
+                            <ul>
+                                <li>Professional installation experience</li>
+                                <li>Start Menu and Desktop shortcuts</li>
+                                <li>Automatic uninstaller</li>
+                                <li>Compact download size (0.8 MB)</li>
+                            </ul>
+                            <a href="https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link" class="btn btn-primary">Download
+                                Installer</a>
+                        </div>
+                    </div>
+                    <div class="download-option" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(69, 160, 73, 0.1)); border: 2px solid #4CAF50; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);">
+                        <div class="download-header">
+                            <img src="Images/SphereIcon.png" alt="New Features" class="download-icon">
+                            <h3>Enhanced Features in v1.8</h3>
+                            <span class="recommended" style="background: linear-gradient(45deg, #4CAF50, #8BC34A); animation: glow 2s ease-in-out infinite alternate;">Latest!</span>
+                        </div>
+                        <div class="download-details">
+                            <ul style="line-height: 1.8;">
+                                <li><strong>Multiple Wheel Collections</strong> - Organize shortcuts into themed categories for better workflow management</li>
+                                <li><strong>Startup Integration</strong> - Automatically launch with Windows for seamless daily productivity</li>
+                                <li><strong>Wheel Cycling</strong> - Switch between collections using your mouse wheel for quick access</li>
+                                <li><strong>Enhanced Stability</strong> - Improved performance with comprehensive bug fixes and optimizations</li>
+                            </ul>
+                            <div class="btn btn-secondary" style="background: linear-gradient(45deg, #4CAF50, #45a049); border: none; color: white; font-weight: bold; box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);">All Features Included</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Requirements -->
+            <section class="requirements">
+                <h2>System Requirements</h2>
+                <div class="requirements-content">
+                    <div class="req-column">
+                        <h3>Minimum Requirements</h3>
+                        <ul>
+                            <li>Windows 10 (64-bit)</li>
+                            <li>2 GB RAM</li>
+                            <li>200 MB free disk space</li>
+                            <li>DirectX 11 compatible graphics</li>
+                        </ul>
+                    </div>
+                    <div class="req-column">
+                        <h3>Recommended</h3>
+                        <ul>
+                            <li>Windows 11 (64-bit)</li>
+                            <li>4 GB RAM or more</li>
+                            <li>500 MB free disk space</li>
+                            <li>Dedicated graphics card</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pro Version Promotion -->
+        <section class="pro-promotion" style="background: linear-gradient(135deg, #8A2BE2, #9370DB); color: white; text-align: center; padding: 50px 20px; margin: 40px 0;">
+            <div class="container">
+                <h2 style="font-size: 2.5em; margin-bottom: 20px;">Want Even More Power?</h2>
+                <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.9;">
+                    Upgrade to <strong>Orbiq Pro</strong> for advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 30px 0;">
+                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎯 Wheel Collections</span>
+                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">⌨️ Custom Hotkeys</span>
+                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">📍 Position Memory</span>
+                    <span style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em;">🎨 Professional UI</span>
+                </div>
+                <a href="pro.html" style="background: #FFD700; color: #000; font-weight: bold; font-size: 1.2em; padding: 15px 30px; border: none; border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.3s ease; margin-top: 20px;" onmouseover="this.style.background='#FFE55C'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFD700'; this.style.transform='translateY(0)'">
+                    Discover Orbiq Pro - $20.00
+                </a>
+                <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                    One-time purchase • Regular updates included • Professional support
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Orbiq</h4>
+                    <p>© 2025 Orbiq. All rights reserved. Brought to you by <a href="https://passghost.github.io/jodylabs/" target="_blank">JodyLabs</a>.</p>
+                    <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Orbiq, Kraken Icon, and Sphere Icon are trademarks of Orbiq.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="license.html">License Agreement</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <p>Contact us at: <a href="mailto:takeoff@techie.com">takeoff@techie.com</a></p>
+            </div>
+        </footer>
+
+        <!-- Theme Swapper (Hidden by default) -->
+        <div class="theme-swapper">
+            <button class="theme-button theme-default" onclick="setTheme('default')" title="Default Theme"></button>
+            <button class="theme-button theme-black-gray" onclick="setTheme('black-gray')" title="Black & Gray Theme"></button>
+            <button class="theme-button theme-crimson" onclick="setTheme('crimson')" title="Crimson Theme"></button>
+            <button class="theme-button theme-ocean" onclick="setTheme('ocean')" title="Ocean Blue Theme"></button>
+            <button class="theme-button theme-midnight" onclick="setTheme('midnight')" title="Midnight Purple Theme"></button>
+            
+            <!-- Adding Easter egg message below the theme buttons -->
+            <div id="easter-egg-message" style="margin-top: 5px; font-size: 0.3rem; color: var(--text-muted); text-align: center;">
+                <!-- Message will update dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for theme swapping -->
     <script>
         const themeButtons = document.querySelectorAll('.theme-button');
         const body = document.body;
@@ -637,78 +1147,6 @@
             currentWordIndex = (currentWordIndex + 1) % easterEggWords.length;
         }
     </script>
-    <!-- Second Sphere JS moved to end of body for proper DOM access -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script>
-      // --- SPHERE ANIMATION ---
-      const sphereAnimation = bodymovin.loadAnimation({
-        container: document.getElementById('bg'), // the dom element that will contain the animation
-        path: 'https://assets3.lottiefiles.com/packages/lf20_8jz8gk.json', // the path to the animation json
-        renderer: 'svg', // render as svg
-        loop: true, // loop the animation
-        autoplay: true, // start playing the animation immediately
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice' // cover the entire container
-        }
-      });
-
-      // --- DRAGGABLE SPHERE ICON ---
-      const sphereIcon = document.querySelector('.logo');
-      let isDragging = false;
-      let offset = { x: 0, y: 0 };
-
-      sphereIcon.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        offset.x = e.clientX - sphereIcon.getBoundingClientRect().left;
-        offset.y = e.clientY - sphereIcon.getBoundingClientRect().top;
-        sphereIcon.style.cursor = 'grabbing';
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const x = e.clientX - offset.x;
-        const y = e.clientY - offset.y;
-        sphereIcon.style.transform = `translate(${x}px, ${y}px)`;
-      });
-
-      document.addEventListener('mouseup', () => {
-        isDragging = false;
-        sphereIcon.style.cursor = 'grab';
-      });
-
-      // --- TARGET LOCK ANIMATION ---
-      const targetLock = document.createElement('div');
-      targetLock.style.position = 'fixed';
-      targetLock.style.width = '100px';
-      targetLock.style.height = '100px';
-      targetLock.style.border = '2px dashed var(--color-primary)';
-      targetLock.style.borderRadius = '50%';
-      targetLock.style.pointerEvents = 'none';
-      targetLock.style.transition = 'transform var(--transition-fast)';
-      document.body.appendChild(targetLock);
-
-      let isLocked = false;
-      let lockPosition = { x: 0, y: 0 };
-
-      sphereIcon.addEventListener('click', () => {
-        isLocked = !isLocked;
-        if (isLocked) {
-          targetLock.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
-          sphereIcon.style.transition = 'transform var(--transition-fast)';
-          sphereIcon.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
-        } else {
-          targetLock.style.transform = 'scale(0)';
-          sphereIcon.style.transform = 'translate(0, 0)';
-        }
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        if (!isLocked) return;
-        lockPosition.x = e.clientX - targetLock.offsetWidth / 2;
-        lockPosition.y = e.clientY - targetLock.offsetHeight / 2;
-        targetLock.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
-        sphereIcon.style.transform = `translate(${lockPosition.x}px, ${lockPosition.y}px) scale(1.2)`;
-      });
-    </script>
 </body>
+
 </html>

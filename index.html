@@ -376,6 +376,16 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-content" role="dialog" aria-modal="true" aria-labelledby="panel-content-title">
+    <header>
+      <h3 id="panel-content-title">Content</h3>
+      <button class="close" data-close>Close</button>
+    </header>
+    <div class="content">
+      <div id="panel-content-inner"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-contact" role="dialog" aria-modal="true" aria-labelledby="panel-contact-title">
     <header>
       <h3 id="panel-contact-title">Contact</h3>
@@ -484,6 +494,14 @@
     accessibleCards.innerHTML = contentNodes.map(node => `<div class='card'>${node.card}</div>`).join('');
   }
 
+  // Open a content panel for a given content node index
+  function openContent(index, anchor){
+    const container = document.getElementById('panel-content-inner');
+    if(!container) return;
+    container.innerHTML = contentNodes[index].card;
+    openPanel('#panel-content', anchor);
+  }
+
   // Add drag and inertia for bottom sphere
   function onDown2(e){ dragging2=true; last2.x=e.clientX; last2.y=e.clientY; inertia2.x=0; inertia2.y=0; orbit2.setPointerCapture(e.pointerId); orbit2.classList.add('is-dragging');}
   function onMove2(e){ if(!dragging2) return; const dx=e.clientX-last2.x, dy=e.clientY-last2.y; last2.x=e.clientX; last2.y=e.clientY; rotY2 += dx*0.005; rotX2 += dy*0.005; inertia2.x = dx*0.005; inertia2.y = dy*0.005; positionNodes2();}
@@ -502,17 +520,17 @@
       const el = document.createElement('div');
       el.className = 'node';
       el.setAttribute('data-index', i);
-      // Make icon a link to JodyLabs
-      const link = document.createElement('a');
-      link.href = 'https://passghost.github.io/jodylabs/';
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.style.display = 'block';
-      link.style.width = '84px';
-      link.style.height = '84px';
-      link.style.borderRadius = '50%';
-      link.style.overflow = 'hidden';
-      // Add animated GIF or image
+      // Create a button that opens the content panel (preserves card anchors)
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.width = '84px';
+      btn.style.height = '84px';
+      btn.style.borderRadius = '50%';
+      btn.style.overflow = 'hidden';
+      btn.style.padding = '0';
+      btn.style.border = 'none';
+      btn.style.background = 'transparent';
+      // Add image inside button
       const img = document.createElement('img');
       img.src = contentNodes[i].icon;
       img.alt = '';
@@ -520,8 +538,12 @@
       img.style.height = '100%';
       img.style.objectFit = 'cover';
       img.style.borderRadius = '50%';
-      link.appendChild(img);
-      el.appendChild(link);
+      btn.appendChild(img);
+      btn.addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        openContent(i, el);
+      });
+      el.appendChild(btn);
       ring2.appendChild(el);
     }
     positionNodes2();

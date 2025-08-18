@@ -60,23 +60,24 @@
     a{color:inherit;text-decoration:none}
 
     :root{
-      --accent:#94a3b8; /* main accent: muted slate */
-      --accent-2:#6b7280; /* secondary accent: deep slate */
-      --text:#E6EEF6;
-      --muted:#94a3b8;
-      --panel:#111827ee;
-      --card:#0f1720;
+    /* Gray / black theme replacements */
+    --accent:#b8bcc1; /* light neutral */
+    --accent-2:#8b8f94; /* deeper neutral */
+    --text:#E6EEF6;
+    --muted:#9aa0a6;
+    --panel:#0f0f10ee; /* near-black panel */
+    --card:#070708; /* card background: very dark */
       --glass:rgba(148,163,184,.06);
       --radius:22px;
       --shadow:0 12px 28px rgba(20,25,33,.28), inset 0 1px 0 rgba(255,255,255,.02);
     }
 
-    body{background:#18182A;color:var(--text)}
+  body{background:#0b0b0d;color:var(--text)}
     /* --- Background --- */
     #bg {position:fixed;inset:0;z-index:-1;background:
-      radial-gradient(1200px 800px at 80% -10%, rgba(148,163,184,.08), rgba(148,163,184,0) 60%),
-      radial-gradient(900px 600px at 10% 120%, rgba(148,163,184,.06), rgba(148,163,184,0) 55%),
-      linear-gradient(180deg,#18182A 0%,#12121A 100%);
+      radial-gradient(1200px 800px at 80% -10%, rgba(150,150,150,.04), rgba(150,150,150,0) 60%),
+      radial-gradient(900px 600px at 10% 120%, rgba(150,150,150,.03), rgba(150,150,150,0) 55%),
+      linear-gradient(180deg,#0b0b0d 0%,#000000 100%);
     }
 
     /* --- Top bar --- */
@@ -86,8 +87,8 @@
   .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(148,163,184,.18))}
     .brand h3{font-weight:800;letter-spacing:.4px}
     .pill{font-size:12px;color:var(--muted);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
-  .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#0f1720;font-weight:800;border:none;box-shadow:0 8px 18px rgba(20,25,33,.18);cursor:pointer}
-  .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#0f1720}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#2b2b2f,#151516);padding:10px 14px;border-radius:999px;color:#e6eef6;font-weight:800;border:none;box-shadow:0 8px 18px rgba(0,0,0,.6);cursor:pointer}
+  .cta:hover{background:linear-gradient(90deg,#151516,#2b2b2f);color:#e6eef6}
 
     /* --- Hero --- */
     .hero{min-height:100svh;display:grid;place-items:center;padding:120px 20px 80px}
@@ -143,7 +144,7 @@
     .ring{position:relative;width:100%;height:100%;display:grid;place-items:center;transform-style:preserve-3d}
   .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.08);z-index:3;pointer-events:none}
   :root{--floatback-fallback:#374151}
-  .ring-bg{position:absolute;inset:12%;border-radius:50%;background-image:url('Images/floatback.gif');background-position:center;background-size:cover;background-repeat:no-repeat;background-color:var(--floatback-fallback);opacity:1;transition:opacity .25s ease;mix-blend-mode:normal;z-index:0;pointer-events:none}
+  .ring-bg{position:absolute;inset:12%;border-radius:50%;background-image:url('Images/krakenSlate.png');background-position:center center;background-size:auto;background-repeat:no-repeat;background-color:transparent;opacity:1;transition:opacity .25s ease;mix-blend-mode:normal;z-index:0;pointer-events:none}
     /* Target indicator */
 
     /* Orbiq tag */
@@ -151,8 +152,8 @@
       position: fixed;
       left: 24px;
       bottom: 24px;
-  background: rgba(148,163,184,0.06);
-      color: #232347;
+    background: rgba(150,150,150,0.06);
+      color: #d9d9dd;
       font-family: inherit;
       font-size: 1rem;
       padding: 10px 22px 10px 18px;
@@ -167,7 +168,7 @@
       transition: background .2s;
     }
     .orbiq-tag:hover {
-      background: #48C9B0;
+      background: #4b4b4d;
       color: #fff;
     }
   /* Removed unused target styles */
@@ -179,7 +180,11 @@
     .node *, .node img, .node button { backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; }
     .node.hit button{box-shadow:0 20px 40px rgba(255,26,26,.25);transform:translateZ(6px)}
 
-    .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
+  .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
+  .drag-pill{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#1b1b1d,#0f0f10);color:#eef6fb;border:1px solid rgba(255,255,255,0.04);padding:10px 18px;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,0.6);cursor:grab;z-index:60;letter-spacing:0.6px}
+  .drag-pill:active{cursor:grabbing;transform:translateX(-50%) translateY(1px)}
+  .drag-pill:focus{outline:2px solid rgba(255,255,255,0.08);outline-offset:4px}
+  @media (max-width:560px){.drag-pill{padding:8px 12px;font-size:14px;bottom:10px}}
 
     /* --- Panels --- */
   .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(148,163,184,.06);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
@@ -217,16 +222,16 @@
   </style>
     <style>
       body {
-        background: linear-gradient(120deg, #181a2a 0%, #23243a 100%);
+        background: linear-gradient(120deg, #0b0b0d 0%, #000000 100%);
         color: #eaf6fb;
         font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
         margin: 0;
         min-height: 100vh;
       }
       .stage {
-        background: rgba(30,34,54,0.7);
+        background: rgba(10,10,10,0.75);
         border-radius: 32px;
-  box-shadow: 0 8px 32px rgba(148,163,184,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
         padding: 32px 0 48px 0;
         margin-bottom: 48px;
       }
@@ -250,9 +255,9 @@
 
       /* Second orb custom animation */
     /* Ring background visuals (use CSS vars for transform so JS can control smoothly) */
-    .ring-bg{
-    --bg-rotate: 0deg;
-    --bg-scale: 0.2; /* shrink background GIF to 20% */
+  .ring-bg{
+  --bg-rotate: 0deg;
+  --bg-scale: 1; /* keep background image at native size */
     background-position:center center;
     /* keep background sized small and centered */
     background-size: 20% auto;
@@ -266,7 +271,7 @@
       }
 
   #ringBg2 { background-image: url('Images/Hypno.gif'); }
-  #ringBg { background-image: url('Images/floatback.gif'); }
+  #ringBg { background-image: url('Images/krakenSlate.png'); }
   /* Defensive: ensure specific ring background layers never capture pointer events */
   #ringBg, #ringBg2 { pointer-events: none; }
       .node button {
@@ -354,20 +359,20 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: linear-gradient(90deg,#0b0f12,#111827); /* black-slate */
+        background: linear-gradient(90deg,#171717,#0b0b0d); /* neutral black */
         padding: 10px 18px;
         border-radius: 999px;
         color: #e6eef6;
         font-weight: 800;
         border: none;
-        box-shadow: 0 10px 26px rgba(2,6,23,0.6);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.6);
         cursor: pointer;
         font-size: 1rem;
         margin-top: 12px;
         text-decoration: none;
       }
       .cta:hover {
-        background: linear-gradient(90deg,#233238,#1f2937);
+        background: linear-gradient(90deg,#0f0f10,#151516);
         color: #e6eef6;
       }
       @media (max-width: 700px) {
@@ -411,7 +416,7 @@
             <div class="ring" id="ring">
               <div class="ring-bg" id="ringBg"></div>
             </div>
-            <p class="hint">3D Rotating Sphere — Drag to rotate</p>
+            <button class="drag-pill" aria-label="Drag the sphere" title="Drag the sphere">DRAG ME!</button>
           </div>
         </div>
       </div>
@@ -449,6 +454,7 @@
                 <li>Demo Mode — automated spin to showcase icons</li>
                 <li>Always-on-top launcher</li>
                 <li>Changeable nucleus — move or replace the central launcher</li>
+                <li>Change nucleus with custom PNG</li>
                 <li>One-click add of common programs</li>
                 <li>Edit shortcuts in-place without re-adding them</li>
                 <li>Access system tray menu from the nucleus</li>
@@ -515,7 +521,7 @@
   </footer>
 
   <!-- Sidebar Navigation -->
-<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(180deg,#0b1220,#0f1720); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
+<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(180deg,#0b0b0d,#070708); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
   <a href="OldWebsite/index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Old Site</a>
   <a href="license.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">License</a>
   <a href="privacy.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Privacy</a>
@@ -762,7 +768,7 @@
   }
 
   function onDown(e){ dragging=true; last.x=e.clientX; last.y=e.clientY; inertia.x=0; inertia.y=0; orbit.setPointerCapture(e.pointerId); orbit.classList.add('is-dragging'); }
-  function onMove(e){ if(!dragging) return; const dx=e.clientX-last.x, dy=e.clientY-last.y; last.x=e.clientX; last.y=e.clientY; rotY += dx*0.005; rotX += dy*0.005; inertia.x = dx*0.005; inertia.y = dy*0.005; positionNodes(); }
+  function onMove(e){ if(!dragging) return; const dx=e.clientX-last.x, dy=e.clientY-last.y; last.x=e.clientX; last.y=e.clientY; rotY += dx*0.005; /* invert vertical input: user drag up should rotate sphere up */ rotX -= dy*0.005; inertia.x = dx*0.005; inertia.y = -dy*0.005; positionNodes(); }
   function onUp(e){ dragging=false; orbit.releasePointerCapture(e.pointerId); orbit.classList.remove('is-dragging'); }
 
   function animate(){
@@ -776,8 +782,9 @@
       const baseScale = 1 + Math.sin(rotY) * 0.03 + Math.cos(rotX) * 0.03;
       const dragScale = 1 + inertiaMag * 0.12;
       // compute desired scale but clamp to 0.2 base (we want GIFs at 20%)
-      const desired = baseScale * dragScale * 0.2;
-      const scale = Math.max(0.2, Math.min(desired, 0.22));
+  // Force background to native (no shrinking) while allowing small rotational transform
+  const desired = baseScale * dragScale * 1.0;
+  const scale = Math.max(1.0, Math.min(desired, 1.04));
       const rotate = rotY * 8; // slower rotation
       ringBg.style.setProperty('--bg-scale', scale.toFixed(3));
       ringBg.style.setProperty('--bg-rotate', rotate.toFixed(3) + 'deg');
@@ -788,8 +795,8 @@
       const inertiaMag2 = Math.min(1, Math.hypot(inertia2.x||0, inertia2.y||0) * 8);
       const baseScale2 = 1 + Math.sin(rotY2) * 0.03 + Math.cos(rotX2) * 0.03;
       const dragScale2 = 1 + inertiaMag2 * 0.12;
-      const desired2 = baseScale2 * dragScale2 * 0.2;
-      const scale2 = Math.max(0.2, Math.min(desired2, 0.22));
+  const desired2 = baseScale2 * dragScale2 * 1.0;
+  const scale2 = Math.max(1.0, Math.min(desired2, 1.04));
       const rotate2 = rotY2 * 8;
       ringBg2El.style.setProperty('--bg-scale', scale2.toFixed(3));
       ringBg2El.style.setProperty('--bg-rotate', rotate2.toFixed(3) + 'deg');

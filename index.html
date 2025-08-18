@@ -27,7 +27,7 @@
   <meta property="og:url" content="https://passghost.github.io/OrbiqWebsite/">
   <meta property="og:title" content="Orbiq - The launcher your desktop's been dreaming of">
   <meta property="og:description" content="A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey.">
-  <meta property="og:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png">
+  <meta property="og:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon-slate.svg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="628">
   <meta property="og:site_name" content="Orbiq">
@@ -37,13 +37,15 @@
   <meta name="twitter:url" content="https://passghost.github.io/OrbiqWebsite/">
   <meta name="twitter:title" content="Orbiq - 3D Desktop Launcher for Windows">
   <meta name="twitter:description" content="Transform your desktop with Orbiq's elegant 3D sphere launcher. Free for personal use, perfect for productivity.">
-  <meta name="twitter:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png">
+  <meta name="twitter:image" content="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon-slate.svg">
 
   <!-- Canonical and favicons -->
   <link rel="canonical" href="https://passghost.github.io/OrbiqWebsite/">
-  <link rel="icon" type="image/png" sizes="32x32" href="Images/SphereIcon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="Images/SphereIcon.png">
-  <link rel="apple-touch-icon" href="Images/SphereIcon.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="Images/SphereIcon-slate.svg">
+  <link rel="apple-touch-icon" href="Images/SphereIcon-slate.svg">
+
+  <!-- Classy headline font (serif) + contrasting sans for the "FREE" word -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Schema.org structured data (basic) -->
   <script type="application/ld+json">
@@ -58,51 +60,89 @@
     a{color:inherit;text-decoration:none}
 
     :root{
-      --accent:#6C63FF; /* main accent: soft indigo */
-      --accent-2:#48C9B0; /* secondary accent: teal */
-      --text:#F3F3F7;
-      --muted:#A3A3B3;
-      --panel:#232347ee;
-      --card:#1B1B2A;
-      --glass:rgba(108,99,255,.08);
+      --accent:#94a3b8; /* main accent: muted slate */
+      --accent-2:#6b7280; /* secondary accent: deep slate */
+      --text:#E6EEF6;
+      --muted:#94a3b8;
+      --panel:#111827ee;
+      --card:#0f1720;
+      --glass:rgba(148,163,184,.06);
       --radius:22px;
-      --shadow:0 12px 28px rgba(108,99,255,.18), inset 0 1px 0 rgba(255,255,255,.04);
+      --shadow:0 12px 28px rgba(20,25,33,.28), inset 0 1px 0 rgba(255,255,255,.02);
     }
 
     body{background:#18182A;color:var(--text)}
     /* --- Background --- */
     #bg {position:fixed;inset:0;z-index:-1;background:
-      radial-gradient(1200px 800px at 80% -10%, rgba(108,99,255,.16), rgba(108,99,255,0) 60%),
-      radial-gradient(900px 600px at 10% 120%, rgba(72,201,176,.12), rgba(72,201,176,0) 55%),
-      linear-gradient(180deg,#18182A 0%,#232347 100%);
+      radial-gradient(1200px 800px at 80% -10%, rgba(148,163,184,.08), rgba(148,163,184,0) 60%),
+      radial-gradient(900px 600px at 10% 120%, rgba(148,163,184,.06), rgba(148,163,184,0) 55%),
+      linear-gradient(180deg,#18182A 0%,#12121A 100%);
     }
 
     /* --- Top bar --- */
     .topbar{position:fixed;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);z-index:40}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 40px rgba(108,99,255,.35)}
-    .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(108,99,255,.25))}
+  .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 24px rgba(148,163,184,.12)}
+  .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(148,163,184,.18))}
     .brand h3{font-weight:800;letter-spacing:.4px}
     .pill{font-size:12px;color:var(--muted);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
-    .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#18182A;font-weight:800;border:none;box-shadow:0 10px 26px rgba(108,99,255,.18);cursor:pointer}
-    .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#232347}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#0f1720;font-weight:800;border:none;box-shadow:0 8px 18px rgba(20,25,33,.18);cursor:pointer}
+  .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#0f1720}
 
     /* --- Hero --- */
     .hero{min-height:100svh;display:grid;place-items:center;padding:120px 20px 80px}
     .hero-inner{max-width:1200px;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
-    .headline{font-size:clamp(32px,6vw,64px);line-height:1.06;font-weight:900;letter-spacing:.2px}
-    .headline .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  /* Ensure a 3D perspective for the headline area so children can use translateZ/rotateX for depth */
+  .sidebar{perspective:1400px; -webkit-perspective:1400px}
+  .headline{font-size:clamp(32px,6vw,64px);line-height:1.06;font-weight:700;letter-spacing:.2px;font-family:'Cormorant Garamond', serif;color:var(--accent-2);transform-style:preserve-3d}
+  .headline .tagline{display:inline-block;font-weight:600;opacity:0.92;font-style:italic}
+  .headline .free{color:#ef4444;font-family:'Montserrat',sans-serif;font-weight:800}
+  /* Prominent brand word with subtle 3D tilt, gradient fill and layered shadows to simulate depth */
+  .brand-word{
+    display:inline-block;
+    font-weight:900;
+    letter-spacing:0.4px;
+    font-family:'Cormorant Garamond', serif;
+    line-height:0.95;
+    /* Make Orbiq much larger than the rest of the headline while remaining responsive */
+    font-size:clamp(44px,10vw,112px);
+  /* Solid white fill for clear brand presence */
+  background: none;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+    /* Text stroke for a crisp edge */
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.28);
+    /* Layered shadows create an extruded depth + soft rim-light */
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.04),
+      0 2px 0 rgba(0,0,0,0.06),
+      0 4px 0 rgba(0,0,0,0.06),
+      0 6px 0 rgba(0,0,0,0.06),
+      0 12px 28px rgba(2,6,23,0.75),
+      /* soft gray drop shadow for added depth */
+      0 18px 36px rgba(60,64,70,0.45);
+    position:relative;
+    /* Slight 3D tilt forward */
+    transform: translateZ(36px) rotateX(6deg);
+    transition: transform .22s ease, text-shadow .22s ease;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  }
+  /* Slightly reduce the 3D effect on very small screens to avoid crowding */
+  @media (max-width:560px){
+    .brand-word{font-size:clamp(32px,8vw,60px);transform:translateZ(18px) rotateX(4deg);text-shadow:0 1px 0 rgba(255,255,255,0.04),0 6px 18px rgba(2,6,23,0.6);color:#ffffff;-webkit-text-fill-color:#ffffff}
+  }
     .sub{margin-top:14px;color:var(--muted);font-size:clamp(14px,2vw,18px)}
-    .hero-card{background:var(--glass);border:1px solid rgba(108,99,255,.10);box-shadow:var(--shadow)}
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-    .badge{padding:8px 10px;border-radius:999px;background:rgba(108,99,255,.10);border:1px solid rgba(108,99,255,.18);font-size:13px;color:#fff}
+  .hero-card{background:var(--glass);border:1px solid rgba(148,163,184,.08);box-shadow:var(--shadow)}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .badge{padding:8px 10px;border-radius:999px;background:rgba(148,163,184,.06);border:1px solid rgba(148,163,184,.10);font-size:13px;color:#e6eef6}
 
     /* --- Orbital stage (CENTERED SPHERE) --- */
     .stage{position:relative;min-height:520px;perspective:1200px;display:grid;place-items:center}
     .orbit-wrap{position:relative;width:min(90vw,680px);height:min(90vw,680px);max-width:700px;max-height:700px;transform-style:preserve-3d;user-select:none}
     .ring{position:relative;width:100%;height:100%;display:grid;place-items:center;transform-style:preserve-3d}
   .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.08);z-index:3;pointer-events:none}
-  :root{--floatback-fallback:#3b82f6}
+  :root{--floatback-fallback:#374151}
   .ring-bg{position:absolute;inset:12%;border-radius:50%;background-image:url('Images/floatback.gif');background-position:center;background-size:cover;background-repeat:no-repeat;background-color:var(--floatback-fallback);opacity:1;transition:opacity .25s ease;mix-blend-mode:normal;z-index:0;pointer-events:none}
     /* Target indicator */
 
@@ -111,7 +151,7 @@
       position: fixed;
       left: 24px;
       bottom: 24px;
-      background: rgba(72,201,176,0.92);
+  background: rgba(148,163,184,0.06);
       color: #232347;
       font-family: inherit;
       font-size: 1rem;
@@ -142,15 +182,15 @@
     .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
 
     /* --- Panels --- */
-    .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(108,99,255,.10);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
+  .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(148,163,184,.06);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
     .panel.open{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
     .panel header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
     .panel header h3{font-weight:800}
     .panel .content{padding:18px;display:grid;gap:12px}
     .panel .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-    .card{background:var(--card);border:1px solid rgba(108,99,255,.10);border-radius:18px;padding:14px;box-shadow:var(--shadow);color:var(--text)}
-    .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(108,99,255,0.10)}
-    .close{background:transparent;border:1px solid rgba(108,99,255,.18);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
+  .card{background:var(--card);border:1px solid rgba(148,163,184,.06);border-radius:18px;padding:14px;box-shadow:var(--shadow);color:var(--text)}
+  .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(148,163,184,0.06)}
+  .close{background:transparent;border:1px solid rgba(148,163,184,.12);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
 
     /* --- Footer --- */
     .footer{padding:40px 20px 70px;text-align:center;color:var(--muted)}
@@ -186,7 +226,7 @@
       .stage {
         background: rgba(30,34,54,0.7);
         border-radius: 32px;
-        box-shadow: 0 8px 32px rgba(0,234,255,0.08);
+  box-shadow: 0 8px 32px rgba(148,163,184,0.06);
         padding: 32px 0 48px 0;
         margin-bottom: 48px;
       }
@@ -206,32 +246,24 @@
         place-items: center;
         transform-style: preserve-3d;
       }
-      .ring-bg {
-  position: absolute;
-  inset: 12%;
-  border-radius: 50%;
-  background: url('Images/floatback.gif') center center/cover no-repeat;
-  filter: blur(8px) saturate(120%);
-  opacity: .32;
-  transition: opacity .25s ease;
-  mix-blend-mode: screen;
-  pointer-events: none;
-      }
+  /* ring-bg visuals defined below (kept single source of truth) */
 
       /* Second orb custom animation */
     /* Ring background visuals (use CSS vars for transform so JS can control smoothly) */
     .ring-bg{
-  --bg-rotate: 0deg;
-  --bg-scale: 1;
-  background-position:center center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  filter: blur(8px) saturate(120%);
-  opacity: .32;
-  transition: opacity .25s ease, transform 220ms linear;
-  mix-blend-mode: screen;
-  transform: rotate(var(--bg-rotate)) scale(var(--bg-scale));
-    }
+    --bg-rotate: 0deg;
+    --bg-scale: 0.2; /* shrink background GIF to 20% */
+    background-position:center center;
+    /* keep background sized small and centered */
+    background-size: 20% auto;
+    background-repeat:no-repeat;
+    /* remove blur so GIFs are sharp */
+    filter: saturate(120%);
+    opacity: .32;
+    transition: opacity .25s ease, transform 220ms linear;
+    mix-blend-mode: screen;
+    transform: rotate(var(--bg-rotate)) scale(var(--bg-scale));
+      }
 
   #ringBg2 { background-image: url('Images/Hypno.gif'); }
   #ringBg { background-image: url('Images/floatback.gif'); }
@@ -245,7 +277,7 @@
         background: transparent;
         background-size: cover;
         background-position: center;
-        box-shadow: 0 2px 12px rgba(0,234,255,0.12);
+  box-shadow: 0 2px 12px rgba(148,163,184,0.06);
         cursor: pointer;
         display: grid;
         place-items: center;
@@ -260,11 +292,11 @@
         transform: translateX(-50%);
         font-size: 13px;
         color: #eaf6fb;
-        background: rgba(0,0,0,.4);
+  background: rgba(0,0,0,.4);
         padding: 4px 10px;
         border-radius: 999px;
         border: 1px solid rgba(255,255,255,.1);
-        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+  box-shadow: 0 2px 8px rgba(148,163,184,0.06);
     }
 
     /* --------------- Added overrides: force download icon sizing and center download title --------------- */
@@ -280,7 +312,7 @@
         left: 0;
         right: 0;
         text-align: center;
-        color: #7fd7ff;
+  color: #94a3b8;
         font-size: 13px;
         opacity: .8;
         letter-spacing: 0.5px;
@@ -295,7 +327,7 @@
       #expandedCard, #expandedFeatureCard {
         background: rgba(30,34,54,0.92);
         border-radius: 24px;
-        box-shadow: 0 8px 32px rgba(0,234,255,0.12);
+  box-shadow: 0 8px 32px rgba(148,163,184,0.06);
         padding: 32px 28px;
         color: #eaf6fb;
         font-size: 1.08rem;
@@ -305,7 +337,7 @@
       .card {
         background: rgba(40,44,64,0.98);
         border-radius: 18px;
-        box-shadow: 0 2px 12px rgba(0,234,255,0.10);
+        box-shadow: 0 2px 12px rgba(148,163,184,0.06);
         padding: 18px;
         margin-bottom: 18px;
         color: #eaf6fb;
@@ -316,27 +348,27 @@
         object-fit: cover;
         border-radius: 12px;
         margin-bottom: 10px;
-        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+        box-shadow: 0 2px 8px rgba(148,163,184,0.06);
       }
       .cta {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: linear-gradient(90deg,#00eaff,#7fd7ff);
+        background: linear-gradient(90deg,#0b0f12,#111827); /* black-slate */
         padding: 10px 18px;
         border-radius: 999px;
-        color: #181a2a;
+        color: #e6eef6;
         font-weight: 800;
         border: none;
-        box-shadow: 0 10px 26px rgba(0,234,255,.18);
+        box-shadow: 0 10px 26px rgba(2,6,23,0.6);
         cursor: pointer;
         font-size: 1rem;
         margin-top: 12px;
         text-decoration: none;
       }
       .cta:hover {
-        background: linear-gradient(90deg,#7fd7ff,#00eaff);
-        color: #23243a;
+        background: linear-gradient(90deg,#233238,#1f2937);
+        color: #e6eef6;
       }
       @media (max-width: 700px) {
         .stage { padding: 18px 0 32px 0; }
@@ -351,7 +383,7 @@
   <nav class="topbar" aria-label="Primary">
     <div class="brand">
       <div class="logo" aria-hidden="true">
-        <img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="JodyLabs logo" />
+        <img src="Images/SphereIcon-slate.svg" alt="JodyLabs logo" />
       </div>
       <h3>JodyLabs</h3>
       <span class="pill">Interactive R&D</span>
@@ -362,7 +394,7 @@
   <main class="hero">
     <section class="hero-inner" style="display:grid;grid-template-columns:380px 1fr;gap:40px;align-items:start;max-width:1200px;margin:0 auto;">
       <aside class="sidebar" style="position:sticky;top:70px;align-self:start;display:flex;flex-direction:column;gap:28px;">
-  <h1 class="headline" style="text-align:left;">Orbiq<br><span class="accent">The <span style="color:var(--accent-2);font-weight:600;opacity:0.85;font-family:'Inter', 'Segoe UI', Arial, sans-serif;font-style:italic;">FREE</span> launcher your desktop's been dreaming of.</span></h1>
+  <h1 class="headline" style="text-align:left;"><span class="brand-word">Orbiq</span><br><span class="tagline">The <span class="free">FREE</span> launcher your desktop's been dreaming of.</span></h1>
         <p class="sub" style="text-align:left;max-width:340px;">A beautiful, vanishing portal to your most-used files. Productivity meets elegance — summon your workspace with one hotkey. Not a dock. Not a widget. Something better.</p>
         <div class="badges" aria-hidden="true" style="justify-content:flex-start;">
           <span class="badge">New in v1.8</span>
@@ -384,19 +416,48 @@
         </div>
       </div>
     </section>
-      <!-- SECOND SPHERE: All content below Key Features is now inside this interactive orb -->
-      <section class="hero-card stage" aria-label="Content orb interface" style="position:relative;z-index:10;margin:80px auto 0;max-width:1200px;">
-        <div class="orbit-wrap" id="orbit2" aria-live="polite" style="position:sticky;top:80px;z-index:1;opacity:0.55;">
-          <div class="ring" id="ring2">
-            <div class="ring-bg" id="ringBg2"></div>
-            <div id="jodylabs-title" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;">
-              <span style="display:inline-block;padding:16px 38px;font-size:2.2rem;font-weight:800;color:#fff;background:rgba(72,201,176,0.18);backdrop-filter:blur(12px);border-radius:18px;box-shadow:0 2px 18px 0 rgba(72,201,176,0.18);letter-spacing:0.04em;text-shadow:0 2px 18px #232347;">JodyLabs</span>
+      <!-- DEMO: Static carded demo replacing the interactive content orb -->
+      <section class="hero-card stage" aria-label="Demo section" style="position:relative;z-index:10;margin:80px auto 0;max-width:1200px;">
+        <div style="max-width:1100px;margin:0 auto;padding:18px;display:grid;grid-template-columns:1fr;gap:24px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;">
+            <article class="card" aria-hidden="false" style="padding:12px;display:flex;flex-direction:column;gap:12px;">
+              <h3 style="margin:0 0 6px 0;">Quick demo — Add & launch</h3>
+              <img src="Images/example.gif" alt="Example: adding a shortcut" class="demo-gif" style="border-radius:12px;box-shadow:0 6px 22px rgba(2,6,23,0.5);height:260px;object-fit:cover;"/>
+              <p style="margin:0;color:var(--muted);font-size:0.95rem;">See how Orbiqlite makes adding shortcuts fast and visual.</p>
+            </article>
+            <article class="card" aria-hidden="false" style="padding:12px;display:flex;flex-direction:column;gap:12px;">
+              <h3 style="margin:0 0 6px 0;">3D launcher in action</h3>
+              <img src="Images/main3d.gif" alt="Main 3D launcher" class="demo-gif" style="border-radius:12px;box-shadow:0 6px 22px rgba(2,6,23,0.5);height:260px;object-fit:cover;"/>
+              <p style="margin:0;color:var(--muted);font-size:0.95rem;">Experience the responsive, 3D wheel UI that surfaces your most-used items.</p>
+            </article>
+          </div>
+
+          <div id="featureComparison" class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;padding:20px;">
+            <div style="padding:8px;">
+              <h3 style="margin-top:0;">Orbiqlite — Free</h3>
+              <ul>
+                <li>Unlimited shortcuts & collections</li>
+                <li>One-click launcher activation (hotkey)</li>
+                <li>Draggable 3D wheel with mouse/touch</li>
+                <li>Auto-start option</li>
+                <li>Regular free updates</li>
+              </ul>
+            </div>
+            <div style="padding:8px;">
+              <h3 style="margin-top:0;">Orbiq Pro — Paid</h3>
+              <ul>
+                <li>Demo Mode — automated spin to showcase icons</li>
+                <li>Always-on-top launcher</li>
+                <li>Changeable nucleus — move or replace the central launcher</li>
+                <li>One-click add of common programs</li>
+                <li>Edit shortcuts in-place without re-adding them</li>
+                <li>Access system tray menu from the nucleus</li>
+                <li>Optional mini taskbar — a compact taskbar alternative that can replace the OS taskbar</li>
+              </ul>
+              <a class="cta" href="pro.html" style="margin-top:8px;display:inline-block;">Compare / Upgrade</a>
             </div>
           </div>
-          <p class="hint">Content Sphere — Drag to rotate, click to expand</p>
         </div>
-        <!-- Accessible Cards Display: show all cards below the wheel for quick access -->
-        <div id="accessibleCards" style="margin:40px auto 0;max-width:900px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;z-index:2;position:relative;"></div>
       </section>
 
   <!-- Removed Screenshots and Download Sections for cleaner layout -->
@@ -423,7 +484,7 @@
     <div class="content">
       <div class="grid">
         <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red"><h4>Download</h4><p>Link your latest launcher build here.</p></article>
-        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
+  <article class="card"><img src="Images/SphereIcon-slate.svg" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
         <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Press Kit</h4><p>Logos, screenshots, and a one‑pager.</p></article>
       </div>
     </div>
@@ -445,7 +506,7 @@
       <button class="close" data-close>Close</button>
     </header>
       <div class="content" style="display:flex;align-items:center;justify-content:center;min-height:80px;">
-        <div style="background:rgba(72,201,176,0.92);color:#232347;padding:18px 32px;border-radius:16px;box-shadow:0 2px 12px 0 rgba(0,0,0,0.18);font-size:1.1rem;font-weight:600;letter-spacing:0.02em;">pass6host@gmail.com</div>
+        <div style="background:rgba(255,255,255,0.04);color:#cbd5e1;padding:18px 32px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.5);font-size:1.05rem;font-weight:600;letter-spacing:0.02em;">pass6host@gmail.com</div>
       </div>
     </div>
   </section>
@@ -454,184 +515,16 @@
   </footer>
 
   <!-- Sidebar Navigation -->
-<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(135deg,#32CD32,#8A2BE2); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
-  <a href="OldWebsite/index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Old Site</a>
-  <a href="license.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">License</a>
-  <a href="privacy.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Privacy</a>
-  <a href="terms.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Terms</a>
-  <a href="pro.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Pro</a>
+<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(180deg,#0b1220,#0f1720); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
+  <a href="OldWebsite/index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Old Site</a>
+  <a href="license.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">License</a>
+  <a href="privacy.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Privacy</a>
+  <a href="terms.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Terms</a>
+  <a href="pro.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 6px 18px rgba(2,6,23,0.45); transition:background 0.2s;">Pro</a>
 </aside>
 
   <script>
-  // SECOND SPHERE: Only icons and labels are shown in the orb, expanded card only for front-most
-  const contentNodes = [
-    {
-      label: 'Download',
-      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
-      card: `<h2>Download Orbiq</h2><div class="card" style="max-width:420px;"><a href='https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link' target='_blank'><img src='https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png' alt='Installer' style='border-radius:12px;width:100%;height:140px;object-fit:cover;box-shadow:0 2px 8px rgba(0,234,255,0.10);'></a><h3>Windows Installer</h3><ul><li>Professional installation experience</li><li>Start Menu and Desktop shortcuts</li><li>Automatic uninstaller</li><li>Compact download size (0.8 MB)</li></ul><a class="cta" href='https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link' target='_blank'>Download Installer</a></div>`
-    },
-    {
-      label: 'System Requirements',
-  icon: 'Images/Hypno.gif',
-      card: `<h2>System Requirements</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;"><div class="card"><h3>Minimum Requirements</h3><ul><li>Windows 10 (64-bit)</li><li>2 GB RAM</li><li>200 MB free disk space</li><li>DirectX 11 compatible graphics</li></ul></div><div class="card"><h3>Recommended</h3><ul><li>Windows 11 (64-bit)</li><li>4 GB RAM or more</li><li>500 MB free disk space</li><li>Dedicated graphics card</li></ul></div></div>`
-    },
-    {
-      label: 'Orbiq Pro',
-  icon: 'Images/Hypno.gif',
-      card: `<h2>Want Even More Power?</h2><div class="card" style="max-width:420px;"><h3>Upgrade to Orbiq Pro</h3><p>Advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.</p><ul><li>🎯 Wheel Collections</li><li>⌨️ Custom Hotkeys</li><li>📍 Position Memory</li><li>🎨 Professional UI</li></ul><a class="cta" href='https://passghost.github.io/OrbiqWebsite/pro.html' target='_blank'>Discover Orbiq Pro - $20.00</a><p style="margin-top:8px;font-size:13px;color:var(--muted);">One-time purchase • Regular updates included • Professional support</p></div>`
-    },
-    {
-      label: 'Links',
-  icon: 'Images/Hypno.gif',
-      card: `<h2>Additional Links</h2><ul style="display:flex;flex-wrap:wrap;gap:18px;list-style:none;padding:0;margin:0;"><li><a href='https://passghost.github.io/OrbiqWebsite/#home' target='_blank'>Home</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#download' target='_blank'>Download</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#features' target='_blank'>Features</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#screenshots' target='_blank'>Screenshots</a></li><li><a href='https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD' target='_blank'>Support</a></li></ul>`
-    }
-  ];
-
-  const ring2 = document.getElementById('ring2');
-  const orbit2 = document.getElementById('orbit2');
-  const expandedCard = document.getElementById('expandedCard');
-  const TOTAL_CONTENT = contentNodes.length;
-  const contentPoints = [];
-  (function buildSphere2(){
-    const n = TOTAL_CONTENT;
-    for(let i=0;i<n;i++){
-      const k = i + 0.5;
-      const phi = Math.acos(1 - 2*k/n);
-      const theta = Math.PI * (1 + Math.sqrt(5)) * k;
-      const x = Math.cos(theta) * Math.sin(phi);
-      const y = Math.cos(phi);
-      const z = Math.sin(theta) * Math.sin(phi);
-      contentPoints.push({x,y,z});
-    }
-  })();
-
-  let rotX2 = -0.3, rotY2 = 0, dragging2 = false, last2 = {x:0,y:0}, inertia2 = {x:0,y:0};
-
-  function rotateVec2(v){
-    const cosX = Math.cos(rotX2), sinX = Math.sin(rotX2);
-    const cosY = Math.cos(rotY2), sinY = Math.sin(rotY2);
-    let y = v.y * cosX - v.z * sinX;
-    let z = v.y * sinX + v.z * cosX;
-    let x = v.x * cosY + z * sinY;
-    z = -v.x * sinY + z * cosY;
-    return {x,y,z};
-  }
-
-  function positionNodes2(){
-    const children = Array.from(ring2.querySelectorAll('.node'));
-    // Place all nodes on the sphere using fibonacci sphere math
-    const bounds = orbit2.getBoundingClientRect();
-    const R = Math.min(bounds.width, bounds.height) * 0.38;
-    // We'll collect depth info and re-append nodes in depth order so the
-    // front-most nodes are painted last (avoids transform/z-index inconsistencies).
-    const depthList = [];
-    children.forEach((el, i) => {
-      // Use fibonacci sphere points for 3D effect
-      const v = rotateVec2(contentPoints[i]);
-      const x = v.x * R;
-      const y = v.y * R;
-      const z = v.z * R;
-      const scale = 0.65 + 0.35 * ((z + R) / (2 * R));
-      el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), ${z}px)`;
-      // keep zIndex as a fallback but rely on DOM order for painting
-      el.style.zIndex = 1000 + Math.round(z);
-      el.firstChild.style.transform = `scale(${scale.toFixed(3)})`;
-      el.style.opacity = 0.3 + 0.7 * ((z + R) / (2 * R));
-      depthList.push({ el, z });
-    });
-    // sort by depth ascending and append in that order (furthest first)
-    depthList.sort((a,b)=>a.z - b.z);
-    depthList.forEach(item => ring2.appendChild(item.el));
-    // Show all cards below the wheel for accessibility
-    const accessibleCards = document.getElementById('accessibleCards');
-    accessibleCards.innerHTML = contentNodes.map(node => `<div class='card'>${node.card}</div>`).join('');
-    // Ensure anchors inside accessible cards behave like the working download CTA.
-    // Idempotent wiring: mark anchors with data-wired to avoid duplicate handlers.
-    (function wireAccessibleCardLinks(){
-      if(!accessibleCards) return;
-      const anchors = accessibleCards.querySelectorAll('a');
-      anchors.forEach(a=>{
-        if(a.dataset.wired) return;
-        a.dataset.wired = '1';
-        function openAnchorViaJS(ev) {
-          try {
-            ev.preventDefault && ev.preventDefault();
-          } catch(e){}
-          ev.stopPropagation && ev.stopPropagation();
-          const href = a.getAttribute('href');
-          const target = a.getAttribute('target') || '_self';
-          if(!href) return;
-          try { window.open(href, target); } catch(e) { location.href = href; }
-        }
-        // Use pointerdown which fires before pointer capture interferes with clicks.
-        a.addEventListener('pointerdown', openAnchorViaJS);
-        // Fallback for browsers that don't support pointer events
-        a.addEventListener('mousedown', openAnchorViaJS);
-      });
-    })();
-  }
-
-  // Open a content panel for a given content node index
-  function openContent(index, anchor){
-    const container = document.getElementById('panel-content-inner');
-    if(!container) return;
-    container.innerHTML = contentNodes[index].card;
-    openPanel('#panel-content', anchor);
-  }
-
-  // Add drag and inertia for bottom sphere
-  function onDown2(e){ dragging2=true; last2.x=e.clientX; last2.y=e.clientY; inertia2.x=0; inertia2.y=0; orbit2.setPointerCapture(e.pointerId); orbit2.classList.add('is-dragging');}
-  function onMove2(e){ if(!dragging2) return; const dx=e.clientX-last2.x, dy=e.clientY-last2.y; last2.x=e.clientX; last2.y=e.clientY; rotY2 += dx*0.005; rotX2 += dy*0.005; inertia2.x = dx*0.005; inertia2.y = dy*0.005; positionNodes2();}
-  function onUp2(e){ dragging2=false; orbit2.releasePointerCapture(e.pointerId); orbit2.classList.remove('is-dragging'); }
-
-  function animate2(){
-    rotX2 += (inertia2.y *= 0.94) * 0.3;
-    rotY2 += (inertia2.x *= 0.94) * 0.3;
-    positionNodes2();
-    requestAnimationFrame(animate2);
-  }
-
-  function buildRing2(){
-    ring2.innerHTML = '<div class="ring-bg" id="ringBg2"></div>';
-    for(let i=0;i<TOTAL_CONTENT;i++){
-      const el = document.createElement('div');
-      el.className = 'node';
-      el.setAttribute('data-index', i);
-      // Create a button that opens the content panel (preserves card anchors)
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.style.width = '84px';
-      btn.style.height = '84px';
-      btn.style.borderRadius = '50%';
-      btn.style.overflow = 'hidden';
-      btn.style.padding = '0';
-      btn.style.border = 'none';
-      btn.style.background = 'transparent';
-      // Add image inside button
-      const img = document.createElement('img');
-      img.src = contentNodes[i].icon;
-      img.alt = '';
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.objectFit = 'cover';
-      img.style.borderRadius = '50%';
-      btn.appendChild(img);
-      btn.addEventListener('click', (ev)=>{
-        ev.stopPropagation();
-        openContent(i, el);
-      });
-      el.appendChild(btn);
-      ring2.appendChild(el);
-    }
-    positionNodes2();
-  }
-
-  buildRing2();
-  animate2();
-  addEventListener('resize', ()=>{positionNodes2()});
-  orbit2.addEventListener('pointerdown', onDown2);
-  orbit2.addEventListener('pointermove', onMove2);
-  orbit2.addEventListener('pointerup', onUp2);
+  // Second content orb removed — replaced with static demo cards in the DOM
   </script>
 
   <script>
@@ -650,14 +543,8 @@
   }
 
   function initParticles(){
-    const count = Math.floor((W*H) / (22000 * dpr));
-    particles = new Array(count).fill().map(()=>({
-      x: Math.random()*W,
-      y: Math.random()*H,
-      v: 0,
-      a: 0,
-      s: 0.7 + Math.random()*1.1
-    }));
+  // Particle background disabled — keep array empty to avoid background noise and perf cost
+  particles = [];
   }
 
   function noise(x,y){
@@ -665,52 +552,50 @@
   }
 
   function tick(){
-    t+=1;
+    // Particle tick disabled — background cleared by other layers when needed
     g.clearRect(0,0,W,H);
-
-    g.globalCompositeOperation = 'lighter';
-    for(const p of particles){
-      const n = noise(p.x, p.y);
-      const angle = n * Math.PI;
-      const force = 0.6;
-
-      p.a += (angle - p.a)*0.08;
-      p.v += force * 0.6;
-
-      if(mouse.active){
-        const dx = (mouse.x*dpr - p.x), dy = (mouse.y*dpr - p.y);
-        const d = Math.hypot(dx,dy) + 0.0001;
-        const pull = Math.min(1.5, 40/d);
-        p.x += dx * pull * 0.008;
-        p.y += dy * pull * 0.008;
-      }
-
-      p.x += Math.cos(p.a) * p.v * 0.08;
-      p.y += Math.sin(p.a) * p.v * 0.08;
-      p.v *= 0.92;
-
-      if(p.x<0) p.x+=W; if(p.x>W) p.x-=W; if(p.y<0) p.y+=H; if(p.y>H) p.y-=H;
-
-      g.beginPath();
-      g.arc(p.x, p.y, p.s, 0, Math.PI*2);
-      const grad = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, 16);
-      grad.addColorStop(0, 'rgba(108,99,255,.45)'); // accent indigo
-      grad.addColorStop(1, 'rgba(108,99,255,0)');
-      g.fillStyle = grad;
-      g.fill();
-    }
-    requestAnimationFrame(tick);
   }
 
   addEventListener('resize', resize);
   bg.addEventListener('pointermove', e=>{mouse.x=e.clientX;mouse.y=e.clientY});
   bg.addEventListener('pointerdown', ()=>mouse.active=true);
   bg.addEventListener('pointerup', ()=>mouse.active=false);
-  resize(); tick();
+  resize(); // background particles disabled (tick not started)
 
   // ===== 2) ICON SPHERE (DOUBLED ICON COUNT) =====
-  const ICON_URL_1 = 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png';
-  const ICON_URL_2 = 'https://passghost.github.io/OrbiqWebsite/Images/krakenicon2.png';
+  // Use small emoji SVG data-URIs for website orb icons (desktop-like symbols)
+  const rawEmojiSvgs = [
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📁</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📝</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🖼️</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>⚙️</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🎵</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🎬</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🔗</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📦</text></svg>`,
+  // extra emoji for more variety
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>💡</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🔒</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🖥️</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🧭</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>⭐</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🚀</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🧩</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🗂️</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📌</text></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>�</text></svg>`
+  ];
+  const EMOJI_ICONS = rawEmojiSvgs.map(s => 'data:image/svg+xml;utf8,' + encodeURIComponent(s));
+
+  // Include one of each local project image so the orb shows 'our' icons too
+  const LOCAL_ICONS = [
+    'Images/SphereIcon-slate.svg',
+    'Images/SphereIcon.png',
+    'Images/krakenicon2.png'
+  ];
+
+  // Combined pool (data URIs + local image paths)
+  const ICON_POOL = EMOJI_ICONS.concat(LOCAL_ICONS);
 
   const ring = document.getElementById('ring');
   const ringBg = document.getElementById('ringBg');
@@ -723,12 +608,12 @@
     {label:'Contact', panel:'#panel-contact'},
   ];
 
-  const TOTAL_ICONS = 32; // doubled from 16 → 32
+  const TOTAL_ICONS = 64; // doubled for more variety
   const nodes = [];
   for(let i=0;i<TOTAL_ICONS;i++){
     nodes.push({
       ...baseNodes[i % baseNodes.length],
-      icon: i % 2 === 0 ? ICON_URL_1 : ICON_URL_2
+      icon: ICON_POOL[i % ICON_POOL.length]
     });
   }
 
@@ -886,11 +771,13 @@
       rotY += (inertia.x *= 0.94) * 0.3;
     }
     // Flex/rotate the GIF background with the orb — slower, and scale ramps with drag/inertia
-    if (ringBg) {
+      if (ringBg) {
       const inertiaMag = Math.min(1, Math.hypot(inertia.x, inertia.y) * 8);
       const baseScale = 1 + Math.sin(rotY) * 0.03 + Math.cos(rotX) * 0.03;
-      const dragScale = 1 + inertiaMag * 0.12; // ramp up to ~1.12 under strong drag
-      const scale = baseScale * dragScale;
+      const dragScale = 1 + inertiaMag * 0.12;
+      // compute desired scale but clamp to 0.2 base (we want GIFs at 20%)
+      const desired = baseScale * dragScale * 0.2;
+      const scale = Math.max(0.2, Math.min(desired, 0.22));
       const rotate = rotY * 8; // slower rotation
       ringBg.style.setProperty('--bg-scale', scale.toFixed(3));
       ringBg.style.setProperty('--bg-rotate', rotate.toFixed(3) + 'deg');
@@ -901,91 +788,15 @@
       const inertiaMag2 = Math.min(1, Math.hypot(inertia2.x||0, inertia2.y||0) * 8);
       const baseScale2 = 1 + Math.sin(rotY2) * 0.03 + Math.cos(rotX2) * 0.03;
       const dragScale2 = 1 + inertiaMag2 * 0.12;
-      const scale2 = baseScale2 * dragScale2;
+      const desired2 = baseScale2 * dragScale2 * 0.2;
+      const scale2 = Math.max(0.2, Math.min(desired2, 0.22));
       const rotate2 = rotY2 * 8;
       ringBg2El.style.setProperty('--bg-scale', scale2.toFixed(3));
       ringBg2El.style.setProperty('--bg-rotate', rotate2.toFixed(3) + 'deg');
     }
     positionNodes();
-    // Draw particle system lines from home to floating position, behind icons
-    // Always draw trails with a flexing joint
-    g.save();
-    g.setTransform(1,0,0,1,0,0);
-    g.globalAlpha = 0.45;
-    const bounds = orbit.getBoundingClientRect();
-    const orbCenterX = (bounds.left + bounds.width/2) * dpr;
-    const orbCenterY = (bounds.top + bounds.height/2) * dpr;
-    const R = Math.min(bounds.width, bounds.height) * 0.42 * dpr;
-    for (let i = 0; i < TOTAL_ICONS; i++) {
-      // Home position (on sphere)
-      const v = rotateVec(points[i]);
-      const hx = orbCenterX + v.x * R;
-      const hy = orbCenterY + v.y * R;
-      // Current floating position
-      const fx = orbCenterX + floatStates[i].x * dpr;
-      const fy = orbCenterY + floatStates[i].y * dpr;
-      // Only draw trail if icon is not at home position
-      const dist = Math.hypot(fx - hx, fy - hy);
-      if (dist > 2 * dpr) {
-        // Joint position: 40% along the line, flexed by a sine offset
-        const t = 0.4;
-        const jx = hx + (fx - hx) * t;
-        const jy = hy + (fy - hy) * t;
-        // Flex offset (per icon, animated)
-        const flexMag = 32 * dpr;
-        const flexAngle = Math.atan2(fy - hy, fx - hx) + Math.sin(Date.now()/400 + i) * 0.7;
-        const jxFlex = jx + Math.cos(flexAngle + Math.PI/2) * flexMag;
-        const jyFlex = jy + Math.sin(flexAngle + Math.PI/2) * flexMag;
-        // Draw trail: home -> joint -> floating
-        g.beginPath();
-        g.moveTo(hx, hy);
-        g.lineTo(jxFlex, jyFlex);
-        g.lineTo(fx, fy);
-        // Neon gradient for elbow trails
-        const grad = g.createLinearGradient(hx, hy, fx, fy);
-        grad.addColorStop(0, '#00fff7'); // neon cyan
-        grad.addColorStop(0.5, '#6C63FF'); // neon indigo
-        grad.addColorStop(1, '#48ff00'); // neon green
-        g.strokeStyle = grad;
-        g.lineWidth = 7;
-        g.shadowColor = '#00fff7';
-        g.shadowBlur = 32;
-        g.stroke();
-        // Draw a bright neon elbow particle (no blur)
-        g.save();
-        g.globalAlpha = 0.95;
-        g.beginPath();
-        g.arc(jxFlex, jyFlex, 13 * dpr, 0, Math.PI*2);
-        const elbowGrad = g.createRadialGradient(jxFlex, jyFlex, 0, jxFlex, jyFlex, 13 * dpr);
-        elbowGrad.addColorStop(0, '#00fff7');
-        elbowGrad.addColorStop(0.5, '#6C63FF');
-        elbowGrad.addColorStop(1, 'rgba(0,255,247,0)');
-        g.fillStyle = elbowGrad;
-        g.shadowColor = 'transparent';
-        g.shadowBlur = 0;
-        g.fill();
-        g.restore();
-        // Draw icon at joint, scale and blur based on size
-        const iconImg = new Image();
-        iconImg.src = nodes[i].icon;
-        // Calculate scale based on z (depth)
-        let iconScale = 0.65 + 0.35 * ((v.z + R) / (2 * R));
-        let iconSize = 18 * dpr * iconScale;
-        // Blur: max blur at smallest, none at largest
-        let blurAmount = Math.max(0, 16 * (1 - iconScale));
-        g.save();
-        g.globalAlpha = 0.35;
-        if (blurAmount > 0) {
-          g.filter = `blur(${blurAmount}px)`;
-        } else {
-          g.filter = 'none';
-        }
-        g.drawImage(iconImg, jxFlex - iconSize/2, jyFlex - iconSize/2, iconSize, iconSize);
-        g.filter = 'none';
-        g.restore();
-      }
-    }
-    g.restore();
+  // Particle/trail drawing disabled — keep background clean and professional
+  // (No trails drawn)
     requestAnimationFrame(animate);
   }
 
@@ -998,7 +809,7 @@
 
       const btn = document.createElement('button');
       btn.setAttribute('type','button');
-      btn.style.backgroundImage = `url(${nodes[i].icon})`;
+  btn.style.backgroundImage = `url("${nodes[i].icon}")`;
       // Remove label creation for first orb
       // const label = document.createElement('span');
       // label.className = 'label';

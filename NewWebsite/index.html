@@ -15,34 +15,34 @@
     a{color:inherit;text-decoration:none}
 
     :root{
-      --accent:#6C63FF; /* main accent: soft indigo */
-      --accent-2:#48C9B0; /* secondary accent: teal */
-      --text:#F3F3F7;
-      --muted:#A3A3B3;
-      --panel:#232347ee;
-      --card:#1B1B2A;
-      --glass:rgba(108,99,255,.08);
+      --accent:#94a3b8; /* main accent: muted slate */
+      --accent-2:#6b7280; /* secondary accent: deep slate */
+      --text:#E6EEF6;
+      --muted:#94a3b8;
+      --panel:#111827ee;
+      --card:#0f1720;
+      --glass:rgba(148,163,184,.06);
       --radius:22px;
-      --shadow:0 12px 28px rgba(108,99,255,.18), inset 0 1px 0 rgba(255,255,255,.04);
+      --shadow:0 12px 28px rgba(20,25,33,.28), inset 0 1px 0 rgba(255,255,255,.02);
     }
 
     body{background:#18182A;color:var(--text)}
     /* --- Background --- */
     #bg {position:fixed;inset:0;z-index:-1;background:
-      radial-gradient(1200px 800px at 80% -10%, rgba(108,99,255,.16), rgba(108,99,255,0) 60%),
-      radial-gradient(900px 600px at 10% 120%, rgba(72,201,176,.12), rgba(72,201,176,0) 55%),
-      linear-gradient(180deg,#18182A 0%,#232347 100%);
+      radial-gradient(1200px 800px at 80% -10%, rgba(148,163,184,.08), rgba(148,163,184,0) 60%),
+      radial-gradient(900px 600px at 10% 120%, rgba(148,163,184,.06), rgba(148,163,184,0) 55%),
+      linear-gradient(180deg,#18182A 0%,#12121A 100%);
     }
 
     /* --- Top bar --- */
     .topbar{position:fixed;top:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--shadow);z-index:40}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 40px rgba(108,99,255,.35)}
-    .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(108,99,255,.25))}
+  .logo{width:30px;height:30px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 0 24px rgba(148,163,184,.12)}
+  .logo img{width:100%;height:100%;object-fit:cover;filter:drop-shadow(0 0 12px rgba(148,163,184,.18))}
     .brand h3{font-weight:800;letter-spacing:.4px}
     .pill{font-size:12px;color:var(--muted);padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
-    .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#18182A;font-weight:800;border:none;box-shadow:0 10px 26px rgba(108,99,255,.18);cursor:pointer}
-    .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#232347}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:10px 14px;border-radius:999px;color:#0f1720;font-weight:800;border:none;box-shadow:0 8px 18px rgba(20,25,33,.18);cursor:pointer}
+  .cta:hover{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#0f1720}
 
     /* --- Hero --- */
     .hero{min-height:100svh;display:grid;place-items:center;padding:120px 20px 80px}
@@ -50,16 +50,16 @@
     .headline{font-size:clamp(32px,6vw,64px);line-height:1.06;font-weight:900;letter-spacing:.2px}
     .headline .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
     .sub{margin-top:14px;color:var(--muted);font-size:clamp(14px,2vw,18px)}
-    .hero-card{background:var(--glass);border:1px solid rgba(108,99,255,.10);box-shadow:var(--shadow)}
+  .hero-card{background:var(--glass);border:1px solid rgba(148,163,184,.08);box-shadow:var(--shadow)}
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-    .badge{padding:8px 10px;border-radius:999px;background:rgba(108,99,255,.10);border:1px solid rgba(108,99,255,.18);font-size:13px;color:#fff}
+  .badge{padding:8px 10px;border-radius:999px;background:rgba(148,163,184,.06);border:1px solid rgba(148,163,184,.12);font-size:13px;color:#fff}
 
     /* --- Orbital stage (CENTERED SPHERE) --- */
     .stage{position:relative;min-height:520px;perspective:1200px;display:grid;place-items:center}
     .orbit-wrap{position:relative;width:min(90vw,680px);height:min(90vw,680px);max-width:700px;max-height:700px;transform-style:preserve-3d;user-select:none}
     .ring{position:relative;width:100%;height:100%;display:grid;place-items:center;transform-style:preserve-3d}
     .ring::before{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(255,255,255,.08)}
-  .ring-bg{position:absolute;inset:12%;border-radius:50%;background:url('floatback.gif') center center/cover no-repeat;filter:blur(8px) saturate(120%);opacity:.32;transition:opacity .25s ease;mix-blend-mode:screen}
+  .ring-bg{position:absolute;inset:12%;border-radius:50%;background:url('floatback.gif') center center no-repeat;background-size:20% auto;filter:saturate(120%);--bg-scale:0.2;opacity:.32;transition:opacity .25s ease;mix-blend-mode:screen}
 
     /* Target indicator */
 
@@ -68,7 +68,7 @@
       position: fixed;
       left: 24px;
       bottom: 24px;
-      background: rgba(72,201,176,0.92);
+  background: rgba(148,163,184,0.06);
       color: #232347;
       font-family: inherit;
       font-size: 1rem;
@@ -98,15 +98,15 @@
     .hint{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;opacity:.8}
 
     /* --- Panels --- */
-    .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(108,99,255,.10);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
+  .panel{position:fixed;inset:auto 14px 14px 14px;top:80px;max-width:980px;margin:0 auto;background:var(--panel);border:1px solid rgba(148,163,184,.06);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transform-origin:var(--x,50%) var(--y,50%); transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;transition:opacity .35s ease, transform .35s ease;z-index:50}
     .panel.open{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
     .panel header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
     .panel header h3{font-weight:800}
     .panel .content{padding:18px;display:grid;gap:12px}
     .panel .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-    .card{background:var(--card);border:1px solid rgba(108,99,255,.10);border-radius:18px;padding:14px;box-shadow:var(--shadow);color:var(--text)}
-    .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(108,99,255,0.10)}
-    .close{background:transparent;border:1px solid rgba(108,99,255,.18);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
+  .card{background:var(--card);border:1px solid rgba(148,163,184,.06);border-radius:18px;padding:14px;box-shadow:var(--shadow);color:var(--text)}
+  .card img{width:100%;height:140px;object-fit:cover;border-radius:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(148,163,184,0.06)}
+  .close{background:transparent;border:1px solid rgba(148,163,184,.12);color:var(--text);border-radius:12px;padding:8px 10px;cursor:pointer}
 
     /* --- Footer --- */
     .footer{padding:40px 20px 70px;text-align:center;color:var(--muted)}
@@ -142,7 +142,7 @@
       .stage {
         background: rgba(30,34,54,0.7);
         border-radius: 32px;
-        box-shadow: 0 8px 32px rgba(0,234,255,0.08);
+  box-shadow: 0 8px 32px rgba(148,163,184,0.06);
         padding: 32px 0 48px 0;
         margin-bottom: 48px;
       }
@@ -166,8 +166,11 @@
         position: absolute;
         inset: 12%;
         border-radius: 50%;
-        background: url('floatback.gif') center center/cover no-repeat;
-        filter: blur(8px) saturate(120%);
+        background: url('floatback.gif') center center no-repeat;
+        /* keep background small and sharp */
+        background-size: 20% auto;
+        filter: saturate(120%);
+        --bg-scale: 0.2; /* default 20% */
         opacity: .32;
         transition: opacity .25s ease;
         mix-blend-mode: screen;
@@ -180,7 +183,7 @@
         background: transparent;
         background-size: cover;
         background-position: center;
-        box-shadow: 0 2px 12px rgba(0,234,255,0.12);
+  box-shadow: 0 2px 12px rgba(148,163,184,0.06);
         cursor: pointer;
         display: grid;
         place-items: center;
@@ -199,7 +202,7 @@
         padding: 4px 10px;
         border-radius: 999px;
         border: 1px solid rgba(255,255,255,.1);
-        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+  box-shadow: 0 2px 8px rgba(148,163,184,0.06);
       }
       .hint {
         position: absolute;
@@ -207,7 +210,7 @@
         left: 0;
         right: 0;
         text-align: center;
-        color: #7fd7ff;
+  color: #94a3b8;
         font-size: 13px;
         opacity: .8;
         letter-spacing: 0.5px;
@@ -215,7 +218,7 @@
       #expandedCard, #expandedFeatureCard {
         background: rgba(30,34,54,0.92);
         border-radius: 24px;
-        box-shadow: 0 8px 32px rgba(0,234,255,0.12);
+  box-shadow: 0 8px 32px rgba(148,163,184,0.06);
         padding: 32px 28px;
         color: #eaf6fb;
         font-size: 1.08rem;
@@ -225,7 +228,7 @@
       .card {
         background: rgba(40,44,64,0.98);
         border-radius: 18px;
-        box-shadow: 0 2px 12px rgba(0,234,255,0.10);
+  box-shadow: 0 2px 12px rgba(148,163,184,0.06);
         padding: 18px;
         margin-bottom: 18px;
         color: #eaf6fb;
@@ -236,27 +239,27 @@
         object-fit: cover;
         border-radius: 12px;
         margin-bottom: 10px;
-        box-shadow: 0 2px 8px rgba(0,234,255,0.10);
+  box-shadow: 0 2px 8px rgba(148,163,184,0.06);
       }
       .cta {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: linear-gradient(90deg,#00eaff,#7fd7ff);
+        background: linear-gradient(90deg,#0b0f12,#111827); /* black-slate */
         padding: 10px 18px;
         border-radius: 999px;
-        color: #181a2a;
+        color: #e6eef6;
         font-weight: 800;
         border: none;
-        box-shadow: 0 10px 26px rgba(0,234,255,.18);
+        box-shadow: 0 10px 26px rgba(2,6,23,0.6);
         cursor: pointer;
         font-size: 1rem;
         margin-top: 12px;
         text-decoration: none;
       }
       .cta:hover {
-        background: linear-gradient(90deg,#7fd7ff,#00eaff);
-        color: #23243a;
+        background: linear-gradient(90deg,#233238,#1f2937);
+        color: #e6eef6;
       }
       @media (max-width: 700px) {
         .stage { padding: 18px 0 32px 0; }
@@ -271,7 +274,7 @@
   <nav class="topbar" aria-label="Primary">
     <div class="brand">
       <div class="logo" aria-hidden="true">
-        <img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="JodyLabs logo" />
+  <img src="../Images/SphereIcon-slate.svg" alt="JodyLabs logo" />
       </div>
       <h3>JodyLabs</h3>
       <span class="pill">Interactive R&D</span>
@@ -340,7 +343,7 @@
     <div class="content">
       <div class="grid">
         <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red"><h4>Download</h4><p>Link your latest launcher build here.</p></article>
-        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
+  <article class="card"><img src="../Images/SphereIcon-slate.svg" alt="Sphere"><h4>Docs</h4><p>Quick start, hotkeys, theming, FAQ.</p></article>
         <article class="card"><img src="https://passghost.github.io/jodylabs/Images/Snip/EyeballM3.png" alt="Eyeball"><h4>Press Kit</h4><p>Logos, screenshots, and a one‑pager.</p></article>
       </div>
     </div>
@@ -354,7 +357,7 @@
     <div class="content">
       <div class="grid">
         <article class="card"><img src="https://passghost.github.io/jodylabs/Images/rededge.png" alt="Red edge"><h4>Email</h4><p><a href="mailto:hello@jodylabs.dev">hello@jodylabs.dev</a></p></article>
-        <article class="card"><img src="https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png" alt="Sphere"><h4>Twitter / X</h4><p><a href="#">@JodyLabs</a></p></article>
+  <article class="card"><img src="../Images/SphereIcon-slate.svg" alt="Sphere"><h4>Twitter / X</h4><p><a href="#">@JodyLabs</a></p></article>
         <article class="card"><img src="https://passghost.github.io/jodylabs/screenshots/CardCake.png" alt="CardCake"><h4>GitHub</h4><p><a href="https://github.com/passghost" target="_blank" rel="noopener">passghost</a></p></article>
       </div>
     </div>
@@ -364,8 +367,8 @@
   </footer>
 
   <!-- Sidebar Navigation -->
-<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(135deg,#32CD32,#8A2BE2); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
-  <a href="../index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#fff; font-weight:bold; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(0,0,0,0.2); box-shadow:0 2px 8px rgba(50,205,50,0.2); transition:background 0.2s;">Old Site</a>
+<aside style="position:fixed; left:0; top:0; height:100%; width:60px; background:linear-gradient(180deg,#0b1220,#0f1720); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1000;">
+  <a href="../index.html" style="writing-mode:vertical-rl; text-orientation:mixed; color:#cbd5e1; font-weight:600; text-decoration:none; padding:10px; margin:20px 0; border-radius:8px; background:rgba(255,255,255,0.02); box-shadow:0 2px 8px rgba(0,0,0,0.4); transition:background 0.2s;">Old Site</a>
 </aside>
 
   <script>
@@ -373,22 +376,22 @@
   const contentNodes = [
     {
       label: 'Download',
-      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
-      card: `<h2>Download Orbiq</h2><div class="card" style="max-width:420px;"><img src='https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png' alt='Installer'><h3>Windows Installer</h3><ul><li>Professional installation experience</li><li>Start Menu and Desktop shortcuts</li><li>Automatic uninstaller</li><li>Compact download size (0.8 MB)</li></ul><a class="cta" href='https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link' target='_blank'>Download Installer</a></div>`
+  icon: '../Images/SphereIcon-slate.svg',
+  card: `<h2>Download Orbiq</h2><div class="card" style="max-width:420px;"><img src='../Images/SphereIcon-slate.svg' alt='Installer'><h3>Windows Installer</h3><ul><li>Professional installation experience</li><li>Start Menu and Desktop shortcuts</li><li>Automatic uninstaller</li><li>Compact download size (0.8 MB)</li></ul><a class="cta" href='https://drive.google.com/file/d/1rF6m6Wn5T2cE_3pd8XRgsGF-U6EIQD-0/view?usp=drive_link' target='_blank'>Download Installer</a></div>`
     },
     {
       label: 'System Requirements',
-      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+  icon: '../Images/SphereIcon-slate.svg',
       card: `<h2>System Requirements</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;"><div class="card"><h3>Minimum Requirements</h3><ul><li>Windows 10 (64-bit)</li><li>2 GB RAM</li><li>200 MB free disk space</li><li>DirectX 11 compatible graphics</li></ul></div><div class="card"><h3>Recommended</h3><ul><li>Windows 11 (64-bit)</li><li>4 GB RAM or more</li><li>500 MB free disk space</li><li>Dedicated graphics card</li></ul></div></div>`
     },
     {
       label: 'Orbiq Pro',
-      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+  icon: '../Images/SphereIcon-slate.svg',
       card: `<h2>Want Even More Power?</h2><div class="card" style="max-width:420px;"><h3>Upgrade to Orbiq Pro</h3><p>Advanced features like wheel collections, custom hotkeys, position memory, and enhanced taskbar filtering.</p><ul><li>🎯 Wheel Collections</li><li>⌨️ Custom Hotkeys</li><li>📍 Position Memory</li><li>🎨 Professional UI</li></ul><a class="cta" href='https://passghost.github.io/OrbiqWebsite/pro.html' target='_blank'>Discover Orbiq Pro - $20.00</a><p style="margin-top:8px;font-size:13px;color:var(--muted);">One-time purchase • Regular updates included • Professional support</p></div>`
     },
     {
       label: 'Links',
-      icon: 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png',
+  icon: '../Images/SphereIcon-slate.svg',
       card: `<h2>Additional Links</h2><ul style="display:flex;flex-wrap:wrap;gap:18px;list-style:none;padding:0;margin:0;"><li><a href='https://passghost.github.io/OrbiqWebsite/#home' target='_blank'>Home</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#download' target='_blank'>Download</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#features' target='_blank'>Features</a></li><li><a href='https://passghost.github.io/OrbiqWebsite/#screenshots' target='_blank'>Screenshots</a></li><li><a href='https://www.paypal.com/donate/?business=TE5MW5QV6RRCS&no_recurring=1&item_name=Donations+encouraged%2C+but+of+course+not+expected.+Thanks+for+visiting!&currency_code=USD' target='_blank'>Support</a></li></ul>`
     }
   ];
@@ -465,7 +468,7 @@
       el.setAttribute('data-index', i);
       const btn = document.createElement('button');
       btn.setAttribute('type','button');
-      btn.style.backgroundImage = `url(${contentNodes[i].icon})`;
+  btn.style.backgroundImage = `url("${contentNodes[i].icon}")`;
       const label = document.createElement('span');
       label.className = 'label';
       label.textContent = contentNodes[i].label;
@@ -559,8 +562,18 @@
   resize(); tick();
 
   // ===== 2) ICON SPHERE (DOUBLED ICON COUNT) =====
-  const ICON_URL_1 = 'https://passghost.github.io/OrbiqWebsite/Images/SphereIcon.png';
-  const ICON_URL_2 = 'https://passghost.github.io/OrbiqWebsite/Images/krakenicon2.png';
+  // Use small emoji SVG data-URIs for website orb icons (desktop-like symbols)
+  const rawEmojiSvgs = [
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📁</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📝</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🖼️</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>⚙️</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🎵</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🎬</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>🔗</text></svg>`,
+    `<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><rect width='100%' height='100%' fill='transparent'/><text x='50%' y='50%' font-size='160' text-anchor='middle' dominant-baseline='middle'>📦</text></svg>`
+  ];
+  const EMOJI_ICONS = rawEmojiSvgs.map(s => 'data:image/svg+xml;utf8,' + encodeURIComponent(s));
 
   const ring = document.getElementById('ring');
   const ringBg = document.getElementById('ringBg');
@@ -578,7 +591,7 @@
   for(let i=0;i<TOTAL_ICONS;i++){
     nodes.push({
       ...baseNodes[i % baseNodes.length],
-      icon: i % 2 === 0 ? ICON_URL_1 : ICON_URL_2
+      icon: EMOJI_ICONS[i % EMOJI_ICONS.length]
     });
   }
 
@@ -737,91 +750,18 @@
     }
     // Flex/rotate the GIF background with the orb
     if (ringBg) {
-      // Use a subtle scale and rotation based on rotX/rotY
-      const scale = 1 + Math.sin(rotY) * 0.07 + Math.cos(rotX) * 0.07;
+      const inertiaMag = Math.min(1, Math.hypot(inertia.x, inertia.y) * 8);
+      const baseScale = 1 + Math.sin(rotY) * 0.03 + Math.cos(rotX) * 0.03;
+      const dragScale = 1 + inertiaMag * 0.12;
+      const desired = baseScale * dragScale * 0.2;
+      const scale = Math.max(0.2, Math.min(desired, 0.22));
       const rotate = rotY * 18;
-      ringBg.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+      ringBg.style.setProperty('--bg-scale', scale.toFixed(3));
+      ringBg.style.setProperty('--bg-rotate', rotate.toFixed(3) + 'deg');
     }
     positionNodes();
-    // Draw particle system lines from home to floating position, behind icons
-    // Always draw trails with a flexing joint
-    g.save();
-    g.setTransform(1,0,0,1,0,0);
-    g.globalAlpha = 0.45;
-    const bounds = orbit.getBoundingClientRect();
-    const orbCenterX = (bounds.left + bounds.width/2) * dpr;
-    const orbCenterY = (bounds.top + bounds.height/2) * dpr;
-    const R = Math.min(bounds.width, bounds.height) * 0.42 * dpr;
-    for (let i = 0; i < TOTAL_ICONS; i++) {
-      // Home position (on sphere)
-      const v = rotateVec(points[i]);
-      const hx = orbCenterX + v.x * R;
-      const hy = orbCenterY + v.y * R;
-      // Current floating position
-      const fx = orbCenterX + floatStates[i].x * dpr;
-      const fy = orbCenterY + floatStates[i].y * dpr;
-      // Only draw trail if icon is not at home position
-      const dist = Math.hypot(fx - hx, fy - hy);
-      if (dist > 2 * dpr) {
-        // Joint position: 40% along the line, flexed by a sine offset
-        const t = 0.4;
-        const jx = hx + (fx - hx) * t;
-        const jy = hy + (fy - hy) * t;
-        // Flex offset (per icon, animated)
-        const flexMag = 32 * dpr;
-        const flexAngle = Math.atan2(fy - hy, fx - hx) + Math.sin(Date.now()/400 + i) * 0.7;
-        const jxFlex = jx + Math.cos(flexAngle + Math.PI/2) * flexMag;
-        const jyFlex = jy + Math.sin(flexAngle + Math.PI/2) * flexMag;
-        // Draw trail: home -> joint -> floating
-        g.beginPath();
-        g.moveTo(hx, hy);
-        g.lineTo(jxFlex, jyFlex);
-        g.lineTo(fx, fy);
-        // Neon gradient for elbow trails
-        const grad = g.createLinearGradient(hx, hy, fx, fy);
-        grad.addColorStop(0, '#00fff7'); // neon cyan
-        grad.addColorStop(0.5, '#6C63FF'); // neon indigo
-        grad.addColorStop(1, '#48ff00'); // neon green
-        g.strokeStyle = grad;
-        g.lineWidth = 7;
-        g.shadowColor = '#00fff7';
-        g.shadowBlur = 32;
-        g.stroke();
-        // Draw a bright neon elbow particle (no blur)
-        g.save();
-        g.globalAlpha = 0.95;
-        g.beginPath();
-        g.arc(jxFlex, jyFlex, 13 * dpr, 0, Math.PI*2);
-        const elbowGrad = g.createRadialGradient(jxFlex, jyFlex, 0, jxFlex, jyFlex, 13 * dpr);
-        elbowGrad.addColorStop(0, '#00fff7');
-        elbowGrad.addColorStop(0.5, '#6C63FF');
-        elbowGrad.addColorStop(1, 'rgba(0,255,247,0)');
-        g.fillStyle = elbowGrad;
-        g.shadowColor = 'transparent';
-        g.shadowBlur = 0;
-        g.fill();
-        g.restore();
-        // Draw icon at joint, scale and blur based on size
-        const iconImg = new Image();
-        iconImg.src = nodes[i].icon;
-        // Calculate scale based on z (depth)
-        let iconScale = 0.65 + 0.35 * ((v.z + R) / (2 * R));
-        let iconSize = 18 * dpr * iconScale;
-        // Blur: max blur at smallest, none at largest
-        let blurAmount = Math.max(0, 16 * (1 - iconScale));
-        g.save();
-        g.globalAlpha = 0.35;
-        if (blurAmount > 0) {
-          g.filter = `blur(${blurAmount}px)`;
-        } else {
-          g.filter = 'none';
-        }
-        g.drawImage(iconImg, jxFlex - iconSize/2, jyFlex - iconSize/2, iconSize, iconSize);
-        g.filter = 'none';
-        g.restore();
-      }
-    }
-    g.restore();
+  // Particle/trail drawing disabled — keep background clean and professional
+  // (No trails drawn)
     requestAnimationFrame(animate);
   }
 
@@ -834,7 +774,7 @@
 
       const btn = document.createElement('button');
       btn.setAttribute('type','button');
-      btn.style.backgroundImage = `url(${nodes[i].icon})`;
+  btn.style.backgroundImage = `url("${nodes[i].icon}")`;
       // Remove label creation for first orb
       // const label = document.createElement('span');
       // label.className = 'label';

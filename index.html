@@ -202,7 +202,7 @@
 
   body{background:#0b0b0d;color:var(--text)}
     /* --- Background --- */
-    #bg {position:fixed;inset:0;z-index:-1;background:
+    #bg {position:fixed;inset:0;z-index:-2;background:
       radial-gradient(900px 700px at 15% 15%, var(--bg-radial-1), rgba(0,0,0,0) 60%),
       radial-gradient(1100px 900px at 85% 10%, var(--bg-radial-2), rgba(0,0,0,0) 60%),
       radial-gradient(1200px 900px at 50% 115%, var(--bg-radial-3), rgba(0,0,0,0) 65%),
@@ -219,6 +219,22 @@
         radial-gradient(500px 380px at 30% 70%, var(--bg-glow-2), transparent 60%);
       mix-blend-mode:screen;
       opacity:.7;
+    }
+
+    /* Kraken emblem as a subtle page watermark */
+    .emblem-bg{
+      position:fixed;
+      inset:0;
+      z-index:-1; /* between bg canvas (-2) and content (0) */
+      pointer-events:none;
+      background-image:url('Images/krakenicon2.png');
+      background-repeat:no-repeat;
+      background-position: center 60%;
+      background-size: min(48vmin, 720px);
+      opacity: 0.06;
+      transform: translateZ(0);
+      filter: saturate(0.9) contrast(0.95) brightness(1.05);
+      mix-blend-mode: screen;
     }
 
     /* --- Top bar --- */
@@ -544,6 +560,7 @@
 </head>
 <body>
   <canvas id="bg"></canvas>
+  <div class="emblem-bg" aria-hidden="true"></div>
 
   <nav class="topbar" aria-label="Primary">
     <div class="brand">

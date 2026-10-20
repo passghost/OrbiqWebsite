@@ -307,20 +307,19 @@
   .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
   .badge{padding:8px 10px;border-radius:999px;background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-2-rgb),.20);font-size:13px;color:var(--text);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.12)}
 
-  /* --- Footer badge grid --- */
-  .footer .badge-strip{display:grid;grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));gap:10px;margin-bottom:22px;padding:16px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08)}
-  .footer .badge-strip a{position:relative;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);color:#e2e8f0;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.01em;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, filter .25s ease;box-shadow:0 0 12px rgba(var(--accent-2-rgb),.18), 0 0 24px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06);min-width:0}
+  /* --- Footer badge strip --- */
+  .footer .badge-strip{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:22px;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08)}
+  .footer .badge-strip a{position:relative;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);color:#e2e8f0;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.01em;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, filter .25s ease;box-shadow:0 0 12px rgba(var(--accent-2-rgb),.18), 0 0 24px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06)}
   .footer .badge-strip a:hover{transform:translateY(-3px);border-color:rgba(var(--accent-2-rgb),.70);box-shadow:0 8px 24px rgba(2,6,23,.65), 0 0 24px rgba(var(--accent-2-rgb),.50), 0 0 48px rgba(var(--accent-2-rgb),.25), 0 0 80px rgba(var(--accent-rgb),.15), inset 0 1px 0 rgba(255,255,255,.10);background:rgba(var(--accent-2-rgb),.14);filter:brightness(1.12)}
   .footer .badge-strip a:active{transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,6,23,.6), 0 0 16px rgba(var(--accent-2-rgb),.40), 0 0 36px rgba(var(--accent-2-rgb),.20)}
-  .footer .badge-strip a .badge-icon{flex-shrink:0;width:32px;height:32px;border-radius:7px;object-fit:cover;filter:drop-shadow(0 2px 8px rgba(var(--accent-2-rgb),.35)) drop-shadow(0 0 4px rgba(var(--accent-2-rgb),.20))}
-  .footer .badge-strip a .badge-icon.no-img{display:grid;place-items:center;font-size:16px;font-weight:700;background:rgba(var(--accent-2-rgb),.18);color:rgba(var(--accent-2-rgb),.9);border:1px solid rgba(var(--accent-2-rgb),.30)}
-  .footer .badge-strip a .badge-label{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.92;text-shadow:0 0 8px rgba(var(--accent-2-rgb),.25)}
+  .footer .badge-strip a img{border-radius:5px;filter:drop-shadow(0 2px 8px rgba(var(--accent-2-rgb),.35)) drop-shadow(0 0 4px rgba(var(--accent-2-rgb),.20))}
+  .footer .badge-strip a .badge-icon.no-img{display:grid;place-items:center;width:32px;height:32px;font-size:16px;font-weight:700;background:rgba(var(--accent-2-rgb),.18);color:rgba(var(--accent-2-rgb),.9);border:1px solid rgba(var(--accent-2-rgb),.30);border-radius:7px}
   .footer .badge-strip a::after{content:"";position:absolute;inset:-2px;border-radius:12px;pointer-events:none;background:linear-gradient(135deg, rgba(var(--accent-2-rgb),.25), transparent 50%);opacity:0;transition:opacity .3s ease;z-index:-1}
   .footer .badge-strip a:hover::after{opacity:1}
+  .footer .badge-strip .badge-label{opacity:.92;text-shadow:0 0 8px rgba(var(--accent-2-rgb),.25)}
   @media (max-width:560px){
-    .footer .badge-strip{grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));gap:8px;padding:12px}
+    .footer .badge-strip{gap:8px;padding:10px 12px}
     .footer .badge-strip a{padding:8px 10px;font-size:12px;box-shadow:0 0 10px rgba(var(--accent-2-rgb),.15), 0 0 20px rgba(var(--accent-2-rgb),.06)}
-    .footer .badge-strip a .badge-icon{width:28px;height:28px}
   }
 
     /* --- Orbital stage (CENTERED SPHERE) --- */
@@ -728,12 +727,12 @@
 
   <footer class="footer">
     <div class="badge-strip">
-      <a href='https://www.saashub.com/orbiq-launcher?utm_source=badge&utm_campaign=badge&utm_content=orbiq-launcher&badge_variant=color&badge_kind=approved' target='_blank'><img class="badge-icon" src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="" /> <span class="badge-label">SaaSHub</span></a>
-      <a href="https://alternativeto.net/software/orbiq-launcher/about/?utm_source=badge&utm_medium=referral" target="_blank"><img class="badge-icon" src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="" /> <span class="badge-label">AlternativeTo</span></a>
-      <a href="https://www.tinylaunch.com/" target="_blank"><img class="badge-icon" src="https://www.tinylaunch.com/icon.png" alt="" /> <span class="badge-label">TinyLaunch</span></a>
+      <a href='https://www.saashub.com/orbiq-launcher?utm_source=badge&utm_campaign=badge&utm_content=orbiq-launcher&badge_variant=color&badge_kind=approved' target='_blank'><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Orbiq Launcher - Verified on SaaSHub" width="171" height="54" /> <span class="badge-label">SaaSHub</span></a>
+      <a href="https://alternativeto.net/software/orbiq-launcher/about/?utm_source=badge&utm_medium=referral" target="_blank"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Orbiq Launcher | AlternativeTo" width="171" height="55" style="width:171px;height:auto;" /> <span class="badge-label">AlternativeTo</span></a>
+      <a href="https://www.tinylaunch.com/" target="_blank"><img src="https://www.tinylaunch.com/icon.png" alt="" width="24" height="24" style="border-radius:4px;" /> <span class="badge-label">TinyLaunch</span></a>
       <a href="https://fridayhunt.com" target="_blank"><span class="badge-icon no-img">F</span> <span class="badge-label">FridayHunt</span></a>
-      <a href="https://startupfa.me/s/orbiq?utm_source=orbiq.app" target="_blank"><img class="badge-icon" src="https://startupfa.me/badge?t=classic&theme=default" alt="" /> <span class="badge-label">Startup Fame</span></a>
-      <a href="https://toolfio.com" target="_blank" rel="noopener"><img class="badge-icon" src="https://toolfio.com/toolfio-light-badge.png" alt="" /> <span class="badge-label">Toolfio</span></a>
+      <a href="https://startupfa.me/s/orbiq?utm_source=orbiq.app" target="_blank"><img src="https://startupfa.me/badge?t=classic&theme=default" alt="Orbiq - Featured on Startup Fame" width="171" height="54" /> <span class="badge-label">Startup Fame</span></a>
+      <a href="https://toolfio.com" target="_blank" rel="noopener"><img src="https://toolfio.com/toolfio-light-badge.png" alt="Featured on Toolfio" width="200" height="54" /> <span class="badge-label">Toolfio</span></a>
     </div>
     © <span id="year"></span> JodyLabs • Built with vanilla HTML/CSS/JS.
   </footer>

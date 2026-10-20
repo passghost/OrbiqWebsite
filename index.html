@@ -308,13 +308,14 @@
   .badge{padding:8px 10px;border-radius:999px;background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-2-rgb),.20);font-size:13px;color:var(--text);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.12)}
 
   /* --- Footer badge carousel (rotating 3D dial) --- */
-  .footer .badge-carousel{position:relative;margin-bottom:22px;padding:22px 0 28px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08);perspective:900px;overflow:hidden}
+  .footer .badge-carousel{--cell-w:180px;--cell-h:90px;--n:6;--radius:250px;position:relative;margin-bottom:22px;padding:22px 0 28px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08);perspective:900px;overflow:hidden}
   .footer .badge-carousel .carousel-title{text-align:center;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(148,163,184,.60);margin-bottom:14px}
   .footer .badge-carousel .carousel-viewport{position:relative;width:100%;max-width:720px;height:110px;margin:0 auto;perspective:900px}
-  .footer .badge-carousel .carousel-3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;animation:carousel-spin 40s linear infinite}
+  .footer .badge-carousel .carousel-3d{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;animation:carousel-spin 30s linear infinite}
   .footer .badge-carousel .carousel-3d:hover{animation-play-state:paused}
+  .footer .badge-carousel .carousel-3d.is-stepping{animation-play-state:paused;transition:transform .55s cubic-bezier(.4,0,.2,1)}
   @keyframes carousel-spin{from{transform:rotateX(-8deg) rotateY(0deg)}to{transform:rotateX(-8deg) rotateY(-360deg)}}
-  .footer .badge-carousel .badge-3d{position:absolute;left:50%;top:50%;width:180px;height:90px;margin:-45px 0 0 -90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.18), 0 0 28px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06);backface-visibility:hidden;transition:border-color .25s ease, box-shadow .25s ease, background .25s ease, filter .25s ease}
+  .footer .badge-carousel .badge-3d{position:absolute;left:50%;top:50%;width:var(--cell-w);height:var(--cell-h);margin:calc(var(--cell-h) / -2) 0 0 calc(var(--cell-w) / -2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.18), 0 0 28px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06);backface-visibility:hidden;transition:border-color .25s ease, box-shadow .25s ease, background .25s ease, filter .25s ease}
   .footer .badge-carousel .badge-3d img{height:36px;width:auto;max-width:150px;object-fit:contain;border-radius:5px;filter:drop-shadow(0 2px 6px rgba(var(--accent-2-rgb),.30))}
   .footer .badge-carousel .badge-3d .badge-icon.no-img{display:grid;place-items:center;width:36px;height:36px;font-size:18px;font-weight:700;background:rgba(var(--accent-2-rgb),.18);color:rgba(var(--accent-2-rgb),.9);border:1px solid rgba(var(--accent-2-rgb),.30);border-radius:8px}
   .footer .badge-carousel .badge-3d .badge-label{font-size:11px;font-weight:600;color:#e2e8f0;letter-spacing:.02em;white-space:nowrap;opacity:.92}
@@ -324,12 +325,17 @@
   .footer .badge-carousel .carousel-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
   .footer .badge-carousel .carousel-controls button{width:32px;height:32px;border-radius:50%;border:1px solid rgba(var(--accent-2-rgb),.35);background:rgba(255,255,255,.05);color:#e2e8f0;font-size:16px;cursor:pointer;transition:background .2s ease, box-shadow .2s ease, border-color .2s ease;line-height:1}
   .footer .badge-carousel .carousel-controls button:hover{background:rgba(var(--accent-2-rgb),.18);border-color:rgba(var(--accent-2-rgb),.65);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.35)}
+  .footer .badge-carousel .carousel-controls button:focus-visible{outline:2px solid rgba(var(--accent-2-rgb),.7);outline-offset:2px}
   .footer .badge-carousel .carousel-controls .carousel-count{font-size:11px;color:rgba(148,163,184,.65);letter-spacing:.04em}
   @media (max-width:560px){
-    .footer .badge-carousel{padding:16px 0 22px}
+    .footer .badge-carousel{padding:16px 0 22px;--cell-w:150px;--cell-h:76px}
     .footer .badge-carousel .carousel-viewport{height:90px;perspective:700px}
-    .footer .badge-carousel .badge-3d{width:150px;height:76px;margin:-38px 0 0 -75px;padding:6px 8px}
     .footer .badge-carousel .badge-3d img{height:28px;max-width:120px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .footer .badge-carousel .carousel-3d{animation:none}
+    .footer .badge-carousel .carousel-3d.is-stepping{transition:none}
+    .footer .badge-carousel .badge-3d .badge-caption::before{animation:none}
   }
 
     /* --- Orbital stage (CENTERED SPHERE) --- */
@@ -736,7 +742,7 @@
   </section>
 
   <footer class="footer">
-    <div class="badge-carousel">
+    <div class="badge-carousel" role="region" aria-label="Featured badges" aria-roledescription="carousel">
       <div class="carousel-title">Featured &amp; Verified</div>
       <div class="carousel-viewport">
         <div class="carousel-3d" id="badge-carousel">
@@ -750,9 +756,19 @@
       </div>
       <div class="carousel-controls">
         <button id="badge-prev" aria-label="Previous badge">&#10094;</button>
-        <span class="carousel-count" id="badge-count">1 / 6</span>
+        <span class="carousel-count" id="badge-count" aria-live="polite">1 / 6</span>
         <button id="badge-next" aria-label="Next badge">&#10095;</button>
       </div>
+      <noscript>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:8px 0">
+          <a href='https://www.saashub.com/orbiq-launcher?utm_source=badge&utm_campaign=badge&utm_content=orbiq-launcher&badge_variant=color&badge_kind=approved' target='_blank'><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Orbiq Launcher - Verified on SaaSHub" style="height:32px;width:auto;border-radius:4px;" /></a>
+          <a href="https://alternativeto.net/software/orbiq-launcher/about/?utm_source=badge&utm_medium=referral" target="_blank"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Orbiq Launcher | AlternativeTo" style="height:32px;width:auto;border-radius:4px;" /></a>
+          <a href="https://www.tinylaunch.com/" target="_blank"><img src="https://www.tinylaunch.com/icon.png" alt="TinyLaunch" style="height:28px;width:auto;border-radius:4px;" /></a>
+          <a href="https://fridayhunt.com" target="_blank"><img src="https://fridayhunt.com/favicon.ico" alt="FridayHunt" style="height:28px;width:auto;border-radius:4px;" /></a>
+          <a href="https://startupfa.me/s/orbiq?utm_source=orbiq.app" target="_blank"><img src="https://startupfa.me/badge?t=classic&theme=default" alt="Orbiq - Featured on Startup Fame" style="height:32px;width:auto;border-radius:4px;" /></a>
+          <a href="https://toolfio.com" target="_blank" rel="noopener"><img src="https://toolfio.com/toolfio-light-badge.png" alt="Featured on Toolfio" style="height:32px;width:auto;border-radius:4px;" /></a>
+        </div>
+      </noscript>
     </div>
     © <span id="year"></span> JodyLabs • Built with vanilla HTML/CSS/JS.
   </footer>
@@ -1197,35 +1213,56 @@
     var items = Array.prototype.slice.call(wheel.querySelectorAll('.badge-3d'));
     var n = items.length;
     var step = 360 / n;
-    var radius = Math.round(n * 42);
+    // Correct radius: (cellWidth/2) / tan(PI/n)
+    var cellWidth = 180;
+    var radius = Math.round((cellWidth / 2) / Math.tan(Math.PI / n));
+    // Set radius on the carousel container (CSS var)
+    wheel.parentElement.style.setProperty('--radius', radius + 'px');
     items.forEach(function(item, i){
-      item.style.transform = 'translateX(-50%) translateY(-50%) rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
+      item.style.transform = 'rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
     });
     var count = document.getElementById('badge-count');
-    function updateCount(){
-      var rot = -parseFloat((wheel.style.transform || '').match(/rotateY\(([-\d.]+)deg\)/)?.[1] || 0);
-      if(isNaN(rot)) rot = 0;
+    if(count) count.textContent = '1 / ' + n;
+    var prev = document.getElementById('badge-prev');
+    var next = document.getElementById('badge-next');
+
+    function getCurrentRotation(){
+      var m = (wheel.style.transform || '').match(/rotateY\(([-\d.]+)deg\)/);
+      return m ? parseFloat(m[1]) : 0;
+    }
+    function stepBadge(dir){
+      var rot = getCurrentRotation();
+      rot -= dir * step;
+      wheel.classList.add('is-stepping');
+      wheel.style.transform = 'rotateX(-8deg) rotateY(' + rot + 'deg)';
       var norm = ((rot % 360) + 360) % 360;
       var front = Math.round(norm / step) % n;
       if(count) count.textContent = (front + 1) + ' / ' + n;
+      setTimeout(function(){ wheel.classList.remove('is-stepping'); }, 600);
     }
-    var prev = document.getElementById('badge-prev');
-    var next = document.getElementById('badge-next');
-    function stepBadge(dir){
-      var m = (wheel.style.transform || '').match(/rotateY\(([-\d.]+)deg\)/);
-      var rot = m ? parseFloat(m[1]) : 0;
-      rot -= dir * step;
-      wheel.style.animation = 'none';
-      wheel.style.transform = 'rotateX(-8deg) rotateY(' + rot + 'deg)';
-      updateCount();
-      setTimeout(function(){
-        wheel.style.animation = '';
-        var m2 = getComputedStyle(wheel).transform;
-      }, 350);
-    }
-    if(prev) prev.addEventListener('click', function(){ stepBadge(-1); });
-    if(next) next.addEventListener('click', function(){ stepBadge(1); });
-    updateCount();
+    if(prev) prev.addEventListener('click', function(e){ e.preventDefault(); stepBadge(-1); });
+    if(next) next.addEventListener('click', function(e){ e.preventDefault(); stepBadge(1); });
+
+    // Keyboard nav
+    wheel.closest('.badge-carousel').addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); stepBadge(-1); }
+      if(e.key === 'ArrowRight'){ e.preventDefault(); stepBadge(1); }
+    });
+
+    // Touch / swipe
+    var touchStartX = 0;
+    var carousel = wheel.closest('.badge-carousel');
+    carousel.addEventListener('touchstart', function(e){
+      touchStartX = e.changedTouches[0].screenX;
+      wheel.classList.add('is-stepping');
+    }, { passive: true });
+    carousel.addEventListener('touchend', function(e){
+      wheel.classList.remove('is-stepping');
+      var diff = touchStartX - e.changedTouches[0].screenX;
+      if(Math.abs(diff) > 50){
+        stepBadge(diff > 0 ? 1 : -1);
+      }
+    }, { passive: true });
   })();
 
   // ===== 5) Misc =====

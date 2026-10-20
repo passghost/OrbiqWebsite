@@ -307,33 +307,29 @@
   .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
   .badge{padding:8px 10px;border-radius:999px;background:rgba(var(--accent-rgb),.10);border:1px solid rgba(var(--accent-2-rgb),.20);font-size:13px;color:var(--text);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.12)}
 
-  /* --- Footer badge strip with spinning dial --- */
-  .footer .badge-strip{position:relative;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;margin-bottom:22px;padding:20px 18px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08);overflow:hidden}
-  .footer .badge-strip .dial{position:relative;width:72px;height:72px;flex-shrink:0;z-index:1}
-  .footer .badge-strip .dial .dial-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(var(--accent-2-rgb),.35);box-shadow:0 0 16px rgba(var(--accent-2-rgb),.25), inset 0 0 12px rgba(var(--accent-2-rgb),.12);animation:dial-spin 12s linear infinite}
-  .footer .badge-strip .dial .dial-ring::before{content:"";position:absolute;inset:6px;border-radius:50%;border:1px dashed rgba(var(--accent-2-rgb),.22)}
-  .footer .badge-strip .dial .dial-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg, #22c55e, #8b5cf6);box-shadow:0 0 10px rgba(var(--accent-2-rgb),.8), 0 0 20px rgba(var(--accent-rgb),.5);top:0;left:50%;margin-left:-4px;margin-top:-4px;animation:dial-dot-glow 2s ease-in-out infinite}
-  .footer .badge-strip .dial .dial-center{position:absolute;inset:24px;border-radius:50%;background:radial-gradient(circle at 40% 35%, rgba(var(--accent-2-rgb),.35), rgba(var(--accent-rgb),.15));border:1px solid rgba(var(--accent-2-rgb),.30);box-shadow:inset 0 2px 6px rgba(2,6,23,.5), 0 0 12px rgba(var(--accent-2-rgb),.20)}
-  .footer .badge-strip .dial .dial-center::after{content:"";position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle at 45% 40%, rgba(255,255,255,.25), transparent 60%)}
-  @keyframes dial-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  @keyframes dial-dot-glow{0%,100%{box-shadow:0 0 8px rgba(var(--accent-2-rgb),.6), 0 0 16px rgba(var(--accent-rgb),.3)}50%{box-shadow:0 0 14px rgba(var(--accent-2-rgb),.9), 0 0 28px rgba(var(--accent-rgb),.6)}}
-  .footer .badge-strip a{position:relative;z-index:1;display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);color:#e2e8f0;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.01em;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, filter .25s ease;box-shadow:0 0 12px rgba(var(--accent-2-rgb),.18), 0 0 24px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06)}
-  .footer .badge-strip a:hover{transform:translateY(-3px) scale(1.04);border-color:rgba(var(--accent-2-rgb),.70);box-shadow:0 8px 24px rgba(2,6,23,.65), 0 0 24px rgba(var(--accent-2-rgb),.50), 0 0 48px rgba(var(--accent-2-rgb),.25), 0 0 80px rgba(var(--accent-rgb),.15), inset 0 1px 0 rgba(255,255,255,.10);background:rgba(var(--accent-2-rgb),.14);filter:brightness(1.12)}
-  .footer .badge-strip a:active{transform:translateY(-1px) scale(1.01);box-shadow:0 4px 14px rgba(2,6,23,.6), 0 0 16px rgba(var(--accent-2-rgb),.40), 0 0 36px rgba(var(--accent-2-rgb),.20)}
-  .footer .badge-strip a img{border-radius:5px;filter:drop-shadow(0 2px 8px rgba(var(--accent-2-rgb),.35)) drop-shadow(0 0 4px rgba(var(--accent-2-rgb),.20));transition:transform .3s ease}
-  .footer .badge-strip a:hover img{transform:scale(1.06)}
-  .footer .badge-strip a .badge-icon.no-img{display:grid;place-items:center;width:32px;height:32px;font-size:16px;font-weight:700;background:rgba(var(--accent-2-rgb),.18);color:rgba(var(--accent-2-rgb),.9);border:1px solid rgba(var(--accent-2-rgb),.30);border-radius:7px}
-  .footer .badge-strip a .badge-caption{font-size:9px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:rgba(148,163,184,.70);opacity:.85}
-  .footer .badge-strip a .badge-caption::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:#f59e0b;margin-right:4px;vertical-align:middle;box-shadow:0 0 6px rgba(245,158,11,.6);animation:caption-pulse 2s ease-in-out infinite}
+  /* --- Footer badge carousel (rotating 3D dial) --- */
+  .footer .badge-carousel{position:relative;margin-bottom:22px;padding:22px 0 28px;border-radius:14px;background:linear-gradient(135deg, rgba(34,197,94,.08), rgba(139,92,246,.08));border:1px solid rgba(var(--accent-2-rgb),.25);box-shadow:0 8px 24px rgba(2,6,23,.45), 0 0 30px rgba(var(--accent-2-rgb),.15), 0 0 60px rgba(var(--accent-rgb),.08);perspective:900px;overflow:hidden}
+  .footer .badge-carousel .carousel-title{text-align:center;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(148,163,184,.60);margin-bottom:14px}
+  .footer .badge-carousel .carousel-viewport{position:relative;width:100%;max-width:720px;height:110px;margin:0 auto;perspective:900px}
+  .footer .badge-carousel .carousel-3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;animation:carousel-spin 40s linear infinite}
+  .footer .badge-carousel .carousel-3d:hover{animation-play-state:paused}
+  @keyframes carousel-spin{from{transform:rotateX(-8deg) rotateY(0deg)}to{transform:rotateX(-8deg) rotateY(-360deg)}}
+  .footer .badge-carousel .badge-3d{position:absolute;left:50%;top:50%;width:180px;height:90px;margin:-45px 0 0 -90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(var(--accent-2-rgb),.30);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.18), 0 0 28px rgba(var(--accent-2-rgb),.08), inset 0 1px 0 rgba(255,255,255,.06);backface-visibility:hidden;transition:border-color .25s ease, box-shadow .25s ease, background .25s ease, filter .25s ease}
+  .footer .badge-carousel .badge-3d img{height:36px;width:auto;max-width:150px;object-fit:contain;border-radius:5px;filter:drop-shadow(0 2px 6px rgba(var(--accent-2-rgb),.30))}
+  .footer .badge-carousel .badge-3d .badge-icon.no-img{display:grid;place-items:center;width:36px;height:36px;font-size:18px;font-weight:700;background:rgba(var(--accent-2-rgb),.18);color:rgba(var(--accent-2-rgb),.9);border:1px solid rgba(var(--accent-2-rgb),.30);border-radius:8px}
+  .footer .badge-carousel .badge-3d .badge-label{font-size:11px;font-weight:600;color:#e2e8f0;letter-spacing:.02em;white-space:nowrap;opacity:.92}
+  .footer .badge-carousel .badge-3d .badge-caption{font-size:8px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:rgba(148,163,184,.70);white-space:nowrap}
+  .footer .badge-carousel .badge-3d .badge-caption::before{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;background:#f59e0b;margin-right:3px;vertical-align:middle;box-shadow:0 0 5px rgba(245,158,11,.6);animation:caption-pulse 2s ease-in-out infinite}
   @keyframes caption-pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
-  .footer .badge-strip a::after{content:"";position:absolute;inset:-2px;border-radius:12px;pointer-events:none;background:linear-gradient(135deg, rgba(var(--accent-2-rgb),.25), transparent 50%);opacity:0;transition:opacity .3s ease;z-index:-1}
-  .footer .badge-strip a:hover::after{opacity:1}
-  .footer .badge-strip .badge-label{opacity:.92;text-shadow:0 0 8px rgba(var(--accent-2-rgb),.25)}
+  .footer .badge-carousel .carousel-controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+  .footer .badge-carousel .carousel-controls button{width:32px;height:32px;border-radius:50%;border:1px solid rgba(var(--accent-2-rgb),.35);background:rgba(255,255,255,.05);color:#e2e8f0;font-size:16px;cursor:pointer;transition:background .2s ease, box-shadow .2s ease, border-color .2s ease;line-height:1}
+  .footer .badge-carousel .carousel-controls button:hover{background:rgba(var(--accent-2-rgb),.18);border-color:rgba(var(--accent-2-rgb),.65);box-shadow:0 0 14px rgba(var(--accent-2-rgb),.35)}
+  .footer .badge-carousel .carousel-controls .carousel-count{font-size:11px;color:rgba(148,163,184,.65);letter-spacing:.04em}
   @media (max-width:560px){
-    .footer .badge-strip{gap:8px;padding:14px 10px}
-    .footer .badge-strip a{padding:8px 10px;font-size:12px;box-shadow:0 0 10px rgba(var(--accent-2-rgb),.15), 0 0 20px rgba(var(--accent-2-rgb),.06)}
-    .footer .badge-strip .dial{width:52px;height:52px}
-    .footer .badge-strip .dial .dial-center{inset:17px}
+    .footer .badge-carousel{padding:16px 0 22px}
+    .footer .badge-carousel .carousel-viewport{height:90px;perspective:700px}
+    .footer .badge-carousel .badge-3d{width:150px;height:76px;margin:-38px 0 0 -75px;padding:6px 8px}
+    .footer .badge-carousel .badge-3d img{height:28px;max-width:120px}
   }
 
     /* --- Orbital stage (CENTERED SPHERE) --- */
@@ -740,14 +736,23 @@
   </section>
 
   <footer class="footer">
-    <div class="badge-strip">
-      <div class="dial"><div class="dial-ring"></div><div class="dial-dot"></div><div class="dial-center"></div></div>
-      <a href='https://www.saashub.com/orbiq-launcher?utm_source=badge&utm_campaign=badge&utm_content=orbiq-launcher&badge_variant=color&badge_kind=approved' target='_blank'><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Orbiq Launcher - Verified on SaaSHub" width="171" height="54" /> <span class="badge-label">SaaSHub</span></a>
-      <a href="https://alternativeto.net/software/orbiq-launcher/about/?utm_source=badge&utm_medium=referral" target="_blank"><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Orbiq Launcher | AlternativeTo" width="171" height="55" style="width:171px;height:auto;" /> <span class="badge-label">AlternativeTo</span></a>
-      <a href="https://www.tinylaunch.com/" target="_blank"><img src="https://www.tinylaunch.com/icon.png" alt="" width="24" height="24" style="border-radius:4px;" /> <span class="badge-label">TinyLaunch</span> <span class="badge-caption">submitted · waiting behind paywall</span></a>
-      <a href="https://fridayhunt.com" target="_blank"><span class="badge-icon no-img">F</span> <span class="badge-label">FridayHunt</span> <span class="badge-caption">submitted · waiting behind paywall</span></a>
-      <a href="https://startupfa.me/s/orbiq?utm_source=orbiq.app" target="_blank"><img src="https://startupfa.me/badge?t=classic&theme=default" alt="Orbiq - Featured on Startup Fame" width="171" height="54" /> <span class="badge-label">Startup Fame</span></a>
-      <a href="https://toolfio.com" target="_blank" rel="noopener"><img src="https://toolfio.com/toolfio-light-badge.png" alt="Featured on Toolfio" width="200" height="54" /> <span class="badge-label">Toolfio</span></a>
+    <div class="badge-carousel">
+      <div class="carousel-title">Featured &amp; Verified</div>
+      <div class="carousel-viewport">
+        <div class="carousel-3d" id="badge-carousel">
+          <a class="badge-3d" href='https://www.saashub.com/orbiq-launcher?utm_source=badge&utm_campaign=badge&utm_content=orbiq-launcher&badge_variant=color&badge_kind=approved' target='_blank' data-badge><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="Orbiq Launcher - Verified on SaaSHub" /> <span class="badge-label">SaaSHub</span></a>
+          <a class="badge-3d" href="https://alternativeto.net/software/orbiq-launcher/about/?utm_source=badge&utm_medium=referral" target="_blank" data-badge><img src="https://alternativeto.net/static/badges/badge-compact-color.svg" alt="Orbiq Launcher | AlternativeTo" /> <span class="badge-label">AlternativeTo</span></a>
+          <a class="badge-3d" href="https://www.tinylaunch.com/" target="_blank" data-badge><img src="https://www.tinylaunch.com/icon.png" alt="" width="24" height="24" style="border-radius:4px;" /> <span class="badge-label">TinyLaunch</span> <span class="badge-caption">submitted · waiting behind paywall</span></a>
+          <a class="badge-3d" href="https://fridayhunt.com" target="_blank" data-badge><span class="badge-icon no-img">F</span> <span class="badge-label">FridayHunt</span> <span class="badge-caption">submitted · waiting behind paywall</span></a>
+          <a class="badge-3d" href="https://startupfa.me/s/orbiq?utm_source=orbiq.app" target="_blank" data-badge><img src="https://startupfa.me/badge?t=classic&theme=default" alt="Orbiq - Featured on Startup Fame" /> <span class="badge-label">Startup Fame</span></a>
+          <a class="badge-3d" href="https://toolfio.com" target="_blank" rel="noopener" data-badge><img src="https://toolfio.com/toolfio-light-badge.png" alt="Featured on Toolfio" /> <span class="badge-label">Toolfio</span></a>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button id="badge-prev" aria-label="Previous badge">&#10094;</button>
+        <span class="carousel-count" id="badge-count">1 / 6</span>
+        <button id="badge-next" aria-label="Next badge">&#10095;</button>
+      </div>
     </div>
     © <span id="year"></span> JodyLabs • Built with vanilla HTML/CSS/JS.
   </footer>
@@ -1185,7 +1190,45 @@
   document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeAllPanels));
   document.getElementById('contactOpen').addEventListener('click', ()=>openPanel('#panel-contact', document.querySelector('.cta')));
 
-  // ===== 4) Misc =====
+  // ===== 4) Badge carousel =====
+  (function initBadgeCarousel(){
+    var wheel = document.getElementById('badge-carousel');
+    if(!wheel) return;
+    var items = Array.prototype.slice.call(wheel.querySelectorAll('.badge-3d'));
+    var n = items.length;
+    var step = 360 / n;
+    var radius = Math.round(n * 42);
+    items.forEach(function(item, i){
+      item.style.transform = 'translateX(-50%) translateY(-50%) rotateY(' + (i * step) + 'deg) translateZ(' + radius + 'px)';
+    });
+    var count = document.getElementById('badge-count');
+    function updateCount(){
+      var rot = -parseFloat((wheel.style.transform || '').match(/rotateY\(([-\d.]+)deg\)/)?.[1] || 0);
+      if(isNaN(rot)) rot = 0;
+      var norm = ((rot % 360) + 360) % 360;
+      var front = Math.round(norm / step) % n;
+      if(count) count.textContent = (front + 1) + ' / ' + n;
+    }
+    var prev = document.getElementById('badge-prev');
+    var next = document.getElementById('badge-next');
+    function stepBadge(dir){
+      var m = (wheel.style.transform || '').match(/rotateY\(([-\d.]+)deg\)/);
+      var rot = m ? parseFloat(m[1]) : 0;
+      rot -= dir * step;
+      wheel.style.animation = 'none';
+      wheel.style.transform = 'rotateX(-8deg) rotateY(' + rot + 'deg)';
+      updateCount();
+      setTimeout(function(){
+        wheel.style.animation = '';
+        var m2 = getComputedStyle(wheel).transform;
+      }, 350);
+    }
+    if(prev) prev.addEventListener('click', function(){ stepBadge(-1); });
+    if(next) next.addEventListener('click', function(){ stepBadge(1); });
+    updateCount();
+  })();
+
+  // ===== 5) Misc =====
   document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
